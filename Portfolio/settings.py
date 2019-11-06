@@ -116,3 +116,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(os.getcwd(), 'static/')
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+ON_HEROKU = os.getenv('HEROKU_APPLICATION') is not None
+
+# Overwrite settings for security in Production and Live Sever Testing Environments.
+if ON_HEROKU:
+    import heroku_settings
