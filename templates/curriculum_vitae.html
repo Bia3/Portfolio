@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% load static %}
+{% load markdownify %}
+{% block title %}Curriculum Vitae{% endblock %}
+{% block page_css %}
+    <link rel="stylesheet" href="{% static 'RossDevs/curriculum_vitae_styles.css' %}">{% endblock %}
+{% block content %}
+    <script>
+        function o(elem) {
+            let parent = elem.parentElement;
+            let parent_parent = parent.parentElement;
+            parent_parent.classList.add('open_body');
+            parent.classList.add('open');
+        }
+
+        function l(elem) {
+            let parent = elem.parentElement;
+            let parent_parent = parent.parentElement;
+            parent_parent.classList.remove('open_body');
+            parent.classList.remove('open');
+        }
+    </script>
+    <div class="cv_container">
+        {% for val in cvs %}
+            <div class="cv">
+                <div class="title">{{ val.name }}</div>
+                <div class="body">
+                    <div class="content">
+                        {{ val.mark_down|markdownify|safe }}
+                        {% if val.section %}
+                            <div class="section">
+                                {% for section in val.section.all %}
+                                    <div class="accomplishment  card">
+                                        <span>{{ section.name }}</span><br/>
+                                        <span>{{ section.highlights|safe }}</span><br/>
+                                        <span>{{ section.related_skill }}</span><br/>
+                                    </div>
+                                    <span class="end">{{ section.end }}</span><br/>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="more" onclick="o(this)">
+                        <div class="chev">
+                            <svg
+                                    width="16"
+                                    height="16"
+                                    version="1.1" id="Layer_1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 407.437 407.437" style="">
+                                <polygon
+                                        points="386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 "></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="less" onclick="l(this)">
+                        <div class="chev">
+                            <svg
+                                    width="16"
+                                    height="16"
+                                    version="1.1" id="Layer_1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 407.437 407.437" style="">
+                                <polygon
+                                        points="203.718,91.567 0,294.621 21.179,315.869 203.718,133.924 386.258,315.869 407.436,294.621 "></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="date">{{ val.date }}</div>
+                <div class="link-lists">
+                    <div class="{% if val.job.first %}active drop-down{% endif %}">
+                        <span>Jobs</span>
+                        {% if val.job.first %}
+                            <div class="list dropdown">
+                                {% for job in val.job.all %}
+                                    <div class="list_item drop-content">
+                                        <span>{{ job.company }}</span>
+                                    </div>
+                                    <div class="job card light_box">
+                                        <span>{{ job.company }}</span><br/>
+                                        <span>{{ job.title }}</span><br/>
+                                        <span>{{ job.highlights|safe }}</span><br/>
+                                        {% for responsibility in job.responsibility.all %}
+                                            <span>{{ responsibility.name }}</span><br/>
+                                        {% endfor %}
+                                        {% for accomplishment in job.accomplishment.all %}
+                                            <span>{{ accomplishment.name }}</span><br/>
+                                        {% endfor %}
+                                    </div>
+                                    <span class="start">{{ acc.start }}</span><br/>
+                                    <span class="end">{{ acc.end }}</span><br/>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="{% if val.education.first %}active drop-down{% endif %}">
+                        <span>Schools</span>
+                        {% if val.education.first %}
+                            <div class="school_card">
+                                {% for edu in val.education.all %}
+                                    <div class="list_item drop-content">
+                                        <span>{{ edu.name }}</span>
+                                    </div>
+                                    <div class="accomplishment light_box card">
+                                        <span>{{ edu.name }}</span><br/>
+                                        <span>{{ edu.highlights|safe }}</span><br/>
+                                        <span>{{ edu.related_skill }}</span><br/>
+                                        <span class="end">{{ edu.end }}</span><br/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="{% if val.certificates.first %}active drop-down{% endif %}">
+                        <span>Certificats</span>
+                        {% if val.certificates.first %}
+                            <div class="certificates_card" style="display: none">
+                                {% for certificates in val.certificates.all %}
+                                    <div class="accomplishment light_box card">
+                                        <span>{{ certificates.name }}</span><br/>
+                                        <span>{{ certificates.highlights|safe }}</span><br/>
+                                        <span>{{ certificates.related_skill }}</span><br/>
+                                    </div>
+                                    <span class="end">{{ certificates.end }}</span><br/>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="{% if val.projects.first %}active drop-down{% endif %}">
+                        <span>Projects</span>
+                        {% if val.projects.first %}
+                            <div class="projects_card" style="display: none">
+                                {% for projects in val.projects.all %}
+                                    <div class="accomplishment light_box card">
+                                        <span>{{ projects.name }}</span><br/>
+                                        <span>{{ projects.highlights|safe }}</span><br/>
+                                        <span>{{ projects.related_skill }}</span><br/>
+                                    </div>
+                                    <span class="end">{{ projects.end }}</span><br/>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="{% if val.accomplishment.first %}active drop-down{% endif %}">
+                        <span>Accomplishments</span>
+                        {% if val.accomplishment.first %}
+                            <div class="job_card" style="display: none">
+                                {% for acc in val.accomplishment.all %}
+                                    <div class="accomplishment light_box card">
+                                        <span>{{ acc.name }}</span><br/>
+                                        <span>{{ acc.highlights|safe }}</span><br/>
+                                        <span>{{ acc.related_skill }}</span><br/>
+                                    </div>
+                                    <span class="end">{{ acc.end }}</span><br/>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="{% if val.skills.first %}active drop-down{% endif %}">
+                        <span>Skills</span>
+                        {% if val.skills.first %}
+                            <div class="projects_card" style="display: none">
+                                {% for skill in val.skills.all %}
+                                    <div class="accomplishment light_box card">
+                                        <span>{{ skill.name }}</span><br/>
+                                        <span>{{ skill.highlights|safe }}</span><br/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

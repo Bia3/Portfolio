@@ -1,0 +1,141 @@
+:root {
+    --background1: #333;
+    --heighlight1: #555;
+    --foreground1: #fff;
+    --background2: #282a36;
+    --heighlight2: #44475a;
+    --foreground2: #f8f8f2;
+    --red: #ff5555;
+    --green: #50fa7b;
+    --cyan: #8be9fd;
+    --orange: #ffb86c;
+    --yellow: #f1fa8c;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background1);
+    color: var(--foreground1);
+    display: grid;
+    /*justify-items: center;*/
+    min-height: 100vh;
+    min-width: 398px;
+}
+
+.header {
+    display: grid;
+}
+
+.base.header {
+    height: 60px;
+    width: 100%;
+    align-self: center;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+footer.base {
+    display: grid;
+    align-self: end;
+    height: 60px;
+}
+
+
+.footer {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-areas: 'social' 'contact';
+    justify-self: center;
+    font-size: 11px;
+}
+
+.footer .social {
+    grid-area: social;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    width: 80vw;
+    min-width: 320px;
+    max-width: 642px;
+}
+
+.footer .contact {
+    grid-area: contact;
+}
+
+.base .footer {
+    align-self: center;
+}
+
+.nav-bar {
+    justify-self: center;
+}
+
+.base .nav-bar {
+    align-self: center;
+}
+
+.nav-bar span {
+    margin: 30px;
+}
+
+.nav-bar span:hover {
+    color: var(--heighlight1);
+    cursor: pointer;
+}
+
+.home .nav-bar {
+    justify-self: end;
+    grid-area: nav;
+}
+
+.home .nav-bar span {
+    margin-right: 30px;
+}
+
+.home .nav-bar span:hover {
+    color: var(--heighlight2);
+    cursor: pointer;
+}
+
+.nav-bar a {
+    color: var(--foreground2);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-bar a:hover {
+    color: var(--heighlight2);
+}
+
+.nav-bar a:visited {
+    color: var(--foreground2);
+}
+
+.content-grid {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.bio {
+    min-height: 60vh;
+    margin: 40px 20px;
+}
+
+
+@media only screen and (max-width: 576px) {
+}
+
+
+@media all and (-webkit-min-device-pixel-ratio: 1) {
+}
+
+
+@-moz-document url-prefix() {
+    .box {
+        color: blue;
+    }
+}
