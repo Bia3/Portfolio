@@ -2,6 +2,8 @@ from . import settings
 import django_heroku
 import os
 
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 settings.DEBUG = False
 settings.TEMPLATE_DEBUG = False
 
