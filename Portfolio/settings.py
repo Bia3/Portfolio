@@ -124,4 +124,4 @@ ON_HEROKU = os.getenv('HEROKU_APPLICATION') is not None
 
 # Overwrite settings for security in Production and Live Sever Testing Environments.
 if ON_HEROKU:
-    import heroku_settings
+    from . import heroku_settings
