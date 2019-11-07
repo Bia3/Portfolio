@@ -4,6 +4,9 @@ import os
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+MIDDLEWARE = []
+
 settings.DEBUG = False
 settings.TEMPLATE_DEBUG = False
 
@@ -27,4 +30,4 @@ settings.SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 # # Internationalization
 # # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-django_heroku.settings(locals())
+settings.django_heroku.settings(locals())
