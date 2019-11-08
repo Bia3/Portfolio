@@ -3,8 +3,8 @@ import django_heroku
 import dj_database_url
 import os
 
-settings.DEBUG = False
-settings.TEMPLATE_DEBUG = False
+settings.DEBUG = True
+settings.TEMPLATE_DEBUG = True
 
 
 # Use the production secret key
