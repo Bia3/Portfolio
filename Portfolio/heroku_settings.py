@@ -1,5 +1,6 @@
 from . import settings
 import django_heroku
+import dj_database_url
 import os
 
 
@@ -35,15 +36,17 @@ settings.TEMPLATE_DEBUG = False
 # Use the production secret key
 settings.SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
+DATABASE_URL = os.environ['DATABASE_URL']
+
 # # Database
 # # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-settings.DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-    }
-}
+# settings.DATABASES = {
+#     'default': {
+#         django_heroku.settings(databases=DATABASE_URL),
+#     }
+# }
 #
-# settings.DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
+settings.DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 # # Internationalization
 # # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
