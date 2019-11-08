@@ -1,16 +1,17 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
-from .models import Bio, ContactCard, Resume, CurriculumVitae, Project
+from .models import ContactCard, Resume, CurriculumVitae, Project
 from markdownx.utils import markdownify
 
 
 # Create your views here.
 class HomeView(View):
-    bio = Bio.objects.first()
+    bio = ""
+    # bio = Bio.objects.first()
     contact = ContactCard.objects.first()
     md = ''
-    if bio:
-        md = markdownify(bio.mark_down)
+    # if bio:
+    #     md = markdownify(bio.mark_down)
 
     def get(self, request):
         return render(request, 'home.html', {

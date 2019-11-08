@@ -186,11 +186,11 @@ class CurriculumVitae(models.Model):
     date = models.DateField(blank=False)
 
 
-class Bio(models.Model):
-    title = models.CharField(max_length=30)
-    mark_down = MarkdownxField(blank=True)
-    creation = models.DateTimeField(auto_now_add=True, blank=True)
-    expired = models.BooleanField(blank=False)
+# class Bio(models.Model):
+#     title = models.CharField(max_length=30)
+#     mark_down = MarkdownxField(blank=True)
+#     creation = models.DateTimeField(auto_now_add=True, blank=True)
+#     expired = models.BooleanField(blank=False)
 
 
 class ContactCard(models.Model):
