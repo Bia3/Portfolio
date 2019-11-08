@@ -37,7 +37,7 @@ settings.SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # # Database
 # # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-DATABASES = {
+settings.DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
     }
