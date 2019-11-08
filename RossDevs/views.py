@@ -1,19 +1,20 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
-from .models import ContactCard, Resume, CurriculumVitae, Project
+from .models import ContactCard, Resume, CurriculumVitae, Project, Bio
 from markdownx.utils import markdownify
 
 
 # Create your views here.
 class HomeView(View):
     bio = ""
-    # bio = Bio.objects.first()
-    contact = ContactCard.objects.first()
+    contact = ""
     md = ''
-    # if bio:
-    #     md = markdownify(bio.mark_down)
 
     def get(self, request):
+        self.bio = Bio.objects.first()
+        self.contact = ContactCard.objects.first()
+        if self.bio:
+            self.md = markdownify(self.bio.mark_down)
         return render(request, 'home.html', {
             'bio': self.bio,
             'md': self.md,
@@ -22,27 +23,30 @@ class HomeView(View):
 
 
 class CurriculumVitaeView(View):
-    cvs = CurriculumVitae.objects.all()
+    cvs = ""
 
     def get(self, request):
+        self.cvs = CurriculumVitae.objects.all()
         return render(request, 'curriculum_vitae.html', {
             'cvs': self.cvs,
         })
 
 
 class ProjectsView(View):
-    projects = Project.objects.all()
+    projects = ""
 
     def get(self, request):
+        self.projects = Project.objects.all()
         return render(request, 'projects.html', {
             'projects': self.projects
         })
 
 
 class ResumeView(View):
-    resume = Resume.objects.first()
+    resume = ""
 
     def get(self, request):
+        self.resume = Resume.objects.first()
         return render(request, 'resume.html', {
             'resume': self.resume
         })

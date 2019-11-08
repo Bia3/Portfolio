@@ -1,6 +1,6 @@
 from django.contrib import admin
 from markdownx.admin import MarkdownxModelAdmin
-from .models import Job, CurriculumVitae, Resume, Project, Skill, \
+from .models import Job, CurriculumVitae, Resume, Project, Skill, Bio,\
     Responsibility, Section, ContactCard, School, Accomplishment, Certificate, \
     File, CodeSnippet, ProjectSection
 
@@ -17,5 +17,5 @@ admin.site.register(CodeSnippet)
 admin.site.register(ProjectSection)
 admin.site.register(Project, MarkdownxModelAdmin)
 admin.site.register(CurriculumVitae, MarkdownxModelAdmin)
-# admin.site.register(Bio, MarkdownxModelAdmin)
+admin.site.register(Bio, MarkdownxModelAdmin)
 admin.site.register(ContactCard)
