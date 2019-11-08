@@ -1,3 +1,4 @@
+from django.contrib.sites.models import Site
 from . import settings
 import django_heroku
 import dj_database_url
@@ -5,6 +6,8 @@ import os
 
 settings.DEBUG = False
 settings.TEMPLATE_DEBUG = False
+
+settings.SITE = Site.objects.get(pk=1)
 
 # Use the production secret key
 settings.SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
