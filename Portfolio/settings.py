@@ -72,16 +72,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Portfolio.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
@@ -126,3 +116,5 @@ ON_HEROKU = os.getenv('HEROKU_APPLICATION') is not None
 # Overwrite settings for security in Production and Live Sever Testing Environments.
 if ON_HEROKU:
     from . import heroku_settings
+else:
+    from . import local_settings
