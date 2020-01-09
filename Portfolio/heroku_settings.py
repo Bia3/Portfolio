@@ -3,9 +3,12 @@ import django_heroku
 import dj_database_url
 import os
 
-settings.DEBUG = True
-settings.TEMPLATE_DEBUG = True
+settings.DEBUG = False
+settings.TEMPLATE_DEBUG = False
 
+settings.ALLOWED_HOSTS = [
+    'www.rossdev.io', 'www.rossdev.tech', 'www.rossdev.co', 'rossdev.io', 'rossdev.tech', 'rossdev.co'
+]
 
 # Use the production secret key
 settings.SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
