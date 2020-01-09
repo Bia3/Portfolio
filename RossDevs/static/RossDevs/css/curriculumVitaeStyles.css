@@ -36,26 +36,37 @@
     display: grid;
     grid-auto-flow: row;
     padding: 0 24px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 32px;
+    grid-template-areas: 'Text' 'Button';
 }
 
 .cv .content {
     overflow: hidden;
+    grid-area: Text;
 }
 
 .cv .more {
     margin-top: 4px;
     width: 100%;
-    display: grid;
     background-color: #202020;
     border-radius: 4px;
+    display: grid;
+    position: relative;
+    z-index: 1;
+    height: 30px;
+    grid-area: Button;
 }
 
 .cv .less {
     margin-top: 4px;
     width: 100%;
-    display: none;
     background-color: #202020;
     border-radius: 4px;
+    display: grid;
+    position: relative;
+    grid-area: Button;
+    height: 30px;
 }
 
 .cv .more .chev {
@@ -99,7 +110,6 @@
 }
 
 .cv .body.open .more {
-    display: none;
 }
 
 .cv .body.open .less {
@@ -164,7 +174,6 @@
     border-radius: 4px;
     z-index: 1;
 }
-
 
 @media only screen and (max-width: 576px) {
 }
