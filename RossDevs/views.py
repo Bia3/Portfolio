@@ -43,9 +43,13 @@ class ProjectsView(View):
 
 
 class ProjectView(View):
+    project = ""
 
     def get(self, request):
-        return render(request, '', {})
+        self.project = Project.objects.get()
+        return render(request, 'project.html', {
+            'project': self.project
+        })
 
 
 class ResumeView(View):
