@@ -1,6 +1,13 @@
 {% extends "base.html" %}
+
+{% load template_loader %}
+
 {% block title %}Resume{% endblock %}
+
+{% block header %}{% standard_header %}{% endblock %}
+
 {% block content %}
+
     <div class="work-history">
         {% if jobs %}
             <div class="job_card" style="display: none">
@@ -23,3 +30,5 @@
         {% endif %}
     </div>
 {% endblock %}
+
+{% block footer %}{% standard_footer %}{% endblock %}

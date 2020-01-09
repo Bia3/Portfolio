@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Sean's Portfolio{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'RossDevs/css/style.css' %}">
+    {% block page_css %}{% endblock %}
+</head>
+<body>
+{% block header %}{% endblock %}
+{% block content %}{% endblock %}
+{% block footer %}{% endblock %}
+</body>
+</html>

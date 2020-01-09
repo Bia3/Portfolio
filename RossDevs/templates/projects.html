@@ -1,12 +1,18 @@
 {% extends "base.html" %}
+
 {% load static %}
 {% load markdownify %}
+{% load template_loader %}
+
 {% block title %}Projects{% endblock %}
 {% block page_css %}
 
 {% endblock %}
+
+{% block header %}{% standard_header %}{% endblock %}
+
 {% block content %}
-    {% if projects %}
+    {% if projects %}tt
         {% for proj in projects %}
             <div class="project">
                 <div class="title">
@@ -15,7 +21,9 @@
                 <div class="body">
                     {{ proj.highlights | markdownify | safe }}
                 </div>
-            </div>
+            </div>t
         {% endfor %}
     {% endif %}
 {% endblock %}
+
+{% block footer %}{% standard_footer %}{% endblock %}

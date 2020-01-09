@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load template_loader %}
+
+{% block page_css %}
+    <link rel="stylesheet" href="{% static 'RossDevs/css/style.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% home_header %}
+{% endblock %}
+
+{% block content %}
+    <div class="content-grid">
+        <div class="bio">
+        {% if bio %}
+            <span class="title">{{ bio.title }}</span>
+            <div class="markdown">
+                {{ md|safe }}
+            </div>
+        {% else %}
+            <p>no bio</p>
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% home_footer %}
+{% endblock %}
