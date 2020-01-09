@@ -21,8 +21,9 @@ from RossDevs.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^markdownx/', include('markdownx.urls')),
-    path('', HomeView.as_view()),
-    path('projects/', ProjectsView.as_view()),
-    path('resume/', ResumeView.as_view()),
-    path('cv/', CurriculumVitaeView.as_view()),
+    url('^/$', HomeView.as_view()),
+    url('^projects/$', ProjectsView.as_view()),
+    url('^projects/[a-z]+/$', ProjectView.as_view()),
+    url('^resume/$', ResumeView.as_view()),
+    url('^cv/$', CurriculumVitaeView.as_view()),
 ]

@@ -116,13 +116,13 @@ class File(models.Model):
 
 
 class CodeSnippet(models.Model):
-    name = models.CharField(max_length=30)
-    snippet = models.TextField
+    name = models.CharField(max_length=30, blank=False)
+    mark_down = MarkdownxField(blank=False)
 
 
 class ProjectSection(models.Model):
-    title = models.CharField(max_length=30)
-    mark_down = models.TextField
+    title = models.CharField(max_length=30, blank=False)
+    mark_down = MarkdownxField(blank=False)
 
 
 class Project(models.Model):

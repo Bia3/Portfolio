@@ -2,6 +2,9 @@
 {% load static %}
 {% load markdownify %}
 {% block title %}Projects{% endblock %}
+{% block page_css %}
+
+{% endblock %}
 {% block content %}
     {% if projects %}
         {% for proj in projects %}
@@ -10,9 +13,7 @@
                     {{ proj.name }}
                 </div>
                 <div class="body">
-                    {% for sect in proj.mark_down_sections.all %}
-                        {{ sect.title }}
-                    {% endfor %}
+                    {{ proj.highlights | markdownify | safe }}
                 </div>
             </div>
         {% endfor %}

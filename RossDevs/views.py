@@ -42,6 +42,12 @@ class ProjectsView(View):
         })
 
 
+class ProjectView(View):
+
+    def get(self, request):
+        return render(request, '', {})
+
+
 class ResumeView(View):
     resume = ""
 
