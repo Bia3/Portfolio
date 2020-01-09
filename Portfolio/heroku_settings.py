@@ -12,6 +12,8 @@ settings.SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 DATABASE_URL = os.environ['DATABASE_URL']
 
+settings.MIDDLEWARE.append('RossDev.middleware.SSLMiddleware')
+
 # # Database
 # # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 # settings.DATABASES = {
