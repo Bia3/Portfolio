@@ -1,12 +1,28 @@
+{% load search %}
+
 <div class="home header">
     <div class="crest">
-        <svg>
-        </svg>
+        {% svg_by_name 'crest' %}
     </div>
-    <div class="man-at-work"></div>
+    <div class="man-at-work" style="padding: 40px;">
+        {% svg_by_name 'man-at-work' %}
+    </div>
     <nav class="nav-bar">
         <a href="/resume/"><span>Resume</span></a>
         <a href="/projects/"><span>Projects</span></a>
         <a href="/cv/"><span>Curriculum Vitae</span></a>
+    </nav>
+    <nav class="nav-bar hamburger-menu">
+        <div class="hamburger-ico" onclick="openHam(this);">
+            {% svg_by_name 'hamburger' %}
+        </div>
+        <div class="close-ico" onclick="closeHam(this);">
+            {% svg_by_name 'close' %}
+        </div>
+        <div class="hamburger-menu-items">
+            <a href="/resume/" class="nav-text"><span>Resume</span></a>
+            <a href="/projects/" class="nav-text"><span>Projects</span></a>
+            <a href="/cv/" class="nav-text"><span>Curriculum Vitae</span></a>
+        </div>
     </nav>
 </div>
