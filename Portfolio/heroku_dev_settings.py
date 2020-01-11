@@ -5,7 +5,7 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = [
-    'portdev.herokuapp.com'
+    '127.0.0.1', 'localhost', 'portdev.herokuapp.com'
 ]
 
 # Use the production secret key
