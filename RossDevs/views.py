@@ -8,7 +8,7 @@ from markdownx.utils import markdownify
 class HomeView(View):
     bio = ""
     contact = ""
-    md = ''
+    md = ""
 
     def get(self, request):
         self.bio = Bio.objects.first()
@@ -18,7 +18,7 @@ class HomeView(View):
         return render(request, 'home.html', {
             'bio': self.bio,
             'md': self.md,
-            'contact': self.contact,
+            'contact': self.contact
         })
 
 
