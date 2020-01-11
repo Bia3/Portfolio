@@ -111,7 +111,7 @@ STATIC_ROOT = os.path.join(os.getcwd(), 'static/')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-DEV_BIT = os.getenv('HEROKU_APPLICATION') is not None
+DEV_BIT = os.getenv('DEV_BIT') is not None
 
 # Overwrite settings for security in Production and Live Sever Testing Environments.
 if not DEV_BIT:
