@@ -220,7 +220,7 @@ body {
 
 .social .card {
     display: grid;
-    grid-template-rows: 1fr 18px;
+    grid-template-rows: auto 18px;
     align-items: center;
     justify-items: center;
     gap: 8px;
@@ -234,7 +234,7 @@ body {
 .social .card .icon {
     height: 64px;
     width: 64px;
-    padding-bottom: 89px;
+    padding-bottom: 12px;
 }
 
 .social .card .icon svg {
