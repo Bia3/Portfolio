@@ -4,6 +4,6 @@ from markdownx.utils import markdownify as markdownifyx
 register = template.Library()
 
 
-@register.filter
+@register.filter(is_safe=True)
 def markdownify(value):
     return markdownifyx(value)
