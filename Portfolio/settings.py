@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'RossDevs.apps.RossdevsConfig',
-    'RossDevs'
+    'RossDevs',
     'markdownx',
 ]
 
