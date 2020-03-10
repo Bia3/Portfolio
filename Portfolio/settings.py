@@ -106,18 +106,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(os.getcwd(), 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_URL = '/static/'
+
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 
 DEV_BIT = os.getenv('DEV_BIT') is not None
 HEROKU_DEV_BIT = os.getenv('HEROKU_DEV_BIT') is not None
 
 # Overwrite settings for security in Production and Live Sever Testing Environments.
-if not DEV_BIT:
-    from .heroku_settings import *
-elif HEROKU_DEV_BIT:
-    from .heroku_dev_settings import *
-else:
-    from .local_settings import *
+# if not DEV_BIT:
+#     from .heroku_settings import *
+# elif HEROKU_DEV_BIT:
+#     from .heroku_dev_settings import *
+# else:
+#     from .local_settings import *
