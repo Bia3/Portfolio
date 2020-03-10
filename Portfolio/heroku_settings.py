@@ -8,7 +8,7 @@ TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = [
     'www.rossdev.io', 'www.rossdev.tech', 'www.rossdev.co', 'rossdev.io', 'rossdev.tech', 'rossdev.co',
-    'portdev.herokuapp.com', '1276.0.0.1', 'localhost'
+    'portf-orchard.herokuapp.com', '1276.0.0.1', 'localhost'
 ]
 
 # Use the production secret key
