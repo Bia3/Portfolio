@@ -4,7 +4,19 @@ from .models import Job, CurriculumVitae, Resume, Project, Skill, Bio,\
     Responsibility, Section, ContactCard, School, Accomplishment, Certificate, \
     File, CodeSnippet, ProjectSection, Svg
 
-admin.site.register(Skill, MarkdownxModelAdmin)
+
+class SvgAdmin(admin.ModelAdmin):
+    list_display = ('name', )
+    fieldsets = [
+        (None, {'fields': ['name', 'data']}),
+    ]
+
+
+class SkillAdmin(MarkdownxModelAdmin):
+    list_display = ('name', )
+
+
+admin.site.register(Skill, SkillAdmin)
 admin.site.register(Responsibility, MarkdownxModelAdmin)
 admin.site.register(Accomplishment, MarkdownxModelAdmin)
 admin.site.register(Job, MarkdownxModelAdmin)
@@ -19,4 +31,4 @@ admin.site.register(Project, MarkdownxModelAdmin)
 admin.site.register(CurriculumVitae, MarkdownxModelAdmin)
 admin.site.register(Bio, MarkdownxModelAdmin)
 admin.site.register(ContactCard)
-admin.site.register(Svg),
+admin.site.register(Svg, SvgAdmin),
