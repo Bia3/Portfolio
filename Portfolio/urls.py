@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from RossDevs.views import *
 
-handler404 = 'custom_404'
+handler404 = 'RossDevs.views.custom_404'
 
 urlpatterns = [
     path('admin/', admin.site.urls),

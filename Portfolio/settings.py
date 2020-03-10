@@ -32,13 +32,13 @@ ALLOWED_HOSTS = ['127.0.0.1', '73.63.67.*', 'portdev.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'RossDevs.apps.RossdevsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'RossDevs.apps.RossdevsConfig',
     'markdownx',
 ]
 
@@ -72,6 +72,16 @@ TEMPLATES = [
         },
     },
 ]
+
+# Database
+# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
+    }
+}
 
 WSGI_APPLICATION = 'Portfolio.wsgi.application'
 
@@ -115,13 +125,9 @@ STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 
-DEV_BIT = os.getenv('DEV_BIT') is not None
-HEROKU_DEV_BIT = os.getenv('HEROKU_DEV_BIT') is not None
 
 # Overwrite settings for security in Production and Live Sever Testing Environments.
-if not DEV_BIT:
+if 'DEV_BIT' in os.environ:
     from .heroku_settings import *
-elif HEROKU_DEV_BIT:
+elif 'HEROKU_DEV_BIT' in os.environ:
     from .heroku_dev_settings import *
-else:
-    from .local_settings import *

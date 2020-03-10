@@ -62,5 +62,6 @@ class ResumeView(View):
         })
 
 
-def custom_404(request):
+def custom_404(View, request):
     return render(request, '404.html', {}, status=404)
+
