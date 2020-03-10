@@ -4,10 +4,10 @@ import os
 DEBUG = True
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = [
-    '127.0.0.1', 'localhost', 'portdev.herokuapp.com'
-]
-
+# ALLOWED_HOSTS = [
+#     '127.0.0.1', 'localhost', 'portdev.herokuapp.com'
+# ]
+ALLOWED_HOSTS = ['*']
 # Use the production secret key
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
