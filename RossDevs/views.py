@@ -60,3 +60,7 @@ class ResumeView(View):
         return render(request, 'resume.html', {
             'resume': self.resume
         })
+
+
+def custom_404(request):
+    return render(request, '404.html', {}, status=404)
