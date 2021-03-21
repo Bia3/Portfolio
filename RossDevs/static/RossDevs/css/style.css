@@ -166,12 +166,12 @@ body {
 }
 
 .bio {
-    min-height: 55vh;
+    margin: 40px 0;
     width: 80vw;
 }
 
 .skills {
-    min-height: 55vh;
+    margin: 40px 0;
     width: 80vw;
 }
 
@@ -266,6 +266,7 @@ body {
     height: 64px;
     width: 64px;
     padding-bottom: 12px;
+    justify-self: center;
 }
 
 .card > a {
