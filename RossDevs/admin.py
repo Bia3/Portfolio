@@ -2,7 +2,7 @@ from django.contrib import admin
 from markdownx.admin import MarkdownxModelAdmin
 from .models import Job, CurriculumVitae, Resume, Project, Skill, Bio,\
     Responsibility, Section, ContactCard, School, Accomplishment, Certificate, \
-    File, CodeSnippet, ProjectSection, Svg
+    File, CodeSnippet, ProjectSection, Svg, Achievement
 
 
 class SvgAdmin(admin.ModelAdmin):
@@ -32,3 +32,4 @@ admin.site.register(CurriculumVitae, MarkdownxModelAdmin)
 admin.site.register(Bio, MarkdownxModelAdmin)
 admin.site.register(ContactCard)
 admin.site.register(Svg, SvgAdmin),
+admin.site.register(Achievement)
