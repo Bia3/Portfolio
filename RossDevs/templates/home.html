@@ -22,13 +22,23 @@
                 {% endif %}
             </div>
             <div class="skills">
-                <h1>Skills</h1>
-                <hr />
                 {% if skills %}
+                    <h1>Skills</h1>
+                    <hr />
                     {% for skill in skills %}
                         <h2 class="skill_name">{{ skill.name }}</h2>
                         <div class="skill_description">{{ skill.description|safe }}</div>
                         <div class="skill_highlights">{{ skill.highlights|safe }}</div>
+                    {%  endfor %}
+                {% endif %}
+            </div>
+            <div class="achievements">
+                {% if achieves %}
+                    <h1>Achievements</h1>
+                    <hr />
+                    {% for achieve in achieves %}
+                        <h2 class="skill_name">{{ achieve.name }}</h2>
+                        <div class="skill_description">{{ achieve.description|safe }}</div>
                     {%  endfor %}
                 {% endif %}
             </div>

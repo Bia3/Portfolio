@@ -4,7 +4,7 @@ from markdownx.models import MarkdownxField
 
 
 class Skill(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=100)
     language = models.BooleanField
     tool = models.BooleanField
     concept = models.BooleanField
@@ -16,7 +16,7 @@ class Skill(models.Model):
 
 
 class Responsibility(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=100)
     description = MarkdownxField(blank=True)
     related_skill = models.ManyToManyField(
         Skill,
@@ -29,7 +29,7 @@ class Responsibility(models.Model):
 
 
 class Accomplishment(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=100)
     highlights = MarkdownxField(blank=True)
     related_skill = models.ManyToManyField(
         Skill,
@@ -44,7 +44,7 @@ class Accomplishment(models.Model):
 
 class Job(models.Model):
     company = models.CharField(max_length=100)
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=100)
     highlights = MarkdownxField(blank=True)
     responsibility = models.ManyToManyField(
         Responsibility,
@@ -64,7 +64,7 @@ class Job(models.Model):
 
 
 class School(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=100)
     graduated = models.BooleanField
     highlights = MarkdownxField(blank=True)
     start = models.DateField(blank=False)
@@ -75,7 +75,7 @@ class School(models.Model):
 
 
 class Section(models.Model):
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=100)
     shortend_md = MarkdownxField(blank=True)
     mark_down = MarkdownxField(blank=True)
     highlights = MarkdownxField(blank=True)
@@ -89,7 +89,7 @@ class Section(models.Model):
 
 
 class Certificate(models.Model):
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=100)
     highlights = MarkdownxField(blank=True)
     completion = models.DateField(blank=True)
     image = models.ImageField(blank=True)
@@ -130,7 +130,7 @@ class Resume(models.Model):
 
 
 class File(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=100)
     file = models.FileField
 
 
@@ -148,7 +148,7 @@ class Project(models.Model):
     uid = models.UUIDField(
         default=uuid.uuid4,
         editable=False)
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=100)
     short_desc = MarkdownxField(blank=True)
     git_link = models.CharField(
         max_length=400,
@@ -171,7 +171,7 @@ class Project(models.Model):
 
 
 class CurriculumVitae(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=100)
     mark_down = MarkdownxField(blank=True)
     job = models.ManyToManyField(
         Job,
@@ -212,7 +212,7 @@ class CurriculumVitae(models.Model):
 
 
 class Bio(models.Model):
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=100)
     mark_down = MarkdownxField(blank=True)
     creation = models.DateTimeField(auto_now_add=True, blank=True)
     expired = models.BooleanField(blank=False)
@@ -228,6 +228,12 @@ class ContactCard(models.Model):
     po_box = models.CharField(max_length=150, blank=True)
     email = models.CharField(max_length=30, blank=True)
     expired = models.BooleanField(blank=False)
+    
+
+class Achievement(models.Model):
+    name = models.CharField(max_length=100)
+    desciprion = MarkdownxField(blank=True)
+    order = models.IntegerField(unique=True)
 
 
 class Svg(models.Model):

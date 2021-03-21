@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
-from .models import ContactCard, Resume, CurriculumVitae, Project, Bio, Skill
+from .models import ContactCard, Resume, CurriculumVitae, Project, Bio, Skill, Achievement
 from markdownx.utils import markdownify
 
 
@@ -12,6 +12,8 @@ class HomeView(View):
     projects = ""
     skills_raw = []
     skills = []
+    achieves_raw = []
+    achieves = []
 
     def get(self, request):
         self.bio = Bio.objects.first()
@@ -19,6 +21,8 @@ class HomeView(View):
         self.projects = Project.objects.all()
         self.skills_raw = Skill.objects.all()
         self.skills = []
+        self.achieves_raw = Achievement.objects.all().filter('order')
+        self.achieves = []
 
         if self.bio:
             self.md = markdownify(self.bio.mark_down)
@@ -31,12 +35,20 @@ class HomeView(View):
                     'highlights': markdownify(skill.highlights)
                 })
 
+        if len(self.skills_raw) >= 1:
+            for achieve in self.achieves_raw:
+                self.achieves.append({
+                    'name': achieve.name,
+                    'description': markdownify(achieve.description)
+                })
+
         return render(request, 'home.html', {
             'bio': self.bio,
             'md': self.md,
             'contact': self.contact,
             'projects': self.projects,
-            'skills': self.skills
+            'skills': self.skills,
+            'achieves': self.achieves
         })
 
 
