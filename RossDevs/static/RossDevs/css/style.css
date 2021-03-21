@@ -146,11 +146,33 @@ body {
     display: grid;
     align-items: center;
     justify-items: center;
+    width: 100vw;
+}
+
+.project-list {
+    width: 80vw;
+}
+
+.content-container {
+    overflow: hidden;
+}
+
+.content-grid > table {
+
+}
+
+.content-grid > th, td {
+    padding: 15px;
 }
 
 .bio {
     min-height: 55vh;
-    margin: 40px 20px;
+    width: 80vw;
+}
+
+.skills {
+    min-height: 55vh;
+    width: 80vw;
 }
 
 .home.footer {
@@ -179,11 +201,24 @@ body {
     padding: 4px;
     background-color: var(--background2);
     color: var(--foreground2);
-    min-height: 40vh;
+    min-height: 200px;
+    max-height: 400px;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 30px;
-    grid-template-areas: 'crest . work' '. nav nav';
+    grid-template-rows: 60px 30px;
+    grid-template-areas: '. heading .' '. subheading .';
+    justify-content: center;
+    align-self: center;
     display: grid;
+}
+
+.home .heading {
+    grid-area: heading;
+    text-align: center;
+}
+
+.home .subheading {
+    grid-area: subheading;
+    text-align: center;
 }
 
 .home .crest {
@@ -214,10 +249,6 @@ body {
     color: var(--yellow);
 }
 
-.home .man-at-work {
-    grid-area: work;
-}
-
 .social .card {
     display: grid;
     grid-template-rows: auto 18px;
@@ -236,6 +267,22 @@ body {
     width: 64px;
     padding-bottom: 12px;
 }
+
+.card > a {
+    width: fit-content;
+    text-decoration: None;
+    display: grid;
+    grid-auto-flow: row;
+    justify-content: center;
+    color: white;
+    font-family: sans-serif;
+}
+
+.card:hover > a > .icon {
+    width: 74px;
+    height: 74px;
+}
+
 
 .social .card .icon svg {
     fill: var(--foreground1);

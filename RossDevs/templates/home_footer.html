@@ -3,25 +3,29 @@
 <div class="home footer">
     <div class="social">
         <div class="linked-in card">
-            <div class="icon linkedIn">
-                {% svg_by_name 'linkedIn' %}
-            </div>
-            <span>Linked In @</span>
+            <a href="https://www.linkedin.com/in/sean-r-a571154a/">
+                <div class="icon linkedIn">
+                    {% svg_by_name 'linkedIn' %}
+                </div>
+                <span>Linked In @sean-r-a571154a</span>
+            </a>
         </div>
         <div class="key-base card">
-            <div class="icon keybase">
-                {% svg_by_name 'keybase' %}
-            </div>
-            <span>keybase @</span>
+            <a href="https://keybase.io/sean_aphid">
+                <div class="icon keybase">
+                    {% svg_by_name 'keybase' %}
+                </div>
+                <span>keybase @sean_aphid</span>
+            </a>
         </div>
+
         <div class="email card">
-            <div class="icon email">
-                {% svg_by_name 'email' %}
-            </div>
-            <span>sean.r.ross@gmail.com</span>
+            <a href="mailto://sean.r.ross@gmail.com">
+                <div class="icon email">
+                    {% svg_by_name 'email' %}
+                </div>
+                <span>sean.r.ross@gmail.com</span>
+            </a>
         </div>
-    </div>
-    <div class="contact">
-        <span>For web development you can email me at {{ contact.email }} or leave a message at {{ contact.phone }}.</span>
     </div>
 </div>

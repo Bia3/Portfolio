@@ -12,16 +12,26 @@
 {% endblock %}
 
 {% block content %}
-    <div class="content-grid">
-        <div class="bio">
-        {% if bio %}
-            <span class="title">{{ bio.title }}</span>
-            <div class="markdown">
-                {{ md|safe }}
+    <div class="content-container">
+        <div class="content-grid">
+            <div class="bio">
+                {% if bio %}
+                    <div class="markdown">
+                        {{ md|safe }}
+                    </div>
+                {% endif %}
             </div>
-        {% else %}
-            <p>no bio</p>
-        {% endif %}
+            <div class="skills">
+                <h1>Skills</h1>
+                <hr />
+                {% if skills %}
+                    {% for skill in skills %}
+                        <h2 class="skill_name">{{ skill.name }}</h2>
+                        <div class="skill_description">{{ skill.description|safe }}</div>
+                        <div class="skill_highlights">{{ skill.highlights|safe }}</div>
+                    {%  endfor %}
+                {% endif %}
+            </div>
         </div>
     </div>
 {% endblock %}

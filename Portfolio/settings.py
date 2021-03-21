@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import django_heroku
+# import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -126,7 +126,7 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStora
 
 
 # Overwrite settings for security in Production and Live Sever Testing Environments.
-if 'DEV_BIT' in os.environ:
+if 'ON_HEROKU' in os.environ:
     from .heroku_settings import *
 elif 'HEROKU_DEV_BIT' in os.environ:
     from .heroku_dev_settings import *

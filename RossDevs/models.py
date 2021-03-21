@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from markdownx.models import MarkdownxField
 
@@ -10,6 +11,9 @@ class Skill(models.Model):
     description = MarkdownxField(blank=True)
     highlights = MarkdownxField(blank=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Responsibility(models.Model):
     name = models.CharField(max_length=30)
@@ -19,6 +23,9 @@ class Responsibility(models.Model):
         blank=True,
         verbose_name='related skill'
     )
+
+    def __str__(self):
+        return self.name
 
 
 class Accomplishment(models.Model):
@@ -30,6 +37,9 @@ class Accomplishment(models.Model):
         verbose_name='related skill'
     )
     end = models.DateField(blank=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Job(models.Model):
@@ -49,6 +59,9 @@ class Job(models.Model):
     start = models.DateField(blank=False)
     end = models.DateField(blank=True)
 
+    def __str__(self):
+        return '{}: {}'.format(self.company, self.title)
+
 
 class School(models.Model):
     name = models.CharField(max_length=30)
@@ -56,6 +69,9 @@ class School(models.Model):
     highlights = MarkdownxField(blank=True)
     start = models.DateField(blank=False)
     end = models.DateField(blank=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Section(models.Model):
@@ -82,6 +98,9 @@ class Certificate(models.Model):
         blank=True,
         verbose_name='related skill'
     )
+
+    def __str__(self):
+        return self.title
 
 
 class Resume(models.Model):
@@ -126,8 +145,14 @@ class ProjectSection(models.Model):
 
 
 class Project(models.Model):
+    uid = models.UUIDField(
+        default=uuid.uuid4,
+        editable=False)
     name = models.CharField(max_length=30)
-    highlights = MarkdownxField(blank=True)
+    short_desc = MarkdownxField(blank=True)
+    git_link = models.CharField(
+        max_length=400,
+        blank=True)
     files = models.ManyToManyField(
         File,
         blank=True,
@@ -191,6 +216,9 @@ class Bio(models.Model):
     mark_down = MarkdownxField(blank=True)
     creation = models.DateTimeField(auto_now_add=True, blank=True)
     expired = models.BooleanField(blank=False)
+
+    def __str__(self):
+        return '{}'.format(self.title)
 
 
 class ContactCard(models.Model):
