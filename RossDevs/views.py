@@ -21,7 +21,7 @@ class HomeView(View):
         self.projects = Project.objects.all()
         self.skills_raw = Skill.objects.all()
         self.skills = []
-        self.achieves_raw = Achievement.objects.all().filter('order')
+        self.achieves_raw = Achievement.objects.all().order_by('order')
         self.achieves = []
 
         if self.bio:
