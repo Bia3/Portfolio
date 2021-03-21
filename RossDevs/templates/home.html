@@ -26,9 +26,17 @@
                     <h1>Skills</h1>
                     <hr />
                     {% for skill in skills %}
-                        <h2 class="skill_name">{{ skill.name }}</h2>
-                        <div class="skill_description">{{ skill.description|safe }}</div>
-                        <div class="skill_highlights">{{ skill.highlights|safe }}</div>
+                        <h2 class="name skill">{{ skill.name }}</h2>
+                        <div class="description skill">
+                            {{ skill.description|safe }}
+                            <span id="more{{ skill.id }}dots">...</span>
+                        </div>
+                        <div class="highlights skill" id="more{{ skill.id }}more" style="display: none">
+                            {{ skill.highlights|safe }}
+                        </div>
+                        <button class="read_more_btn skill" onclick="readMore(this)" id="more{{ skill.id }}">
+                            Read more
+                        </button>
                     {%  endfor %}
                 {% endif %}
             </div>
@@ -37,8 +45,15 @@
                     <h1>Achievements</h1>
                     <hr />
                     {% for achieve in achieves %}
-                        <h2 class="skill_name">{{ achieve.name }}</h2>
-                        <div class="skill_description">{{ achieve.description|safe }}</div>
+                        <h2 class="name achievement">{{ achieve.name }}
+                            <span id="more{{ achieve.id }}dots">...</span>
+                        </h2>
+                        <div class="description achievement" id="more{{ achieve.id }}more" style="display: none">
+                            {{ achieve.description|safe }}
+                        </div>
+                        <button class="read_more_btn achievement"  onclick="readMore(this)" id="more{{ achieve.id }}">
+                            Read more
+                        </button>
                     {%  endfor %}
                 {% endif %}
             </div>

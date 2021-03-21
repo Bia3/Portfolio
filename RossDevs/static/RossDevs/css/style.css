@@ -161,9 +161,30 @@ body {
 
 }
 
+.content-grid a {
+    color: white;
+}
+
+.content-grid a:visited {
+    color: #f8f8f2;
+}
+
 .content-grid > th, td {
     padding: 15px;
 }
+
+.read_more_btn {
+    background-color: transparent;
+    color: white;
+    border: white solid 1px;
+    border-radius: 10px;
+}
+
+.read_more_btn:hover {
+    background-color: white;
+    color: #333;
+}
+
 
 .bio {
     margin: 40px 0;
@@ -173,6 +194,14 @@ body {
 .skills {
     margin: 40px 0;
     width: 80vw;
+}
+
+.description p {
+    display:inline;
+}
+
+.description span {
+    display:inline
 }
 
 .achievements {

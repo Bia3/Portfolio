@@ -130,3 +130,5 @@ if 'ON_HEROKU' in os.environ:
     from .heroku_settings import *
 elif 'HEROKU_DEV_BIT' in os.environ:
     from .heroku_dev_settings import *
+else:
+    from .local_settings import *

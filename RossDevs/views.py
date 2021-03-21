@@ -30,6 +30,7 @@ class HomeView(View):
         if len(self.skills_raw) >= 1:
             for skill in self.skills_raw:
                 self.skills.append({
+                    'id': skill.id,
                     'name': skill.name,
                     'description': markdownify(skill.description),
                     'highlights': markdownify(skill.highlights)
@@ -38,6 +39,7 @@ class HomeView(View):
         if len(self.skills_raw) >= 1:
             for achieve in self.achieves_raw:
                 self.achieves.append({
+                    'id': achieve.id,
                     'name': achieve.name,
                     'description': markdownify(achieve.description)
                 })

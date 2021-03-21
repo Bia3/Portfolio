@@ -4,6 +4,8 @@ import os
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+settings.DEBUG = True
+
 settings.DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
