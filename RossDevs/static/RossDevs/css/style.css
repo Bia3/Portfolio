@@ -175,6 +175,11 @@ body {
     width: 80vw;
 }
 
+.achievements {
+    margin: 40px 0;
+    width: 80vw;
+}
+
 .home.footer {
     position: relative;
     height: 300px;
