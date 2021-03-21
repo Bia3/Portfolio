@@ -232,7 +232,7 @@ class ContactCard(models.Model):
 
 class Achievement(models.Model):
     name = models.CharField(max_length=100)
-    desciprion = MarkdownxField(blank=True)
+    description = MarkdownxField(blank=True)
     order = models.IntegerField(unique=True)
 
 
