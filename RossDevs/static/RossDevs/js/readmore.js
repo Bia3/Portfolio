@@ -1,6 +1,6 @@
 function readMore(e) {
   var dots = document.getElementById(e.id +"dots");
-  var moreText = document.getElementById(e.id + "more");
+  var moreText = document.getElementById(e.id + "read");
   var btnText = e
 
   if (dots.style.display === "none") {
