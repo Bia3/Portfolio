@@ -48,7 +48,7 @@
                         <h2 class="name achievement">{{ achieve.name }}
                             <span id="more_ach{{ achieve.id }}dots">...</span>
                         </h2>
-                        <div class="description achievement" id="more_ach{{ achieve.id }}read">
+                        <div class="description achievement" id="more_ach{{ achieve.id }}read" style="display: none">
                             {{ achieve.description|safe }}
                         </div>
                         <button class="read_more_btn achievement"  onclick="readMore(this)" id="more_ach{{ achieve.id }}">

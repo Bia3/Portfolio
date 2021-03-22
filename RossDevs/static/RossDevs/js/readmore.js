@@ -10,6 +10,6 @@ function readMore(e) {
   } else {
     dots.style.display = "none";
     btnText.innerHTML = "Read less";
-    moreText.style.display = "inline";
+    moreText.style.display = "block";
   }
 }
