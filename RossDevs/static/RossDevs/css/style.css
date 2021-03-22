@@ -175,6 +175,7 @@
 
 .description p {
     display:inline;
+    margin-right: -3px;
 }
 
 .description span {
@@ -184,6 +185,10 @@
 .achievements {
     margin: 40px 0;
     width: 80vw;
+}
+
+.name.achievement {
+    margin-left: -6px;
 }
 
 .home.footer {
