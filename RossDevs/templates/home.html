@@ -29,12 +29,12 @@
                         <h2 class="name skill">{{ skill.name }}</h2>
                         <div class="description skill">
                             {{ skill.description|safe }}
-                            <span id="more{{ skill.id }}dots">...</span>
+                            <span id="more_sk{{ skill.id }}dots">...</span>
                         </div>
-                        <div class="highlights skill" id="more{{ skill.id }}more" style="display: none">
+                        <div class="highlights skill" id="more_sk{{ skill.id }}read" style="display: none">
                             {{ skill.highlights|safe }}
                         </div>
-                        <button class="read_more_btn skill" onclick="readMore(this)" id="more{{ skill.id }}">
+                        <button class="read_more_btn skill" onclick="readMore(this)" id="more_sk{{ skill.id }}">
                             Read more
                         </button>
                     {%  endfor %}
@@ -46,12 +46,12 @@
                     <hr />
                     {% for achieve in achieves %}
                         <h2 class="name achievement">{{ achieve.name }}
-                            <span id="more{{ achieve.id }}dots">...</span>
+                            <span id="more_ach{{ achieve.id }}dots">...</span>
                         </h2>
-                        <div class="description achievement" id="more{{ achieve.id }}more" style="display: none">
+                        <div class="description achievement" id="more_ach{{ achieve.id }}read" style="display: none">
                             {{ achieve.description|safe }}
                         </div>
-                        <button class="read_more_btn achievement"  onclick="readMore(this)" id="more{{ achieve.id }}">
+                        <button class="read_more_btn achievement"  onclick="readMore(this)" id="more_ach{{ achieve.id }}">
                             Read more
                         </button>
                     {%  endfor %}
