@@ -1,8 +1,27 @@
+import string
+
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 from .models import ContactCard, Resume, CurriculumVitae, Project, Bio, Skill, Achievement
 from markdownx.utils import markdownify
 
+mobile_browsers = [
+    'Android',
+    'webOS',
+    'iPhone',
+    'iPad',
+    'iPod',
+    'BlackBerry',
+    'IEMobile',
+    'Opera Mini'
+]
+
+desktop_browsers = [
+    'Mac',
+    'Macintosh',
+    'Linux',
+    'Windows'
+]
 
 # Create your views here.
 class HomeView(View):
@@ -43,6 +62,21 @@ class HomeView(View):
                     'name': achieve.name,
                     'description': markdownify(achieve.description)
                 })
+        http_user = self.request.META['HTTP_USER_AGENT']
+        http_user_clean = http_user.translate(str.maketrans('', '', string.punctuation))
+        if any(item in http_user_clean.split(' ') for item in mobile_browsers):
+            return render(request, 'home.html', {
+                'bio': self.bio,
+                'md': self.md,
+                'contact': self.contact,
+                'projects': self.projects,
+                'skills': self.skills,
+                'achieves': self.achieves,
+                'style': 'RossDevs/css/m_style.css',
+            })
+        elif any(item in http_user_clean.split(' ') for item in desktop_browsers):
+            print('desktop')
+        print(self.request.META['HTTP_USER_AGENT'].translate(str.maketrans('', '', string.punctuation)))
 
         return render(request, 'home.html', {
             'bio': self.bio,
@@ -50,7 +84,8 @@ class HomeView(View):
             'contact': self.contact,
             'projects': self.projects,
             'skills': self.skills,
-            'achieves': self.achieves
+            'achieves': self.achieves,
+            'style': 'RossDevs/css/style.css',
         })
 
 
