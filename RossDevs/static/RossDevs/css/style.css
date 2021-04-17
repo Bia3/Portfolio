@@ -21,6 +21,15 @@
     --color6: #FFF;
 }
 
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
 .base.footer {
     display: grid;
     align-self: end;
@@ -119,11 +128,17 @@
 }
 
 /* nav END */
+
+/* content area START */
 .content-grid {
     display: grid;
     align-items: center;
     justify-items: center;
     width: 100vw;
+    grid-auto-flow: column;
+    grid-template-areas: "Bio Bio" ". Title" "HR HR" "Content Content";
+    grid-template-rows: auto 38px 20px auto;
+    grid-template-columns: 54px 1fr;
 }
 
 .project-list {
@@ -134,8 +149,44 @@
     overflow: hidden;
 }
 
-.content-grid > table {
+.title {
+  display: flex;
+  font-size: 18px;
+  grid-area: Title;
+  height: 30px;
+  width: 200px;
+  align-self: center;
+  justify-self: left;
+  justify-content: center;
+  transition: font-size ease-in 300ms, font-weight ease-in 300ms;
+}
 
+.skill.title:hover, .project.title:hover{
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.rule {
+  grid-area: HR;
+  border-bottom: 1px solid white;
+  height: 10px;
+  width: 100%;
+}
+
+.content{
+  margin-left: 20px;
+  margin-right: 20px;
+  grid-area: Content;
+  animation: fadeIn 300ms;
+}
+
+.skill.content{
+  opacity: 1;
+}
+
+.project.content{
+  opacity: 0;
 }
 
 .content-grid a {
@@ -166,6 +217,7 @@
 .bio {
     margin: 40px 0;
     width: 80vw;
+    grid-area: Bio;
 }
 
 .skills {

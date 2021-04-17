@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="{% static style %}">
 {% endblock %}
 
+{% block page_js %}
+    <script src="{% static 'RossDevs/js/tabs.js' %}"></script>
+{% endblock %}
+
 {% block header %}
     {% home_header %}
 {% endblock %}
@@ -21,42 +25,47 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="skills">
-                {% if skills %}
-                    <h1>Skills</h1>
-                    <hr />
-                    {% for skill in skills %}
-                        <h2 class="name skill">{{ skill.name }}</h2>
-                        <div class="description skill">
-                            {{ skill.description|safe }}
-                            <span id="more_sk{{ skill.id }}dots">...</span>
-                        </div>
-                        <div class="highlights skill" id="more_sk{{ skill.id }}read" style="display: none">
-                            {{ skill.highlights|safe }}
-                        </div>
-                        <button class="read_more_btn skill" onclick="readMore(this)" id="more_sk{{ skill.id }}">
-                            Read more
-                        </button>
-                    {%  endfor %}
-                {% endif %}
+            <div class="title">
+                <div class="skill title"  onclick="onClick(this)">Skills</div>
+                <div class="project title"  onclick="onClick(this)">Projects</div>
             </div>
-            <div class="achievements">
-                {% if achieves %}
-                    <h1>Projects</h1>
-                    <hr />
-                    {% for achieve in achieves %}
-                        <h2 class="name achievement">{{ achieve.name }}
-                            <span id="more_ach{{ achieve.id }}dots">...</span>
-                        </h2>
-                        <div class="description achievement" id="more_ach{{ achieve.id }}read" style="display: none">
-                            {{ achieve.description|safe }}
-                        </div>
-                        <button class="read_more_btn achievement"  onclick="readMore(this)" id="more_ach{{ achieve.id }}">
-                            Read more
-                        </button>
-                    {%  endfor %}
-                {% endif %}
-            </div>
+            <div class="rule"></div>
+            {% if skills %}
+                <div class="skill content">
+                    <div class="skills">
+                        {% for skill in skills %}
+                            <h2 class="name skill">{{ skill.name }}</h2>
+                            <div class="description skill">
+                                {{ skill.description|safe }}
+                                <span id="more_sk{{ skill.id }}dots">...</span>
+                            </div>
+                            <div class="highlights skill" id="more_sk{{ skill.id }}read" style="display: none">
+                                {{ skill.highlights|safe }}
+                            </div>
+                            <button class="read_more_btn skill" onclick="readMore(this)" id="more_sk{{ skill.id }}">
+                                Read more
+                            </button>
+                        {%  endfor %}
+                    </div>
+                </div>
+            {% endif %}
+            {% if achieves %}
+                <div class="project content">
+                    <div class="achievements">
+                        {% for achieve in achieves %}
+                            <h2 class="name achievement">{{ achieve.name }}
+                                <span id="more_ach{{ achieve.id }}dots">...</span>
+                            </h2>
+                            <div class="description achievement" id="more_ach{{ achieve.id }}read" style="display: none">
+                                {{ achieve.description|safe }}
+                            </div>
+                            <button class="read_more_btn achievement"  onclick="readMore(this)" id="more_ach{{ achieve.id }}">
+                                Read more
+                            </button>
+                        {%  endfor %}
+                    </div>
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
