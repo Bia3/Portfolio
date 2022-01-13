@@ -206,11 +206,13 @@
     color: white;
     border: white solid 1px;
     border-radius: 10px;
+    margin-top: 6px;
 }
 
 .read_more_btn:hover {
     background-color: white;
     color: #333;
+    cursor: pointer;
 }
 
 
@@ -302,10 +304,12 @@
     justify-items: center;
     gap: 8px;
     background-color: rgba(0, 0, 0, 0);
-    border-left: 0 solid;
-    border-top: 0 solid;
-    border-bottom: 0 solid;
-    border-right: 0 solid;
+    boarder: 0 solid;
+    /*border-left: 0 solid;*/
+    /*border-top: 0 solid;*/
+    /*border-bottom: 0 solid;*/
+    /*border-right: 0 solid;*/
+    height: 100px;
 }
 
 .social .card .icon {
