@@ -12,7 +12,7 @@
 {% block header %}{% standard_header %}{% endblock %}
 
 {% block content %}
-    {% if projects %}tt
+    {% if projects %}
         {% for proj in projects %}
             <div class="project">
                 <div class="title">
@@ -21,7 +21,7 @@
                 <div class="body">
                     {{ proj.highlights | markdownify | safe }}
                 </div>
-            </div>t
+            </div>
         {% endfor %}
     {% endif %}
 {% endblock %}
