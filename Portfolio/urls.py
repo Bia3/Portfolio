@@ -21,7 +21,7 @@ from RossDevs.views import *
 handler404 = 'RossDevs.views.custom_404'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('s3cr3t/', admin.site.urls),
     url(r'^markdownx/', include('markdownx.urls')),
     url('^$', HomeView.as_view()),
     # url('^projects/$', ProjectsView.as_view()),
