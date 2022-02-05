@@ -304,11 +304,7 @@
     justify-items: center;
     gap: 8px;
     background-color: rgba(0, 0, 0, 0);
-    boarder: 0 solid;
-    /*border-left: 0 solid;*/
-    /*border-top: 0 solid;*/
-    /*border-bottom: 0 solid;*/
-    /*border-right: 0 solid;*/
+    border: 0 solid;
     height: 100px;
 }
 
