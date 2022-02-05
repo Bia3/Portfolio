@@ -4,6 +4,7 @@ import os
 DEBUG = True
 TEMPLATE_DEBUG = True
 
+# ToDo: Finish setting up Heroku Allowed Hosts for Dev
 # ALLOWED_HOSTS = [
 #     '127.0.0.1', 'localhost', 'portdev.herokuapp.com'
 # ]

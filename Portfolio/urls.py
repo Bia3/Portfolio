@@ -14,11 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+# from django.urls import include, re_path
 from django.contrib import admin
 from django.urls import path
 from RossDevs.views import *
 
-handler404 = 'RossDevs.views.custom_404'
+handler404 = 'RossDevs.views.handler404'
+handler500 = 'RossDevs.views.handler500'
 
 urlpatterns = [
     path('s3cr3t/', admin.site.urls),

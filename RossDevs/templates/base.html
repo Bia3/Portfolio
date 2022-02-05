@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Sean's Portfolio{% endblock %}</title>
-    <script src="{% static 'RossDevs/js/readmore.js' %}"></script>
+    <title></title>
+    <title>{% block title %}{% endblock %}</title>
     {% block page_css %}{% endblock %}
     {% block page_js %}{% endblock %}
 </head>
 <body>
-{% block header %}{% endblock %}
-{% block content %}{% endblock %}
-{% block footer %}{% endblock %}
+ <div id="page-container">
+   <div id="content-wrap">
+        {% block header %}{% endblock %}
+        {% block content %}{% endblock %}
+    <div id="footer">
+        {% block footer %}{% endblock %}
+    </div>
+   </div>
+ </div>
     <script src="{% static 'RossDevs/js/jquery.min.js' %}"></script>
     <script src="{% static 'RossDevs/js/popper.js' %}"></script>
     <script src="{% static 'RossDevs/js/hamburgerMenu.js' %}"></script>

@@ -1,6 +1,7 @@
 import string
 
 from django.shortcuts import render, get_object_or_404
+from django.template import RequestContext
 from django.views import View
 from .models import ContactCard, Resume, CurriculumVitae, Project, Bio, Skill, Achievement
 from markdownx.utils import markdownify
@@ -22,6 +23,7 @@ desktop_browsers = [
     'Linux',
     'Windows'
 ]
+
 
 # Create your views here.
 class HomeView(View):
@@ -78,6 +80,15 @@ class HomeView(View):
             print('desktop')
         print(self.request.META['HTTP_USER_AGENT'].translate(str.maketrans('', '', string.punctuation)))
 
+        # return render(request, 'home.html', {
+        #     'bio': self.bio,
+        #     'md': self.md,
+        #     'contact': self.contact,
+        #     'projects': self.projects,
+        #     'skills': self.skills,
+        #     'achieves': self.achieves,
+        #     'style': 'RossDevs/css/style.css',
+        # })
         return render(request, 'home.html', {
             'bio': self.bio,
             'md': self.md,
@@ -129,6 +140,17 @@ class ResumeView(View):
         })
 
 
-def custom_404(View, request):
-    return render(request, '404.html', {}, status=404)
+def handler404(request, *args, **argv):
+    # response = render_to_response('404.html', {},
+    #                               context_instance=RequestContext(request))
+    response = render(request, '404.html', {}, status=404)
+    response.status_code = 404
+    return response
 
+
+def handler500(request, *args, **argv):
+    # response = render_to_response('500.html', {},
+    #                               context_instance=RequestContext(request))
+    response = render(request, template_name='500.html', context={}, status=500)
+    response.status_code = 500
+    return response
