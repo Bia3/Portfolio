@@ -15,6 +15,12 @@ SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 DATABASE_URL = os.environ['DATABASE_URL']
 
+# Security settings https://docs.djangoproject.com/en/3.2/topics/security/
+# SSL/HTTPS
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
 # MIDDLEWARE.append('RossDev.middleware.SSLMiddleware')
 
 DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}

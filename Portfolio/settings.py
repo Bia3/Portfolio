@@ -29,11 +29,9 @@ TEMPLATE_DEBUG = False
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
-
-SESSION_COOKIE_SECURE = True
-
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
+    'acctmanagment.apps.AcctManagmentConfig',
     'RossDevs.apps.RossdevsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -89,7 +87,6 @@ WSGI_APPLICATION = 'Portfolio.wsgi.application'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -104,6 +101,13 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+# ToDo: replace with an actual profile page in the future
+LOGIN_REDIRECT_URL = '/'
+
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/

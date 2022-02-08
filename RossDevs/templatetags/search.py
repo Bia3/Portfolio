@@ -11,7 +11,6 @@ register = template.Library()
 
 @register.simple_tag
 def svg_by_name(svg_name):
-    print(svg_name)
     try:
         svg = Svg.objects.get(name=svg_name)
         return mark_safe("{}".format(svg.data))

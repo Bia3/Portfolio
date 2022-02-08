@@ -1,6 +1,7 @@
 import string
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect
+# from django.contrib.auth import logout
 from django.template import RequestContext
 from django.views import View
 from .models import ContactCard, Resume, CurriculumVitae, Project, Bio, Skill, Achievement
@@ -138,6 +139,12 @@ class ResumeView(View):
         return render(request, 'resume.html', {
             'resume': self.resume
         })
+
+
+# class LogOutView(View):
+#     def get(self, request):
+#         logout(request)
+#         return redirect('home')
 
 
 def handler404(request, *args, **argv):

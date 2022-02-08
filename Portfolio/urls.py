@@ -19,13 +19,16 @@ from django.contrib import admin
 from django.urls import path
 from RossDevs.views import *
 
+
 handler404 = 'RossDevs.views.handler404'
 handler500 = 'RossDevs.views.handler500'
 
 urlpatterns = [
     path('s3cr3t/', admin.site.urls),
+    # path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('acctmanagment.urls')),
     url(r'^markdownx/', include('markdownx.urls')),
-    url('^$', HomeView.as_view()),
+    url(r'^$', HomeView.as_view(), name='home'),
     # url('^projects/$', ProjectsView.as_view()),
     # url('^projects/[a-z]+/$', ProjectView.as_view()),
     # url('^resume/$', ResumeView.as_view()),

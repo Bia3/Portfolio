@@ -30,6 +30,18 @@
       to { opacity: 1; }
 }
 
+/* BEGIN Hidden Link */
+#hidden-login {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    width: 60px;
+    height: 60px;
+    cursor: default;
+}
+/* END Hidden Link */
+
 /* BEGIN Footer Keep on Bottom */
 #page-container {
   position: relative;
@@ -48,16 +60,6 @@
 }
 /* END Footer Keep on Bottom */
 
-/*.base.footer {*/
-/*    display: grid;*/
-/*    align-self: end;*/
-/*    height: 60px;*/
-/*    position: absolute;*/
-/*    justify-items: center;*/
-/*    top: calc(100vh - 60px);*/
-/*    width: 100%;*/
-/*}*/
-
 .footer {
     display: grid;
     justify-items: center;
@@ -65,14 +67,10 @@
     grid-template-areas: 'social' 'contact';
     justify-self: center;
     font-size: 11px;
-
 }
 
-/*.base .footer {*/
-/*    align-self: center;*/
-/*}*/
 
-/* hamburger START */
+/* BEGIN hamburger */
 .hamburger-ico {
     fill: white;
     height: 32px;
@@ -86,8 +84,9 @@
     width: 32px;
 }
 
-/* hamburger END */
-/* nav START */
+/* END hamburger */
+
+/* START nav */
 .nav-bar {
     justify-self: center;
 }
@@ -145,10 +144,9 @@
 .nav-bar a:visited {
     color: var(--foreground2);
 }
+/* END nav */
 
-/* nav END */
-
-/* content area START */
+/* BEGIN content area */
 .content-grid {
     display: grid;
     align-items: center;
@@ -421,15 +419,6 @@
 .projBgCoral {
     background: #ff6f61;
 }
-
-/* ToDo: Remove? */
-/*.footerOuter {*/
-/*    position: fixed;*/
-/*    right: 0;*/
-/*    left: 0;*/
-/*    bottom: 0;*/
-/*    background-color: #363636;*/
-/*}*/
 
 .projList {
     display: grid;
