@@ -36,7 +36,7 @@ class Accomplishment(models.Model):
         blank=True,
         verbose_name='related skill'
     )
-    end = models.DateField(blank=True)
+    end = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -57,7 +57,7 @@ class Job(models.Model):
         verbose_name='accomplishments'
     )
     start = models.DateField(blank=False)
-    end = models.DateField(blank=True)
+    end = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return '{}: {}'.format(self.company, self.title)
@@ -68,7 +68,7 @@ class School(models.Model):
     graduated = models.BooleanField
     highlights = MarkdownxField(blank=True)
     start = models.DateField(blank=False)
-    end = models.DateField(blank=True)
+    end = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -85,7 +85,7 @@ class Section(models.Model):
         verbose_name='related skill'
     )
     start = models.DateField(blank=False)
-    end = models.DateField(blank=True)
+    end = models.DateField(blank=True, null=True)
 
 
 class Certificate(models.Model):
@@ -126,7 +126,7 @@ class Resume(models.Model):
     )
     pdf = models.FileField(blank=True)
     expired = models.BooleanField(blank=False)
-    creation = models.DateTimeField(auto_now_add=True, blank=True)
+    creation = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
 
 class File(models.Model):
@@ -214,7 +214,7 @@ class CurriculumVitae(models.Model):
 class Bio(models.Model):
     title = models.CharField(max_length=100)
     mark_down = MarkdownxField(blank=True)
-    creation = models.DateTimeField(auto_now_add=True, blank=True)
+    creation = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     expired = models.BooleanField(blank=False)
 
     def __str__(self):
