@@ -91,7 +91,7 @@ class Section(models.Model):
 class Certificate(models.Model):
     title = models.CharField(max_length=100)
     highlights = MarkdownxField(blank=True)
-    completion = models.DateField(blank=True)
+    completion = models.DateField(blank=True, null=True)
     image = models.ImageField(blank=True)
     related_skill = models.ManyToManyField(
         Skill,
