@@ -24,11 +24,13 @@ handler404 = 'RossDevs.views.handler404'
 handler500 = 'RossDevs.views.handler500'
 
 urlpatterns = [
-    path('s3cr3t/', admin.site.urls),
+    url('s3cr3t/', admin.site.urls),
     # path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/', include('acctmanagment.urls')),
+    url('accounts/', include('acctmanagment.urls')),
     url(r'^markdownx/', include('markdownx.urls')),
     url(r'^$', HomeView.as_view(), name='home'),
+    url('forms/addachievement', AddAchievementFormView.as_view(), name='add_achievement_form'),
+    url('forms/add_skill', AddSkillFormView.as_view(), name='add_skill_form'),
     # url('^projects/$', ProjectsView.as_view()),
     # url('^projects/[a-z]+/$', ProjectView.as_view()),
     # url('^resume/$', ResumeView.as_view()),

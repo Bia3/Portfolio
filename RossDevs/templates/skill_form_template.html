@@ -1,0 +1,24 @@
+{% extends 'form_base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'RossDevs/css/skill_form_style.css' %}">
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'RossDevs/js/skill_form_functions.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <script>
+        let form_complete = {{ success }};
+    </script>
+    <form class="skill_form" action="/forms/add_skill" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <label class="label_{{ field.auto_id }}" for="{{ field.auto_id }}">{{ field.label }}</label>
+            {{ field }}
+        {% endfor %}
+        <input class="submit" type="submit" value="ADD">
+    </form>
+{% endblock %}

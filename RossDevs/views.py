@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect
 # from django.contrib.auth import logout
 from django.template import RequestContext
 from django.views import View
+
+from .forms import AchievementForm, SkillForm
 from .models import ContactCard, Resume, CurriculumVitae, Project, Bio, Skill, Achievement
 from markdownx.utils import markdownify
 
@@ -37,7 +39,7 @@ class HomeView(View):
     achieves_raw = []
     achieves = []
 
-    def get(self, request):
+    def get(self, request, *args, **kwargs):
         self.bio = Bio.objects.first()
         self.contact = ContactCard.objects.first()
         self.projects = Project.objects.all()
@@ -81,15 +83,6 @@ class HomeView(View):
             print('desktop')
         print(self.request.META['HTTP_USER_AGENT'].translate(str.maketrans('', '', string.punctuation)))
 
-        # return render(request, 'home.html', {
-        #     'bio': self.bio,
-        #     'md': self.md,
-        #     'contact': self.contact,
-        #     'projects': self.projects,
-        #     'skills': self.skills,
-        #     'achieves': self.achieves,
-        #     'style': 'RossDevs/css/style.css',
-        # })
         return render(request, 'home.html', {
             'bio': self.bio,
             'md': self.md,
@@ -101,10 +94,65 @@ class HomeView(View):
         })
 
 
+class AddAchievementFormView(View):
+    form_class = AchievementForm
+    initial = {
+        'name': 'value',
+        'description': 'value',
+        'order': 0
+    }
+    template_name = 'form_template.html'
+
+    # Create the default form.
+    def get(self, request, *args, **kwargs):
+        form = self.form_class(initial=self.initial)
+        return render(request, 'achievement_form_template.html', {'form': form})
+
+    # Process the Form data
+    def post(self, request, *args, **kwargs):
+        # Create a form instance and populate it with data from the request (binding):
+        form = self.form_class(request.POST)
+
+        if form.is_valid():
+            new_achievement = Achievement(form.cleaned_data)
+            new_achievement.save()
+        return render(request, 'achievement_form_template.html', {'form': form})
+
+
+class AddSkillFormView(View):
+    form_class = SkillForm
+    initial = {
+    }
+    template_name = 'skill_form_template.html'
+
+    # Create the default form.
+    def get(self, request, *args, **kwargs):
+        form = self.form_class(initial=self.initial)
+        return render(request, self.template_name, {'form': form, 'success': 'false'})
+
+    # Process the Form data
+    def post(self, request, *args, **kwargs):
+        # Create a form instance and populate it with data from the request (binding):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+
+            new_skill = Skill(
+                name=form.cleaned_data['name'],
+                description=form.cleaned_data['description'],
+                highlights=form.cleaned_data['highlights'],
+            )
+            new_skill.save()
+        return render(request, self.template_name, {
+            'form': form,
+            # if form is valid set the js variable "form_complete" to ture else false
+            'success': ('true' if form.is_valid() else 'false')
+        })
+
+
 class CurriculumVitaeView(View):
     cvs = ""
 
-    def get(self, request):
+    def get(self, request, *args, **kwargs):
         self.cvs = CurriculumVitae.objects.all()
         return render(request, 'curriculum_vitae.html', {
             'cvs': self.cvs,
@@ -124,7 +172,7 @@ class ProjectsView(View):
 class ProjectView(View):
     project = ""
 
-    def get(self, request):
+    def get(self, request, *args, **kwargs):
         self.project = Project.objects.get()
         return render(request, 'project.html', {
             'project': self.project
@@ -134,7 +182,7 @@ class ProjectView(View):
 class ResumeView(View):
     resume = ""
 
-    def get(self, request):
+    def get(self, request, *args, **kwargs):
         self.resume = Resume.objects.first()
         return render(request, 'resume.html', {
             'resume': self.resume

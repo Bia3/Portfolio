@@ -6,11 +6,13 @@
 {% block title %}Sean's Portfolio{% endblock %}
 
 {% block page_css %}
+    <link rel="stylesheet" href="{% static 'RossDevs/css/form_frames_style.css' %}">
 {% endblock %}
 
 {% block page_js %}
     <script src="{% static 'RossDevs/js/readmore.js' %}"></script>
     <script src="{% static 'RossDevs/js/tabs.js' %}"></script>
+    <script src="{% static 'RossDevs/js/form_frame_functions.js' %}"></script>
 {% endblock %}
 
 {% block header %}
@@ -49,6 +51,10 @@
                             </button>
                         {%  endfor %}
                     </div>
+                    {% if user.is_authenticated %}
+                        <input id="skill_form_button" class="toggle_frame" type="button" onclick="toggle_frame('skill')">
+                        <iframe id="skill_form" class="visually-hidden skill-form form-frame" aria-hidden="true" src="{% url 'add_skill_form' %}"></iframe>
+                    {% endif %}
                 </div>
             {% endif %}
             {% if achieves %}
