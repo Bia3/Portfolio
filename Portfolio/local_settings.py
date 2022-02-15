@@ -21,4 +21,3 @@ DATABASES = {
         'NAME': os.path.join(settings.BASE_DIR, 'db.sqlite3'),
     }
 }
-

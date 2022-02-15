@@ -1,12 +1,8 @@
-{% load static %}
-
-{% url 'home' as home %}
-
-{% block header_css %}
-    <link rel="stylesheet" href="{% static 'RossDevs/css/small_header.css' %}">
+{% load static %} {% url 'home' as home %} {% block header_css %}
+<link rel="stylesheet" href="{% static 'RossDevs/css/small_header.css' %}" />
 {% endblock %}
 <div class="small_header header">
-    <nav class="nav-bar">
-        <a href="{{ home }}">Home</a>
-    </nav>
+  <nav class="nav-bar">
+    <a href="{{ home }}">Home</a>
+  </nav>
 </div>
