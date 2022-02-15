@@ -4,6 +4,7 @@ from django.views import View
 
 
 class LogOutView(View):
-    def get(self, request):
+    @staticmethod
+    def get(request):
         logout(request)
         return redirect('home')
