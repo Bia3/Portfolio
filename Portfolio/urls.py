@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
     url('forms/addachievement', AddAchievementFormView.as_view(), name='add_achievement_form'),
     url('forms/add_skill', AddSkillFormView.as_view(), name='add_skill_form'),
+    url('forms/add_project', AddProjectFormView.as_view(), name='add_project_form'),
     # url('^projects/$', ProjectsView.as_view()),
     # url('^projects/[a-z]+/$', ProjectView.as_view()),
     # url('^resume/$', ResumeView.as_view()),

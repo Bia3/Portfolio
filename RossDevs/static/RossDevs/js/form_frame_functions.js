@@ -1,15 +1,19 @@
 // Process message data from event listener
 function processData(dat) {
     try {
-        if (dat.clicked) {
-            switch (dat.clicked) {
-                case 'add':
-                    document.querySelector(`#${dat.name}_form_button`).classList.remove('visually-hidden');
-                    document.querySelector(`#${dat.name}_form`).classList.add('visually-hidden');
-                    break;
-                default:
-                    break;
-            }
+        if (dat.name){
+            document.querySelector(`#${dat.name}_form_button`).classList.remove('visually-hidden');
+            document.querySelector(`#${dat.name}_form`).classList.add('visually-hidden');
+            window.location.reload();
+            // switch (dat.name) {
+            //     case 'skill':
+            //         document.querySelector(`#${dat.name}_form_button`).classList.remove('visually-hidden');
+            //         document.querySelector(`#${dat.name}_form`).classList.add('visually-hidden');
+            //         window.location.reload();
+            //         break;
+            //     default:
+            //         break;
+            // }
         }
     } catch (err) {
         console.log(`err: ${err}`)

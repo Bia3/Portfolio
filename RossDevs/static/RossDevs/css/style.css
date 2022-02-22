@@ -614,6 +614,7 @@ body {
     min-height: 100vh;
 }
 
+/*Begin Header*/
 .header {
     display: grid;
 }
@@ -633,6 +634,34 @@ body {
     background-color: var(--background2);
     color: var(--foreground2);
 }
+
+/* Frosted Glass ToDo: needs work */
+/*.home.header {*/
+/*    background: inherit;*/
+/*}*/
+
+/*.home.header:before {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    bottom: 0;*/
+/*}*/
+
+/*.home.header:before {*/
+/*    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);*/
+/*}*/
+
+/*.home.header:before {*/
+/*    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);*/
+/*    filter: blur(10px);*/
+/*}*/
+
+/*.home.header:before {*/
+/*    background: inherit;*/
+/*}*/
+
 
 .home.header {
     padding: 4px;
@@ -658,6 +687,7 @@ body {
     font-size: 17px;
     margin: 0;
 }
+/* End Header */
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {

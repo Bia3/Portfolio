@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.template import RequestContext
 from django.views import View
 
-from .forms import AchievementForm, SkillForm
+from .forms import AchievementForm, SkillForm, ProjectForm
 from .models import ContactCard, Resume, CurriculumVitae, Project, Bio, Skill, Achievement
 from markdownx.utils import markdownify
 
@@ -149,6 +149,36 @@ class AddSkillFormView(View):
         })
 
 
+class AddProjectFormView(View):
+    form_class = ProjectForm
+    initial = {
+    }
+    template_name = 'project_form_template.html'
+
+    # Create the default form.
+    def get(self, request, *args, **kwargs):
+        form = self.form_class(initial=self.initial)
+        return render(request, self.template_name, {'form': form, 'success': 'false'})
+
+    # Process the Form data
+    def post(self, request, *args, **kwargs):
+        # Create a form instance and populate it with data from the request (binding):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            pass
+            new_obj = Project(
+                name=form.cleaned_data['name'],
+                short_desc=form.cleaned_data['short_desc'],
+                git_link=form.cleaned_data['git_link'],
+            )
+            new_obj.save()
+        return render(request, self.template_name, {
+            'form': form,
+            # if form is valid set the js variable "form_complete" to ture else false
+            'success': ('true' if form.is_valid() else 'false')
+        })
+
+
 class CurriculumVitaeView(View):
     cvs = ""
 
@@ -189,23 +219,13 @@ class ResumeView(View):
         })
 
 
-# class LogOutView(View):
-#     def get(self, request):
-#         logout(request)
-#         return redirect('home')
-
-
 def handler404(request, *args, **argv):
-    # response = render_to_response('404.html', {},
-    #                               context_instance=RequestContext(request))
     response = render(request, '404.html', {}, status=404)
     response.status_code = 404
     return response
 
 
 def handler500(request, *args, **argv):
-    # response = render_to_response('500.html', {},
-    #                               context_instance=RequestContext(request))
     response = render(request, template_name='500.html', context={}, status=500)
     response.status_code = 500
     return response

@@ -36,6 +36,7 @@
             <div class="rule"></div>
             {% if skills %}
                 <div class="skill content">
+                    {# todo: considering placing .skills and .project.content in an iframe #}
                     <div class="skills">
                         {% for skill in skills %}
                             <h2 class="name skill">{{ skill.name }}</h2>
@@ -72,6 +73,10 @@
                             </button>
                         {%  endfor %}
                     </div>
+                    {% if user.is_authenticated %}
+                        <input id="project_form_button" class="toggle_frame" type="button" onclick="toggle_frame('project')">
+                        <iframe id="project_form" class="visually-hidden project-form form-frame" aria-hidden="true" src="{% url 'add_project_form' %}"></iframe>
+                    {% endif %}
                 </div>
             {% endif %}
         </div>
