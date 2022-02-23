@@ -16,7 +16,7 @@ import os
 import django.db.models
 from django.conf.urls.static import static
 
-
+ENV_VAR = os.environ
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
@@ -138,9 +138,12 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 
 # Overwrite settings for security in Production and Live Sever Testing Environments.
-if 'ON_HEROKU' in os.environ:
+if 'ON_HEROKU' in ENV_VAR:
     from .heroku_settings import *
-elif 'HEROKU_DEV_BIT' in os.environ:
+elif 'HEROKU_DEV_BIT' in ENV_VAR:
     from .heroku_dev_settings import *
+elif 'REPLIT_DEV_BIT' in ENV_VAR:
+    print('REBLIT_DEV_BIT = {}'.format(ENV_VAR.keys))
+    from .replit_settings import *
 else:
     from .local_settings import *
