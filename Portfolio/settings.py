@@ -143,7 +143,6 @@ if 'ON_HEROKU' in ENV_VAR:
 elif 'HEROKU_DEV_BIT' in ENV_VAR:
     from .heroku_dev_settings import *
 elif 'REPLIT_DEV_BIT' in ENV_VAR:
-    print('REBLIT_DEV_BIT = {}'.format(ENV_VAR.keys))
     from .replit_settings import *
 else:
     from .local_settings import *
