@@ -17,11 +17,11 @@ from django.conf.urls import url, include
 # from django.urls import include, re_path
 from django.contrib import admin
 from django.urls import path
-from RossDevs.views import *
+from portfolio.views import *
 
 
-handler404 = 'RossDevs.views.handler404'
-handler500 = 'RossDevs.views.handler500'
+handler404 = 'portfolio.views.handler404'
+handler500 = 'portfolio.views.handler500'
 
 urlpatterns = [
     url('s3cr3t/', admin.site.urls),
