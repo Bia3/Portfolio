@@ -6,7 +6,6 @@ from .views import *
 urlpatterns = [
     url('login/', auth_views.LoginView.as_view(), name='login'),
     url('logout/', LogOutView.as_view(), name='logout'),
-    # url('profile/',)
     url('password_change/', auth_views.PasswordChangeView.as_view(),
         name='password_change'),
     url('password_change/done/', auth_views.PasswordChangeDoneView.as_view(),

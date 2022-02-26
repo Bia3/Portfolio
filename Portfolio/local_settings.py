@@ -6,7 +6,6 @@ import os
 
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
-# settings.ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.50.204']
 ALLOWED_HOSTS = []
 
 DEBUG = True
