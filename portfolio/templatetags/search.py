@@ -1,7 +1,6 @@
 from django import template
 from django.shortcuts import render
 from django.template.loader import render_to_string
-from django.template.defaultfilters import stringfilter
 from django.utils.safestring import mark_safe
 
 from ..models import Svg
