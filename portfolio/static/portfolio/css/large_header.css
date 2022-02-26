@@ -141,11 +141,8 @@
 
   .home.header {
     padding: 4px;
-    height: 72px;
     grid-template-columns: 0.09fr 1fr 0.09fr;
     grid-template-rows: 1fr 48px 1fr 1fr;
-    justify-content: center;
-    align-self: center;
   }
 
   .home .heading {
