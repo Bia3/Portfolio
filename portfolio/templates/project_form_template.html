@@ -1,0 +1,20 @@
+{% extends 'form_base.html' %} {% load static %} {% block css %}
+<link
+  rel="stylesheet"
+  href="{% static 'portfolio/css/project_form_style.css' %}"
+/>
+{% endblock %} {% block js %}
+<script src="{% static 'portfolio/js/project_form_functions.js' %}"></script>
+{% endblock %} {% block content %}
+<script>
+  let form_complete = {{ success }};
+</script>
+<form class="project_form" action="/forms/add_project" method="post">
+  {% csrf_token %} {% for field in form %}
+  <label class="label_{{ field.auto_id }}" for="{{ field.auto_id }}"
+    >{{ field.label }}</label
+  >
+  {{ field }} {% endfor %}
+  <input class="submit" type="submit" value="ADD" />
+</form>
+{% endblock %}

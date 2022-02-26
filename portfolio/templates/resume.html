@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% load template_loader %} {% block title %}Resume{%
+endblock %} {% block header %}{% standard_header %}{% endblock %} {% block
+content %}
+
+<div class="work-history">
+  {% if jobs %}
+  <div class="job_card" style="display: none">
+    {% for job in job.all %}
+    <div class="job card">
+      <span>{{ job.company }}</span>
+      <span>{{ job.title }}</span>
+      <span>{{ job.highlights|safe }}</span>
+      {% for responsibility in job.responsibility.all %}
+      <span>{{ responsibility.name }}</span>
+      {% endfor %} {% for accomplishment in job.accomplishment.all %}
+      <span>{{ accomplishment.name }}</span>
+      {% endfor %}
+    </div>
+    <span class="start">{{ acc.start }}</span>
+    <span class="end">{{ acc.end }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %} {% block footer %}{% standard_footer %}{% endblock %}

@@ -1,0 +1,298 @@
+/* Scroll Styles */
+#Chevrons {
+  grid-area: scroll;
+  height: 32px;
+  align-self: end;
+  justify-self: center;
+  padding-bottom: 42px;
+}
+
+.chevron {
+  fill: #fff;
+  fill-opacity: 1;
+}
+
+.line {
+  fill: #fff;
+  fill-opacity: 1;
+}
+
+#TopChevron {
+  animation: topChevron 3s infinite;
+}
+
+#MiddleChevron {
+  animation: middleChevron 3s infinite;
+}
+
+#BottomChevron {
+  animation: bottomChevron 3s infinite;
+}
+
+#UnderLine {
+  animation: underLine 3s infinite;
+}
+/* End Scroll Styles */
+
+.home.header_image_outer {
+  filter: blur(4px);
+}
+
+.home.header_image {
+  height: 100vh;
+}
+
+.home.header_container {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: grid;
+}
+
+.home.header {
+  height: 100vh;
+  grid-template-columns: 0.01fr 1fr 0.01fr;
+  grid-template-rows: 1fr 20px 1fr 1fr;
+  grid-row-gap: 17px;
+  grid-template-areas: ". . ." ". heading ." ". subheading ." ". scroll .";
+  justify-content: center;
+  align-self: center;
+  display: grid;
+}
+
+.home .heading {
+  grid-area: heading;
+  text-align: center;
+  font-size: 20px;
+  margin: 0;
+}
+
+.home .subheading {
+  grid-area: subheading;
+  text-align: center;
+  font-weight: bold;
+  font-size: 17px;
+  margin: 0;
+}
+
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .home.header_container {
+  }
+
+  .home.header {
+    padding: 4px;
+    grid-template-columns: 0.05fr 1fr 0.05fr;
+    grid-template-rows: 1fr 26px 1fr 0.5fr;
+    justify-content: center;
+    align-self: center;
+  }
+
+  .home .heading {
+    grid-area: heading;
+    text-align: center;
+    font-size: 26px;
+  }
+
+  .home .subheading {
+    grid-area: subheading;
+    text-align: center;
+    font-size: 22px;
+  }
+  /* Phones With Portrait */
+  @media only screen and (min-height: 900px) {
+    .home.header {
+      grid-template-rows: 1fr 48px 1fr 0.5fr;
+    }
+    .home .heading {
+      font-size: 48px;
+    }
+    .home .subheading {
+      font-size: 26px;
+    }
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .home.header {
+    padding: 4px;
+    grid-template-columns: 0.09fr 1fr 0.09fr;
+    grid-template-rows: 1fr 48px 1fr 1fr;
+    justify-content: center;
+    align-self: center;
+  }
+
+  .home .heading {
+    grid-area: heading;
+    text-align: center;
+    font-size: 48px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .home.header_container {
+  }
+
+  .home.header {
+    padding: 4px;
+    height: 72px;
+    grid-template-columns: 0.09fr 1fr 0.09fr;
+    grid-template-rows: 1fr 48px 1fr 1fr;
+    justify-content: center;
+    align-self: center;
+  }
+
+  .home .heading {
+    grid-area: heading;
+    text-align: center;
+    font-size: 48px;
+  }
+
+  .home .subheading {
+    grid-area: subheading;
+    text-align: center;
+    font-size: 24px;
+  }
+}
+
+/* Scroll Animation */
+@keyframes topChevron {
+  0% {
+    fill-opacity: 0;
+  }
+  5% {
+    fill-opacity: 1;
+  }
+  25% {
+    transform: translate(0, 0);
+  }
+  30% {
+    transform: translate(0, -1mm);
+  }
+  35% {
+    transform: translate(0, 0);
+  }
+  45% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, -1mm);
+  }
+  55% {
+    transform: translate(0, 0);
+  }
+  70% {
+    fill-opacity: 1;
+  }
+  75% {
+    fill-opacity: 0;
+  }
+  100% {
+    fill-opacity: 0;
+  }
+}
+
+@keyframes middleChevron {
+  0% {
+    fill-opacity: 0;
+  }
+  5% {
+    fill-opacity: 0;
+  }
+  10% {
+    fill-opacity: 1;
+  }
+  25% {
+    transform: translate(0, 0);
+  }
+  30% {
+    transform: translate(0, -1mm);
+  }
+  35% {
+    transform: translate(0, 0);
+  }
+  45% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, -1mm);
+  }
+  55% {
+    transform: translate(0, 0);
+  }
+  75% {
+    fill-opacity: 1;
+  }
+  80% {
+    fill-opacity: 0;
+  }
+  100% {
+    fill-opacity: 0;
+  }
+}
+
+@keyframes bottomChevron {
+  0% {
+    fill-opacity: 0;
+  }
+  10% {
+    fill-opacity: 0;
+  }
+  15% {
+    fill-opacity: 1;
+  }
+  25% {
+    transform: translate(0, 0);
+  }
+  30% {
+    transform: translate(0, -1mm);
+  }
+  35% {
+    transform: translate(0, 0);
+  }
+  45% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, -1mm);
+  }
+  55% {
+    transform: translate(0, 0);
+  }
+  80% {
+    fill-opacity: 1;
+  }
+  85% {
+    fill-opacity: 0;
+  }
+  100% {
+    fill-opacity: 0;
+  }
+}
+@keyframes underLine {
+  0% {
+    fill-opacity: 0;
+  }
+  15% {
+    fill-opacity: 0;
+  }
+  20% {
+    fill-opacity: 1;
+  }
+  85% {
+    fill-opacity: 1;
+  }
+  90% {
+    fill-opacity: 0;
+  }
+  100% {
+    fill-opacity: 0;
+  }
+}
+/* End Animation */

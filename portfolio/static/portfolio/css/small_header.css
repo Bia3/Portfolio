@@ -1,0 +1,38 @@
+.header {
+  display: grid;
+}
+
+.small_header.header {
+  height: 60px;
+  width: 100%;
+  align-self: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: block;
+}
+
+.small_header .nav-bar {
+  justify-self: flex-end;
+  width: 85%;
+  margin-right: 60px;
+  float: right;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/*.nav-bar a {*/
+/*    color: var(--foreground2);*/
+/*    cursor: pointer;*/
+/*    text-decoration: none;*/
+/*    text-align: left;*/
+/*    text-indent: 0;*/
+/*}*/
+
+/*.nav-bar a:hover {*/
+/*    color: var(--heighlight2);*/
+/*}*/
+
+/*.nav-bar a:visited {*/
+/*    color: var(--foreground2);*/
+/*}*/

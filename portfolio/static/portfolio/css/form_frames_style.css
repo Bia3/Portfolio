@@ -1,0 +1,13 @@
+.form-frame {
+  border: none;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.skill-form {
+  height: 460px;
+}
+
+.project-form {
+  height: 304px;
+}

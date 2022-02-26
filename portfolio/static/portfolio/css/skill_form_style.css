@@ -1,0 +1,56 @@
+.skill_form {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 60px 1fr;
+  grid-template-rows: 21px 20px 18px 160px 20px 18px 160px 20px 21px;
+  grid-template-areas:
+    "n_label n_field" /* 1 */
+    ". ." /* 2 */
+    "d_label ." /* 3 */
+    "d_field d_field" /* 4 */
+    ". ." /* 5 */
+    "h_label ." /* 6 */
+    "h_field h_field" /* 7 */
+    ". ." /* 8 */
+    ". submit"; /* 9 */
+}
+
+input[type="submit"] {
+  width: 50px;
+  justify-self: end;
+}
+
+label:after {
+  content: ":";
+}
+
+.label_id_name {
+  grid-area: n_label;
+}
+
+.name_field {
+  grid-area: n_field;
+  min-width: 300px;
+  max-width: 600px;
+  width: 600px;
+}
+
+.label_id_description {
+  grid-area: d_label;
+}
+
+.description_area {
+  grid-area: d_field;
+}
+
+.label_id_highlights {
+  grid-area: h_label;
+}
+
+.highlights_area {
+  grid-area: h_field;
+}
+
+.submit {
+  grid-area: submit;
+}

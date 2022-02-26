@@ -16,7 +16,7 @@ import os
 import django.db.models
 from django.conf.urls.static import static
 
-
+ENV_VAR = os.environ
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'acctmanagment.apps.AcctManagmentConfig',
-    'RossDevs.apps.RossdevsConfig',
+    'portfolio.apps.PortfolioConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -59,8 +59,7 @@ ROOT_URLCONF = 'Portfolio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -107,7 +106,10 @@ AUTH_PASSWORD_VALIDATORS = [
 LOGIN_REDIRECT_URL = '/'
 
 SECURE_SSL_REDIRECT = False
-SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -135,9 +137,11 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 
 # Overwrite settings for security in Production and Live Sever Testing Environments.
-if 'ON_HEROKU' in os.environ:
+if 'ON_HEROKU' in ENV_VAR:
     from .heroku_settings import *
-elif 'HEROKU_DEV_BIT' in os.environ:
+elif 'HEROKU_DEV_BIT' in ENV_VAR:
     from .heroku_dev_settings import *
+elif 'REPLIT_DEV_BIT' in ENV_VAR:
+    from .replit_settings import *
 else:
     from .local_settings import *

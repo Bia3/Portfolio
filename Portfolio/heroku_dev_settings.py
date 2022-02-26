@@ -14,7 +14,7 @@ SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # Security settings https://docs.djangoproject.com/en/3.2/topics/security/
 # SSL/HTTPS
-SECURE_SSL_REDIRECT = False
+SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
