@@ -1,8 +1,6 @@
 import string
 
-from django.shortcuts import render, redirect
-# from django.contrib.auth import logout
-from django.template import RequestContext
+from django.shortcuts import render
 from django.views import View
 
 from .forms import AchievementForm, SkillForm, ProjectForm
