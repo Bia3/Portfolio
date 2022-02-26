@@ -107,4 +107,6 @@ venv.bak/
 /0003.sql
 /init.sql
 /DO_NOT_PUSH.txt
+*DO_NOT_PUSH.txt
 /.idea/
+/resources.bk/
