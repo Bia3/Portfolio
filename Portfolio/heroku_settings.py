@@ -21,10 +21,8 @@ SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
-# MIDDLEWARE.append('RossDev.middleware.SSLMiddleware')
 
 DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 # # Internationalization
 # # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
