@@ -11,3 +11,5 @@ Copyright (C) 2019 Sean Ross(Bia3) [ltuae@pm.me](mailto:ltuae@pm.me?Subject=Porf
 This is free software: you are free to change and redistribute it.
 
 There is NO WARRANTY, to the extent permitted by law.
+
+[![DeepSource](https://deepsource.io/gh/Bia3/Portfolio.svg/?label=active+issues&show_trend=true&token=SFuiXA_Mgy4z8hJKEYxC4fZC)](https://deepsource.io/gh/Bia3/Portfolio/?ref=repository-badge)
