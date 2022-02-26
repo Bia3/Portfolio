@@ -16,7 +16,6 @@ Including another URLconf
 from django.conf.urls import url, include
 # from django.urls import include, re_path
 from django.contrib import admin
-from django.urls import path
 from portfolio.views import *
 
 
