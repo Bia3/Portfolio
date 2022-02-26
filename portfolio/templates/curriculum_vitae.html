@@ -1,12 +1,11 @@
-{% extends "base.html" %} {% load static %} {% load markdownify %} {% load
-template_loader %} {% block title %}Curriculum Vitae{% endblock %} {% block
-page_css %}
-<link
-  rel="stylesheet"
-  href="{% static 'RossDevs/curriculum_vitae_styles.css' %}"
-/>
-{% endblock %} {% block header %}{% standard_header %}{% endblock %} {% block
-content %}
+{% extends "base.html" %}
+{% load static %}
+{% load markdownify %}
+{% load template_loader %}
+{% block title %}Curriculum Vitae{% endblock %}
+{% block page_css %}{% endblock %}
+{% block header %}{% standard_header %}{% endblock %}
+{% block content %}
 <script>
   function o(elem) {
     let parent = elem.parentElement;
@@ -188,4 +187,5 @@ content %}
   </div>
   {% endfor %}
 </div>
-{% endblock %} {% block footer %}{% standard_footer %}{% endblock %}
+{% endblock %}
+{% block footer %}{% standard_footer %}{% endblock %}

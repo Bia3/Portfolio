@@ -1,5 +1,9 @@
-{% extends "base.html" %} {% load static %} {% load template_loader %} {% block
-title %}Sean's Portfolio{% endblock %} {% block page_css %}
+{% extends "base.html" %}
+{% load static %}
+{% load template_loader %}
+
+{% block title %}Sean's Portfolio{% endblock %}
+{% block page_css %}
 <link
   rel="stylesheet"
   href="{% static 'portfolio/css/form_frames_style.css' %}"
@@ -22,8 +26,10 @@ title %}Sean's Portfolio{% endblock %} {% block page_css %}
   type="application/javascript"
   src="{% static 'portfolio/js/large_header.js' %}"
 ></script>
-{% endblock %} {% block header %} {% home_header %} {% endblock %} {% block
-content %}
+{% endblock %}
+{% block header %}
+{% home_header %}{% endblock %}
+{% block content %}
 <div class="content-container">
   <div class="content-grid">
     <div class="bio">
@@ -77,7 +83,8 @@ content %}
       ></iframe>
       {% endif %}
     </div>
-    {% endif %} {% if achieves %}
+    {% endif %}
+    {% if achieves %}
     <div class="project content" style="display: none">
       <div class="achievements">
         {% for achieve in achieves %}
@@ -119,4 +126,7 @@ content %}
     {% endif %}
   </div>
 </div>
-{% endblock %} {% block footer %} {% home_footer %} {% endblock %}
+{% endblock %}
+
+{% block footer %}
+{% home_footer %} {% endblock %}

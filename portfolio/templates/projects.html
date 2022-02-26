@@ -1,10 +1,18 @@
-{% extends "base.html" %} {% load static %} {% load markdownify %} {% load
-template_loader %} {% block title %}Projects{% endblock %} {% block page_css %}
-{% endblock %} {% block header %}{% standard_header %}{% endblock %} {% block
-content %} {% if projects %} {% for proj in projects %}
-<div class="project">
-  <div class="title">{{ proj.name }}</div>
-  <div class="body">{{ proj.highlights | markdownify | safe }}</div>
-</div>
-{% endfor %} {% endif %} {% endblock %} {% block footer %}{% standard_footer
-%}{% endblock %}
+{% extends "base.html" %}
+{% load static %}
+{% load markdownify %}
+{% load template_loader %}
+{% block title %}Projects{% endblock %}
+{% block page_css %}{% endblock %}
+{% block header %}{% standard_header %}{% endblock %}
+{% block content %}
+{% if projects %}
+    {% for proj in projects %}
+    <div class="project">
+        <div class="title">{{ proj.name }}</div>
+        <div class="body">{{ proj.highlights | markdownify | safe }}</div>
+    </div>
+    {% endfor %}
+{% endif %}
+{% endblock %}
+{% block footer %}{% standard_footer %}{% endblock %}

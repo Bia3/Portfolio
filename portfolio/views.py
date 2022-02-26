@@ -78,8 +78,6 @@ class HomeView(View):
                 'achieves': self.achieves,
                 'style': 'RossDevs/css/m_style.css',
             })
-        elif any(item in http_user_clean.split(' ') for item in desktop_browsers):
-            print('desktop')
         print(self.request.META['HTTP_USER_AGENT'].translate(
             str.maketrans('', '', string.punctuation)))
 
