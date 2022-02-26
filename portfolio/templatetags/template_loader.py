@@ -30,6 +30,7 @@ def home_footer():
 def standard_footer():
     return render_to_string('footer.html')
 
+
 @register.simple_tag
 def small_header():
     return render_to_string('small_header.html')

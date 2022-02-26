@@ -228,7 +228,7 @@ class ContactCard(models.Model):
     po_box = models.CharField(max_length=150, blank=True)
     email = models.CharField(max_length=30, blank=True)
     expired = models.BooleanField(blank=False)
-    
+
 
 class Achievement(models.Model):
     name = models.CharField(max_length=100)

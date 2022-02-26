@@ -1,20 +1,20 @@
 :root {
-    --background1: #333333;
-    --heighlight1: #555;
-    --foreground1: #fff;
-    --background2: #282a36;
-    --heighlight2: #44475a;
-    --foreground2: #f8f8f2;
-    --red: #ff5555;
-    --green: #50fa7b;
-    --cyan: #8be9fd;
-    --orange: #ffb86c;
-    --yellow: #f1fa8c;
+  --background1: #333333;
+  --heighlight1: #555;
+  --foreground1: #fff;
+  --background2: #282a36;
+  --heighlight2: #44475a;
+  --foreground2: #f8f8f2;
+  --red: #ff5555;
+  --green: #50fa7b;
+  --cyan: #8be9fd;
+  --orange: #ffb86c;
+  --yellow: #f1fa8c;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    background-color: var(--background1);
-    color: var(--foreground1);
+  margin: 0;
+  padding: 0;
+  background-color: var(--background1);
+  color: var(--foreground1);
 }

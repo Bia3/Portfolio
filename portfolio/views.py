@@ -68,7 +68,8 @@ class HomeView(View):
                     'description': markdownify(achieve.description)
                 })
         http_user = self.request.META['HTTP_USER_AGENT']
-        http_user_clean = http_user.translate(str.maketrans('', '', string.punctuation))
+        http_user_clean = http_user.translate(
+            str.maketrans('', '', string.punctuation))
         if any(item in http_user_clean.split(' ') for item in mobile_browsers):
             return render(request, 'home.html', {
                 'bio': self.bio,
@@ -81,7 +82,8 @@ class HomeView(View):
             })
         elif any(item in http_user_clean.split(' ') for item in desktop_browsers):
             print('desktop')
-        print(self.request.META['HTTP_USER_AGENT'].translate(str.maketrans('', '', string.punctuation)))
+        print(self.request.META['HTTP_USER_AGENT'].translate(
+            str.maketrans('', '', string.punctuation)))
 
         return render(request, 'home.html', {
             'bio': self.bio,
@@ -226,6 +228,7 @@ def handler404(request, *args, **argv):
 
 
 def handler500(request, *args, **argv):
-    response = render(request, template_name='500.html', context={}, status=500)
+    response = render(request, template_name='500.html',
+                      context={}, status=500)
     response.status_code = 500
     return response

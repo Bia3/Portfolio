@@ -25,6 +25,7 @@ class SkillForm(forms.Form):
         widget=forms.Textarea(attrs={'class': "highlights_area"})
     )
 
+
 class ProjectForm(forms.Form):
     name = forms.CharField(
         label='Name',
@@ -41,4 +42,3 @@ class ProjectForm(forms.Form):
         max_length=100,
         widget=forms.TextInput(attrs={'class': "git_link_field"})
     )
-

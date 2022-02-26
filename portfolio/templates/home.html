@@ -1,90 +1,122 @@
-{% extends "base.html" %}
-
-{% load static %}
-{% load template_loader %}
-
-{% block title %}Sean's Portfolio{% endblock %}
-
-{% block page_css %}
-    <link rel="stylesheet" href="{% static 'portfolio/css/form_frames_style.css' %}">
-    <link rel="stylesheet" href="{% static 'portfolio/css/large_header.css' %}">
-{% endblock %}
-
-{% block page_js %}
-    <script type="application/javascript" src="{% static 'portfolio/js/readmore.js' %}"></script>
-    <script type="application/javascript" src="{% static 'portfolio/js/tabs.js' %}"></script>
-    <script type="application/javascript" src="{% static 'portfolio/js/form_frame_functions.js' %}"></script>
-    <script type="application/javascript" src="{% static 'portfolio/js/large_header.js' %}"></script>
-{% endblock %}
-
-{% block header %}
-    {% home_header %}
-{% endblock %}
-
-{% block content %}
-    <div class="content-container">
-        <div class="content-grid">
-            <div class="bio">
-                {% if bio %}
-                    <div class="markdown">
-                        {{ md|safe }}
-                    </div>
-                {% endif %}
-            </div>
-            <div class="title">
-                <div class="skill title"  onclick="onClick(this)">Skills</div>
-                <div class="project title"  onclick="onClick(this)">Projects</div>
-            </div>
-            <div class="rule"></div>
-            {% if skills %}
-                <div class="skill content">
-                    {# todo: considering placing .skills and .project.content in an iframe #}
-                    <div class="skills">
-                        {% for skill in skills %}
-                            <h2 class="name skill">{{ skill.name }}</h2>
-                            <div class="description skill">
-                                {{ skill.description|safe }}
-                                <span id="more_sk{{ skill.id }}dots">...</span>
-                            </div>
-                            <div class="highlights skill" id="more_sk{{ skill.id }}read" style="display: none">
-                                {{ skill.highlights|safe }}
-                            </div>
-                            <button class="read_more_btn skill" onclick="readMore(this)" id="more_sk{{ skill.id }}">
-                                Read more
-                            </button>
-                        {%  endfor %}
-                    </div>
-                    {% if user.is_authenticated %}
-                        <input id="skill_form_button" class="toggle_frame" type="button" onclick="toggle_frame('skill')">
-                        <iframe id="skill_form" class="visually-hidden skill-form form-frame" aria-hidden="true" src="{% url 'add_skill_form' %}"></iframe>
-                    {% endif %}
-                </div>
-            {% endif %}
-            {% if achieves %}
-                <div class="project content" style="display: none">
-                    <div class="achievements">
-                        {% for achieve in achieves %}
-                            <h2 class="name achievement">{{ achieve.name }}
-                                <span id="more_ach{{ achieve.id }}dots">...</span>
-                            </h2>
-                            <div class="description achievement" id="more_ach{{ achieve.id }}read" style="display: none">
-                                {{ achieve.description|safe }}
-                            </div>
-                            <button class="read_more_btn achievement"  onclick="readMore(this)" id="more_ach{{ achieve.id }}">
-                                Read more
-                            </button>
-                        {%  endfor %}
-                    </div>
-                    {% if user.is_authenticated %}
-                        <input id="project_form_button" class="toggle_frame" type="button" onclick="toggle_frame('project')">
-                        <iframe id="project_form" class="visually-hidden project-form form-frame" aria-hidden="true" src="{% url 'add_project_form' %}"></iframe>
-                    {% endif %}
-                </div>
-            {% endif %}
-        </div>
+{% extends "base.html" %} {% load static %} {% load template_loader %} {% block
+title %}Sean's Portfolio{% endblock %} {% block page_css %}
+<link
+  rel="stylesheet"
+  href="{% static 'portfolio/css/form_frames_style.css' %}"
+/>
+<link rel="stylesheet" href="{% static 'portfolio/css/large_header.css' %}" />
+{% endblock %} {% block page_js %}
+<script
+  type="application/javascript"
+  src="{% static 'portfolio/js/readmore.js' %}"
+></script>
+<script
+  type="application/javascript"
+  src="{% static 'portfolio/js/tabs.js' %}"
+></script>
+<script
+  type="application/javascript"
+  src="{% static 'portfolio/js/form_frame_functions.js' %}"
+></script>
+<script
+  type="application/javascript"
+  src="{% static 'portfolio/js/large_header.js' %}"
+></script>
+{% endblock %} {% block header %} {% home_header %} {% endblock %} {% block
+content %}
+<div class="content-container">
+  <div class="content-grid">
+    <div class="bio">
+      {% if bio %}
+      <div class="markdown">{{ md|safe }}</div>
+      {% endif %}
     </div>
-{% endblock %}
-
-{% block footer %}
-    {% home_footer %}
-{% endblock %}
+    <div class="title">
+      <div class="skill title" onclick="onClick(this)">Skills</div>
+      <div class="project title" onclick="onClick(this)">Projects</div>
+    </div>
+    <div class="rule"></div>
+    {% if skills %}
+    <div class="skill content">
+      {# todo: considering placing .skills and .project.content in an iframe #}
+      <div class="skills">
+        {% for skill in skills %}
+        <h2 class="name skill">{{ skill.name }}</h2>
+        <div class="description skill">
+          {{ skill.description|safe }}
+          <span id="more_sk{{ skill.id }}dots">...</span>
+        </div>
+        <div
+          class="highlights skill"
+          id="more_sk{{ skill.id }}read"
+          style="display: none"
+        >
+          {{ skill.highlights|safe }}
+        </div>
+        <button
+          class="read_more_btn skill"
+          onclick="readMore(this)"
+          id="more_sk{{ skill.id }}"
+        >
+          Read more
+        </button>
+        {% endfor %}
+      </div>
+      {% if user.is_authenticated %}
+      <input
+        id="skill_form_button"
+        class="toggle_frame"
+        type="button"
+        onclick="toggle_frame('skill')"
+      />
+      <iframe
+        id="skill_form"
+        class="visually-hidden skill-form form-frame"
+        aria-hidden="true"
+        src="{% url 'add_skill_form' %}"
+      ></iframe>
+      {% endif %}
+    </div>
+    {% endif %} {% if achieves %}
+    <div class="project content" style="display: none">
+      <div class="achievements">
+        {% for achieve in achieves %}
+        <h2 class="name achievement">
+          {{ achieve.name }}
+          <span id="more_ach{{ achieve.id }}dots">...</span>
+        </h2>
+        <div
+          class="description achievement"
+          id="more_ach{{ achieve.id }}read"
+          style="display: none"
+        >
+          {{ achieve.description|safe }}
+        </div>
+        <button
+          class="read_more_btn achievement"
+          onclick="readMore(this)"
+          id="more_ach{{ achieve.id }}"
+        >
+          Read more
+        </button>
+        {% endfor %}
+      </div>
+      {% if user.is_authenticated %}
+      <input
+        id="project_form_button"
+        class="toggle_frame"
+        type="button"
+        onclick="toggle_frame('project')"
+      />
+      <iframe
+        id="project_form"
+        class="visually-hidden project-form form-frame"
+        aria-hidden="true"
+        src="{% url 'add_project_form' %}"
+      ></iframe>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %} {% block footer %} {% home_footer %} {% endblock %}

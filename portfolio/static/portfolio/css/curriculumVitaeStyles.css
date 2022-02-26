@@ -1,178 +1,178 @@
 .cv_container {
-    width: 95vw;
-    min-width: 378px;
-    height: auto;
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-auto-flow: row;
-    row-gap: 20px;
+  width: 95vw;
+  min-width: 378px;
+  height: auto;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-auto-flow: row;
+  row-gap: 20px;
 }
 
 .cv {
-    background-color: #111;
-    border-radius: 5px;
-    padding: 4px;
-    box-shadow: 4px 2px 4px #282a36;
-    display: grid;
-    grid-row-gap: 12px;
-    grid-template-rows: 30px 142px 30px;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: 'title . date' 'body body body' 'links links .';
+  background-color: #111;
+  border-radius: 5px;
+  padding: 4px;
+  box-shadow: 4px 2px 4px #282a36;
+  display: grid;
+  grid-row-gap: 12px;
+  grid-template-rows: 30px 142px 30px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "title . date" "body body body" "links links .";
 }
 
 .cv .title {
-    grid-area: title;
-    padding: 0 12px;
+  grid-area: title;
+  padding: 0 12px;
 }
 
 .cv .date {
-    grid-area: date;
-    justify-self: end;
-    padding: 0 12px;
+  grid-area: date;
+  justify-self: end;
+  padding: 0 12px;
 }
 
 .cv .body {
-    grid-area: body;
-    display: grid;
-    grid-auto-flow: row;
-    padding: 0 24px;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 32px;
-    grid-template-areas: 'Text' 'Button';
+  grid-area: body;
+  display: grid;
+  grid-auto-flow: row;
+  padding: 0 24px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 32px;
+  grid-template-areas: "Text" "Button";
 }
 
 .cv .content {
-    overflow: hidden;
-    grid-area: Text;
+  overflow: hidden;
+  grid-area: Text;
 }
 
 .cv .more {
-    margin-top: 4px;
-    width: 100%;
-    background-color: #202020;
-    border-radius: 4px;
-    display: grid;
-    position: relative;
-    z-index: 1;
-    height: 30px;
-    grid-area: Button;
+  margin-top: 4px;
+  width: 100%;
+  background-color: #202020;
+  border-radius: 4px;
+  display: grid;
+  position: relative;
+  z-index: 1;
+  height: 30px;
+  grid-area: Button;
 }
 
 .cv .less {
-    margin-top: 4px;
-    width: 100%;
-    background-color: #202020;
-    border-radius: 4px;
-    display: grid;
-    position: relative;
-    grid-area: Button;
-    height: 30px;
+  margin-top: 4px;
+  width: 100%;
+  background-color: #202020;
+  border-radius: 4px;
+  display: grid;
+  position: relative;
+  grid-area: Button;
+  height: 30px;
 }
 
 .cv .more .chev {
-    padding-top: 2px;
-    justify-self: center;
-    align-self: center;
+  padding-top: 2px;
+  justify-self: center;
+  align-self: center;
 }
 
 .cv .less .chev {
-    padding-top: 2px;
-    justify-self: center;
-    align-self: center;
+  padding-top: 2px;
+  justify-self: center;
+  align-self: center;
 }
 
 .cv .more svg {
-    fill: white;
+  fill: white;
 }
 
 .cv .less svg {
-    fill: white;
+  fill: white;
 }
 
 .cv .less:hover {
-    background-color: #2f2f2f;
+  background-color: #2f2f2f;
 }
 
 .cv .less:hover svg {
-    fill: black;
+  fill: black;
 }
 
 .cv .more:hover {
-    background-color: #2f2f2f;
+  background-color: #2f2f2f;
 }
 
 .cv .more:hover svg {
-    fill: black;
+  fill: black;
 }
 
 .cv.open_body {
-    grid-template-rows: 30px 1fr 30px;
+  grid-template-rows: 30px 1fr 30px;
 }
 
 .cv .body.open .more {
 }
 
 .cv .body.open .less {
-    display: grid;
+  display: grid;
 }
 
 .cv .body.open .content {
-    height: auto;
+  height: auto;
 }
 
 .cv .link-lists {
-    grid-area: links;
-    padding: 0 12px;
-    display: grid;
-    grid-auto-flow: column;
-    grid-column-gap: 12px;
-    justify-items: center;
+  grid-area: links;
+  padding: 0 12px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 12px;
+  justify-items: center;
 }
 
 .link-lists span {
-    cursor: not-allowed;
-    color: var(--heighlight1);
+  cursor: not-allowed;
+  color: var(--heighlight1);
 }
 
 .link-lists .active span {
-    color: var(--foreground1);
+  color: var(--foreground1);
 }
 
 .link-lists .active span:hover {
-    color: var(--heighlight1);
-    cursor: pointer;
+  color: var(--heighlight1);
+  cursor: pointer;
 }
 
 .light_box {
-    display: none;
+  display: none;
 }
 
 .drop-content {
-    display: none;
+  display: none;
 }
 
 .list_item {
-    color: var(--foreground1);
+  color: var(--foreground1);
 }
 
 .drop-content span {
-    padding-left: 4px;
+  padding-left: 4px;
 }
 
 .drop-content span:hover {
-    color: #8F8F8F;
+  color: #8f8f8f;
 }
 
 .drop-down:hover .drop-content {
-    display: block;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: calc(80vw / 6);
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    padding: 12px 16px;
-    background-color: rgba(0, 0, 0, 1);
-    border-radius: 4px;
-    z-index: 1;
+  display: block;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: calc(80vw / 6);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  background-color: rgba(0, 0, 0, 1);
+  border-radius: 4px;
+  z-index: 1;
 }
 
 @media only screen and (max-width: 576px) {

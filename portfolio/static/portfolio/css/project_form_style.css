@@ -1,58 +1,58 @@
-
-.project_form{
-    display: grid;
-    grid-auto-flow: row;
-    grid-template-columns: 120px 1fr;
-    grid-template-rows: 21px 20px 18px 160px 20px 21px 20px 21px;
-    grid-template-areas: 'n_label n_field' /* 1 */
-                         '. .' /* 2 */
-                         'd_label .' /* 3 */
-                         'd_field d_field' /* 4 */
-                         '. .' /* 5 */
-                         'g_label g_field' /* 6 */
-                         '. .' /* 7 */
-                         '. submit'; /* 8 */
+.project_form {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 120px 1fr;
+  grid-template-rows: 21px 20px 18px 160px 20px 21px 20px 21px;
+  grid-template-areas:
+    "n_label n_field" /* 1 */
+    ". ." /* 2 */
+    "d_label ." /* 3 */
+    "d_field d_field" /* 4 */
+    ". ." /* 5 */
+    "g_label g_field" /* 6 */
+    ". ." /* 7 */
+    ". submit"; /* 8 */
 }
 
-input[type="submit"]{
-    width: 50px;
-    justify-self: end;
+input[type="submit"] {
+  width: 50px;
+  justify-self: end;
 }
 
 label:after {
-    content: ':';
+  content: ":";
 }
 
 .label_id_name {
-    grid-area: n_label;
+  grid-area: n_label;
 }
 
 .name_field {
-    grid-area: n_field;
-    min-width: 300px;
-    max-width: 600px;
-    width: 600px;
+  grid-area: n_field;
+  min-width: 300px;
+  max-width: 600px;
+  width: 600px;
 }
 
 .label_id_short_desc {
-    grid-area: d_label;
+  grid-area: d_label;
 }
 
 .short_description_area {
-    grid-area: d_field;
+  grid-area: d_field;
 }
 
 .label_id_git_link {
-    grid-area: g_label;
+  grid-area: g_label;
 }
 
 .git_link_field {
-    grid-area: g_field;
-    min-width: 300px;
-    max-width: 600px;
-    width: 600px;
+  grid-area: g_field;
+  min-width: 300px;
+  max-width: 600px;
+  width: 600px;
 }
 
 .submit {
-    grid-area: submit;
+  grid-area: submit;
 }
