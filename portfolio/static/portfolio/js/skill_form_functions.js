@@ -13,12 +13,9 @@ function getTargetOrigin() {
     if (url.indexOf("rossdev.co") !== -1) {
       return document.location.protocol + "//rossdev.co";
     }
-    if (url.indexOf("rossdev.tech") !== -1) {
-      return document.location.protocol + "//rossdev.tech";
-    } // set the alternative target
-    else {
-      return document.location.protocol + "//" + url.split("/")[2];
-    }
+    return url.indexOf("rossdev.tech") !== -1
+      ? document.location.protocol + "//rossdev.tech"
+      : document.location.protocol + "//" + url.split("/")[2];
   } catch (
     e // falback to production
   ) {
