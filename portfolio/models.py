@@ -150,8 +150,7 @@ class Project(models.Model):
         editable=False)
     name = models.CharField(max_length=100)
     short_desc = MarkdownxField(blank=True)
-    git_link = models.CharField(
-        max_length=400,
+    git_link = models.TextField(
         blank=True)
     files = models.ManyToManyField(
         File,
