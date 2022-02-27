@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 # Application definition
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
-    'acctmanagment.apps.AcctManagmentConfig',
+    'acct-management.apps.AcctManagementConfig',
     'portfolio.apps.PortfolioConfig',
     'django.contrib.admin',
     'django.contrib.auth',
