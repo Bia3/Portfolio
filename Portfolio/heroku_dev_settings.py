@@ -30,4 +30,5 @@ settings.CSRF_COOKIE_SECURE = True
 
 settings.DATABASE_URL = os.environ['DATABASE_URL']
 
-settings.DATABASES = {'default': dj_database_url.config(default=settings.DATABASE_URL)}
+settings.DATABASES = {'default': dj_database_url.config(
+    default=settings.DATABASE_URL)}
