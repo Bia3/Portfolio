@@ -19,7 +19,7 @@ settings.TEMPLATE_DEBUG = True
 
 settings.ALLOWED_HOSTS = [
     'www.rossdev.io', 'www.rossdev.tech', 'www.rossdev.co', 'rossdev.io', 'rossdev.tech', 'rossdev.co',
-    'portf-orchard.herokuapp.com', '1276.0.0.1', 'localhost'
+    'portf-orchard.herokuapp.com',
 ]
 
 # Use the production secret key
