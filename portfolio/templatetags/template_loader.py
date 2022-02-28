@@ -12,8 +12,8 @@ def lower(value):
 
 
 @register.simple_tag
-def home_header():
-    return render_to_string('home_header.html')
+def large_header():
+    return render_to_string('large_header.html')
 
 
 @register.simple_tag
@@ -22,8 +22,8 @@ def standard_header():
 
 
 @register.simple_tag
-def home_footer():
-    return render_to_string('home_footer.html')
+def large_footer():
+    return render_to_string('large_footer.html')
 
 
 @register.simple_tag
