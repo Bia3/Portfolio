@@ -5,6 +5,7 @@ from .models import Job, CurriculumVitae, Resume, Project, Skill, Bio,\
     File, CodeSnippet, ProjectSection, Svg, Achievement
 
 
+@admin.register(Svg)
 class SvgAdmin(admin.ModelAdmin):
     list_display = ('name', )
     fieldsets = [
@@ -31,5 +32,4 @@ admin.site.register(Project, MarkdownxModelAdmin)
 admin.site.register(CurriculumVitae, MarkdownxModelAdmin)
 admin.site.register(Bio, MarkdownxModelAdmin)
 admin.site.register(ContactCard)
-admin.site.register(Svg, SvgAdmin),
 admin.site.register(Achievement)
