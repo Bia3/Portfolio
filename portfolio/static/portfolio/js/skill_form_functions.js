@@ -23,6 +23,7 @@ function getTargetOrigin() {
   }
 }
 
+// skipcq: JS-0125
 if (form_complete) {
   parent.postMessage({ clicked: "add", name: "skill" }, getTargetOrigin());
 }
