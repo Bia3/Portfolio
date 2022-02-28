@@ -1,4 +1,7 @@
-function onClick(e) {
+/*
+ * Function to switch tabs on the homepage
+ */
+function onClick(element) {
   Array.prototype.slice
     .call(document.getElementsByClassName("content"))
     .forEach((i) => {
@@ -6,7 +9,7 @@ function onClick(e) {
       i.style.display = "none";
     });
   const elem = Array.prototype.slice
-    .call(document.getElementsByClassName(e.classList[0]))
+    .call(document.getElementsByClassName(element.classList[0]))
     .find((i) => {
       return Array.prototype.slice.call(i.classList).includes("content");
     });

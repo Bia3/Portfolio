@@ -1,7 +1,10 @@
-function readMore(e) {
-  const dots = document.getElementById(e.id + "dots");
-  const moreText = document.getElementById(e.id + "read");
-  const btnText = e;
+/*
+ * Function used on readmore buttons for homepage
+ */
+function readMore(btn_text) {
+  const dots = document.getElementById(btn_text.id + "dots");
+  const moreText = document.getElementById(btn_text.id + "read");
+  const btnText = btn_text;
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
