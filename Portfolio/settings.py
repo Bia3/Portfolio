@@ -136,10 +136,10 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 # Overwrite settings for security in Production and Live Sever Testing Environments.
 if 'ON_HEROKU' in ENV_VAR:
-    from .heroku_settings import *
+    from .heroku_settings import *  # skipcq: PYL-W0614
 elif 'HEROKU_DEV_BIT' in ENV_VAR:
     from .heroku_dev_settings import *
 elif 'REPLIT_DEV_BIT' in ENV_VAR:
-    from .replit_settings import *
+    from .replit_settings import *  # skipcq: PYL-W0614
 else:
-    from .local_settings import *
+    from .local_settings import *  # skipcq: PYL-W0614
