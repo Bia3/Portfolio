@@ -3,9 +3,9 @@ version = 1
 test_patterns = ["**/tests.py"]
 
 exclude_patterns = [
-  "**/migrations/*",
-  "**/templates/*",
-  "/templates/"
+  "**/migrations/**",
+  "**/templates/**",
+  "/templates/**"
 ]
 
 [[analyzers]]
