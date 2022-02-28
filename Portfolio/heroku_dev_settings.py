@@ -17,11 +17,8 @@ import os
 settings.DEBUG = True
 settings.TEMPLATE_DEBUG = True
 
-# ToDo: Finish setting up Heroku Allowed Hosts for Dev
-# ALLOWED_HOSTS = [
-#     '127.0.0.1', 'localhost', 'portdev.herokuapp.com'
-# ]
-settings.ALLOWED_HOSTS = ['*']
+settings.ALLOWED_HOSTS = ['portdev.herokuapp.com']
+
 # Use the production secret key
 settings.SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
