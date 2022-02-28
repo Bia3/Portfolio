@@ -151,7 +151,7 @@ class Project(models.Model):
     name = models.CharField(max_length=100)
     short_desc = MarkdownxField(blank=True)
     git_link = models.CharField(
-        max_length=400,
+        max_length=256,
         blank=True)
     files = models.ManyToManyField(
         File,
