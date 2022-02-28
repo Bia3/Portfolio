@@ -4,7 +4,13 @@ from django.shortcuts import render
 from django.views import View
 
 from .forms import AchievementForm, SkillForm, ProjectForm
-from .models import ContactCard, Resume, CurriculumVitae, Project, Bio, Skill, Achievement
+from .models import ContactCard,\
+    Resume,\
+    CurriculumVitae,\
+    Project,\
+    Bio,\
+    Skill,\
+    Achievement
 from markdownx.utils import markdownify
 
 mobile_browsers = [

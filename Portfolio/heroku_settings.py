@@ -18,7 +18,12 @@ settings.DEBUG = False
 settings.TEMPLATE_DEBUG = True
 
 settings.ALLOWED_HOSTS = [
-    'www.rossdev.io', 'www.rossdev.tech', 'www.rossdev.co', 'rossdev.io', 'rossdev.tech', 'rossdev.co',
+    'www.rossdev.io',
+    'www.rossdev.tech',
+    'www.rossdev.co',
+    'rossdev.io',
+    'rossdev.tech',
+    'rossdev.co',
     'portf-orchard.herokuapp.com',
 ]
 
