@@ -1,6 +1,7 @@
 /*
  * Function used on readmore buttons for homepage
  */
+// skipcq: JS-0128
 function readMore(btn_text) {
   const dots = document.getElementById(btn_text.id + "dots");
   const moreText = document.getElementById(btn_text.id + "read");

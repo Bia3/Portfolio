@@ -1,6 +1,7 @@
 /*
  * Function to switch tabs on the homepage
  */
+// skipcq: JS-0128
 function onClick(element) {
   Array.prototype.slice
     .call(document.getElementsByClassName("content"))

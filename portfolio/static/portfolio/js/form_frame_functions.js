@@ -44,6 +44,7 @@ eventer(
 /*
  * Function to toggle on or off the frame used for forms.
  */
+// skipcq: JS-0128
 function toggle_frame(name) {
   document
     .querySelector(`#${name}_form_button`)
