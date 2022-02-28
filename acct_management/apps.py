@@ -7,4 +7,4 @@ class AcctManagementConfig(AppConfig):
     Extends django.apps.AppConfig
     """
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'acct-management'
+    name = 'acct_management'

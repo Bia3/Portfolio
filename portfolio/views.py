@@ -222,7 +222,6 @@ class AddProjectFormView(View):
         # Create a form instance and populate it with data from the request (binding):
         form = self.form_class(request.POST)
         if form.is_valid():
-            pass
             new_obj = Project(
                 name=form.cleaned_data['name'],
                 short_desc=form.cleaned_data['short_desc'],

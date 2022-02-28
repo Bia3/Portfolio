@@ -23,7 +23,7 @@ handler500 = 'portfolio.views.handler500'
 
 urlpatterns = [
     url('s3cr3t/', admin.site.urls),
-    url('accounts/', include('acct-management.urls')),
+    url('accounts/', include('acct_management.urls')),
     url(r'^markdownx/', include('markdownx.urls')),
     url(r'^$', HomeView.as_view(), name='home'),
     url('forms/addachievement', AddAchievementFormView.as_view(),
