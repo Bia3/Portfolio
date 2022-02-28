@@ -34,6 +34,7 @@ settings.SESSION_COOKIE_SECURE = True
 settings.CSRF_COOKIE_SECURE = True
 
 
-settings.DATABASES = {'default': dj_database_url.config(default=settings.DATABASE_URL)}
+settings.DATABASES = {'default': dj_database_url.config(
+    default=settings.DATABASE_URL)}
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
