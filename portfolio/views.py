@@ -246,6 +246,13 @@ class CurriculumVitaeView(View):
     cvs = ""
 
     def get(self, request, *args, **kwargs):
+        """
+        Function to handle GET requests for the Curriculum Vitae Page
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
         self.cvs = CurriculumVitae.objects.all()
         return render(request, 'curriculum_vitae.html', {
             'cvs': self.cvs,
@@ -258,6 +265,11 @@ class ProjectsView(View):
     projects = ""
 
     def get(self, request):
+        """
+        Function to handle GET requests for the Projects Page
+        :param request:
+        :return:
+        """
         self.projects = Project.objects.all()
         return render(request, 'projects.html', {
             'projects': self.projects
@@ -270,6 +282,13 @@ class ProjectView(View):
     project = ""
 
     def get(self, request, *args, **kwargs):
+        """
+        Function to handle GET requests for the single Project Page
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
         self.project = Project.objects.get()
         return render(request, 'project.html', {
             'project': self.project
@@ -282,6 +301,13 @@ class ResumeView(View):
     resume = ""
 
     def get(self, request, *args, **kwargs):
+        """
+        Function to handle Get requests for the Resume Page
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
         self.resume = Resume.objects.first()
         return render(request, 'resume.html', {
             'resume': self.resume
