@@ -27,7 +27,7 @@ const messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
 // Listen to message from child window
 eventer(
   messageEvent,
-  function (evt) {
+  (evt) => {
     if (
       evt.origin !== "http://127.0.0.1:8000" &&
       evt.origin !== "https://rossdev.io" &&
