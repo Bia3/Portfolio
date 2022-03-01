@@ -3,8 +3,8 @@
  */
 // skipcq: JS-0128
 function readMore(btn_text) {
-  const dots = document.getElementById(btn_text.id + "dots");
-  const moreText = document.getElementById(btn_text.id + "read");
+  const dots = document.getElementById(`${btn_text.id}dots`);
+  const moreText = document.getElementById(`${btn_text.id}read`);
   const btnText = btn_text;
 
   if (dots.style.display === "none") {
