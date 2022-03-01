@@ -36,6 +36,7 @@ class HomeView(View):
     """
     Class based View for the Home Page
     """
+
     bio = ""
     contact = ""
     md = None
@@ -111,6 +112,7 @@ class AddAchievementFormView(View):
     """
     Class based View to handle form requests for Achievements
     """
+
     form_class = AchievementForm
     initial = {
         'name': 'value',
@@ -153,6 +155,7 @@ class AddSkillFormView(View):
     """
     Class based View to handle form requests for Skills
     """
+
     form_class = SkillForm
     initial = {
     }
@@ -199,6 +202,7 @@ class AddProjectFormView(View):
     """
     Class based View to handle form requests for Projects
     """
+
     form_class = ProjectForm
     initial = {
     }
@@ -245,6 +249,7 @@ class CurriculumVitaeView(View):
     """
     Class based view for the Curriculum Vitae(course of one’s life) page
     """
+
     cvs = ""
 
     def get(self, request, *args, **kwargs):
@@ -258,6 +263,7 @@ class ProjectsView(View):
     """
     Class based View for the Projects page
     """
+
     projects = ""
 
     def get(self, request):
@@ -271,6 +277,7 @@ class ProjectView(View):
     """
     Class based View for a single Project page
     """
+
     project = ""
 
     def get(self, request, *args, **kwargs):
@@ -284,6 +291,7 @@ class ResumeView(View):
     """
     Class based View for the Resume Page
     """
+
     resume = ""
 
     def get(self, request, *args, **kwargs):

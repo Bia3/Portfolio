@@ -10,6 +10,7 @@ class SvgAdmin(admin.ModelAdmin):
     """
     Display settings for the Svg model on the Admin page
     """
+
     list_display = ('name', )
     fieldsets = [
         (None, {'fields': ['name', 'data']}),
@@ -21,6 +22,7 @@ class SkillAdmin(MarkdownxModelAdmin):
     """
     Display settings for the Skill model on the Admin page
     """
+    
     list_display = ('name', )
 
 
