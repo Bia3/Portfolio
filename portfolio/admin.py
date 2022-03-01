@@ -22,7 +22,7 @@ class SkillAdmin(MarkdownxModelAdmin):
     """
     Display settings for the Skill model on the Admin page
     """
-    
+
     list_display = ('name', )
 
 

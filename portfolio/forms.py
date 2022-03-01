@@ -42,7 +42,7 @@ class ProjectForm(forms.Form):
     """
     Form to create or update Project records
     """
-    
+
     name = forms.CharField(
         label='Name',
         max_length=100,
