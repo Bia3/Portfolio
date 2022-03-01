@@ -5,4 +5,5 @@ register = template.Library()
 
 
 class PortfolioConfig(AppConfig):
+    """Configs for the portfolio(main) app"""
     name = 'portfolio'

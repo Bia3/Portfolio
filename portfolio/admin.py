@@ -7,9 +7,7 @@ from .models import Job, CurriculumVitae, Resume, Project, Skill, Bio,\
 
 @admin.register(Svg)
 class SvgAdmin(admin.ModelAdmin):
-    """
-    Display settings for the Svg model on the Admin page
-    """
+    """Display settings for the Svg model on the Admin page"""
 
     list_display = ('name', )
     fieldsets = [
@@ -19,10 +17,8 @@ class SvgAdmin(admin.ModelAdmin):
 
 @admin.register(Skill)
 class SkillAdmin(MarkdownxModelAdmin):
-    """
-    Display settings for the Skill model on the Admin page
-    """
-    
+    """Display settings for the Skill model on the Admin page"""
+
     list_display = ('name', )
 
 

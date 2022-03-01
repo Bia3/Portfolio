@@ -33,9 +33,7 @@ desktop_browsers = [
 
 
 class HomeView(View):
-    """
-    Class based View for the Home Page
-    """
+    """Class based View for the Home Page"""
 
     bio = ""
     contact = ""
@@ -109,9 +107,7 @@ class HomeView(View):
 
 
 class AddAchievementFormView(View):
-    """
-    Class based View to handle form requests for Achievements
-    """
+    """Class based View to handle form requests for Achievements"""
 
     form_class = AchievementForm
     initial = {
@@ -152,9 +148,7 @@ class AddAchievementFormView(View):
 
 
 class AddSkillFormView(View):
-    """
-    Class based View to handle form requests for Skills
-    """
+    """Class based View to handle form requests for Skills"""
 
     form_class = SkillForm
     initial = {
@@ -199,9 +193,7 @@ class AddSkillFormView(View):
 
 
 class AddProjectFormView(View):
-    """
-    Class based View to handle form requests for Projects
-    """
+    """Class based View to handle form requests for Projects"""
 
     form_class = ProjectForm
     initial = {
@@ -247,7 +239,8 @@ class AddProjectFormView(View):
 
 class CurriculumVitaeView(View):
     """
-    Class based view for the Curriculum Vitae(course of one’s life) page
+    Class based view for the Curriculum Vitae
+    (course of one’s life) page
     """
 
     cvs = ""
@@ -260,9 +253,7 @@ class CurriculumVitaeView(View):
 
 
 class ProjectsView(View):
-    """
-    Class based View for the Projects page
-    """
+    """Class based View for the Projects page"""
 
     projects = ""
 
@@ -274,9 +265,7 @@ class ProjectsView(View):
 
 
 class ProjectView(View):
-    """
-    Class based View for a single Project page
-    """
+    """Class based View for a single Project page"""
 
     project = ""
 
@@ -288,9 +277,7 @@ class ProjectView(View):
 
 
 class ResumeView(View):
-    """
-    Class based View for the Resume Page
-    """
+    """Class based View for the Resume Page"""
 
     resume = ""
 
