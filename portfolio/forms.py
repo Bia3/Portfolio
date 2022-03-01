@@ -3,12 +3,21 @@ from .models import Achievement
 
 
 class AchievementForm(forms.ModelForm):
+    """
+    Form to create or update Achievement records
+    """
     class Meta:
+        """
+        Meta Class to set up the Achievements Form
+        """
         model = Achievement
         fields = ['name', 'description', 'order']
 
 
 class SkillForm(forms.Form):
+    """
+    Form to create or update Skill records
+    """
     name = forms.CharField(
         label='Name',
         max_length=100,
@@ -27,6 +36,9 @@ class SkillForm(forms.Form):
 
 
 class ProjectForm(forms.Form):
+    """
+    Form to create or update Project records
+    """
     name = forms.CharField(
         label='Name',
         max_length=100,

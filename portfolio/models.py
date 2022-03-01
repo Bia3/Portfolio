@@ -4,6 +4,9 @@ from markdownx.models import MarkdownxField
 
 
 class Skill(models.Model):
+    """
+    Skills related to learning and advancement in school or work
+    """
     name = models.CharField(max_length=100)
     language = models.BooleanField
     tool = models.BooleanField
@@ -16,6 +19,9 @@ class Skill(models.Model):
 
 
 class Responsibility(models.Model):
+    """
+    Responsibilities performed at a Job
+    """
     name = models.CharField(max_length=100)
     description = MarkdownxField(blank=True)
     related_skill = models.ManyToManyField(
@@ -29,6 +35,9 @@ class Responsibility(models.Model):
 
 
 class Accomplishment(models.Model):
+    """
+    Accomplishments and accolades at school or work
+    """
     name = models.CharField(max_length=100)
     highlights = MarkdownxField(blank=True)
     related_skill = models.ManyToManyField(
@@ -43,6 +52,9 @@ class Accomplishment(models.Model):
 
 
 class Job(models.Model):
+    """
+    A position held at a company
+    """
     company = models.CharField(max_length=100)
     title = models.CharField(max_length=100)
     highlights = MarkdownxField(blank=True)
@@ -64,6 +76,9 @@ class Job(models.Model):
 
 
 class School(models.Model):
+    """
+    School attended with Highlights of what was learned/gained
+    """
     name = models.CharField(max_length=100)
     graduated = models.BooleanField
     highlights = MarkdownxField(blank=True)
@@ -75,6 +90,9 @@ class School(models.Model):
 
 
 class Section(models.Model):
+    """
+    Section of the Resume or
+    """
     title = models.CharField(max_length=100)
     shortend_md = MarkdownxField(blank=True)
     mark_down = MarkdownxField(blank=True)
@@ -89,6 +107,9 @@ class Section(models.Model):
 
 
 class Certificate(models.Model):
+    """
+    A certificate gained and when
+    """
     title = models.CharField(max_length=100)
     highlights = MarkdownxField(blank=True)
     completion = models.DateField(blank=True, null=True)
@@ -104,6 +125,9 @@ class Certificate(models.Model):
 
 
 class Resume(models.Model):
+    """
+    Resume builder template CurriculumVitae for highlights and additives
+    """
     job = models.ManyToManyField(
         Job,
         blank=True,
@@ -130,21 +154,33 @@ class Resume(models.Model):
 
 
 class File(models.Model):
+    """
+    Supporting Files
+    """
     name = models.CharField(max_length=100)
     data = models.FileField
 
 
 class CodeSnippet(models.Model):
+    """
+    Supporting Code Snippet
+    """
     name = models.CharField(max_length=30, blank=False)
     mark_down = MarkdownxField(blank=False)
 
 
 class ProjectSection(models.Model):
+    """
+    Additive section for projects
+    """
     title = models.CharField(max_length=30, blank=False)
     mark_down = MarkdownxField(blank=False)
 
 
 class Project(models.Model):
+    """
+    A project that proves you knowledge
+    """
     uid = models.UUIDField(
         default=uuid.uuid4,
         editable=False)
@@ -171,6 +207,9 @@ class Project(models.Model):
 
 
 class CurriculumVitae(models.Model):
+    """
+    The course of your life learning and jobs
+    """
     name = models.CharField(max_length=100)
     mark_down = MarkdownxField(blank=True)
     job = models.ManyToManyField(
@@ -212,6 +251,9 @@ class CurriculumVitae(models.Model):
 
 
 class Bio(models.Model):
+    """
+    Brief Descriptor of you and your goals
+    """
     title = models.CharField(max_length=100)
     mark_down = MarkdownxField(blank=True)
     creation = models.DateTimeField(auto_now_add=True, blank=True, null=True)
@@ -222,6 +264,9 @@ class Bio(models.Model):
 
 
 class ContactCard(models.Model):
+    """
+    Contact Info
+    """
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
     phone = models.CharField(max_length=30, blank=True)
@@ -231,11 +276,17 @@ class ContactCard(models.Model):
 
 
 class Achievement(models.Model):
+    """
+    An achievement or accolade
+    """
     name = models.CharField(max_length=100)
     description = MarkdownxField(blank=True)
     order = models.IntegerField(unique=True)
 
 
 class Svg(models.Model):
+    """
+    SVG items for logos and other things (can be animated with nested JS or CSS)
+    """
     name = models.CharField(max_length=30, blank=False)
     data = models.TextField(blank=False)
