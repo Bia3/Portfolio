@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from portfolio.views import *
+from portfolio import views
 
 
 handler404 = 'portfolio.views.handler404'
@@ -23,11 +23,11 @@ handler500 = 'portfolio.views.handler500'
 
 urlpatterns = [
     url('s3cr3t/', admin.site.urls),
-    url('accounts/', include('acctmanagment.urls')),
+    url('accounts/', include('acct_management.urls')),
     url(r'^markdownx/', include('markdownx.urls')),
-    url(r'^$', HomeView.as_view(), name='home'),
-    url('forms/addachievement', AddAchievementFormView.as_view(),
+    url(r'^$', views.HomeView.as_view(), name='home'),
+    url('forms/addachievement', views.AddAchievementFormView.as_view(),
         name='add_achievement_form'),
-    url('forms/add_skill', AddSkillFormView.as_view(), name='add_skill_form'),
-    url('forms/add_project', AddProjectFormView.as_view(), name='add_project_form'),
+    url('forms/add_skill', views.AddSkillFormView.as_view(), name='add_skill_form'),
+    url('forms/add_project', views.AddProjectFormView.as_view(), name='add_project_form'),
 ]

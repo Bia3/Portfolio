@@ -6,4 +6,9 @@ register = template.Library()
 
 @register.filter(is_safe=True)
 def markdownify(value):
+    """
+    Filter to compile markdown to html
+    :param value:
+    :return:
+    """
     return markdownifyx(value)

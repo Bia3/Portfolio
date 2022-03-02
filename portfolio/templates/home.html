@@ -9,6 +9,7 @@
   href="{% static 'portfolio/css/form_frames_style.css' %}"
 />
 <link rel="stylesheet" href="{% static 'portfolio/css/large_header.css' %}" />
+<link rel="stylesheet" href="{% static 'portfolio/css/scroll_collapse.css' %}" />
 {% endblock %} {% block page_js %}
 <script
   type="application/javascript"
@@ -24,11 +25,17 @@
 ></script>
 <script
   type="application/javascript"
-  src="{% static 'portfolio/js/large_header.js' %}"
-></script>
+  src="{% static 'portfolio/js/large_header.js' %}">
+  </script>
+<script
+    type="application/javascript"
+    src="{% static 'portfolio/js/scroll_collapse.js' %}">    
+</script>
 {% endblock %}
 {% block header %}
-{% home_header %}{% endblock %}
+{% large_header md bio %}
+{% standard_header %}
+{% endblock %}
 {% block content %}
 <div class="content-container">
   <div class="content-grid">
@@ -129,4 +136,4 @@
 {% endblock %}
 
 {% block footer %}
-{% home_footer %} {% endblock %}
+{% large_footer %} {% endblock %}

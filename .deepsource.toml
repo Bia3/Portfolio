@@ -3,9 +3,9 @@ version = 1
 test_patterns = ["**/tests.py"]
 
 exclude_patterns = [
-  "**/migrations/*",
-  "**/templates/*",
-  "/templates/"
+  "**/migrations/**",
+  "**/templates/**",
+  "/templates/**"
 ]
 
 [[analyzers]]
@@ -22,6 +22,7 @@ enabled = true
 
   [analyzers.meta]
   runtime_version = "3.x.x"
+  max_line_length = 121
 
 [[transformers]]
 name = "prettier"

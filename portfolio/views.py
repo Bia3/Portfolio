@@ -4,7 +4,13 @@ from django.shortcuts import render
 from django.views import View
 
 from .forms import AchievementForm, SkillForm, ProjectForm
-from .models import ContactCard, Resume, CurriculumVitae, Project, Bio, Skill, Achievement
+from .models import ContactCard,\
+    Resume,\
+    CurriculumVitae,\
+    Project,\
+    Bio,\
+    Skill,\
+    Achievement
 from markdownx.utils import markdownify
 
 mobile_browsers = [
@@ -26,8 +32,9 @@ desktop_browsers = [
 ]
 
 
-# Create your views here.
 class HomeView(View):
+    """Class based View for the Home Page"""
+
     bio = ""
     contact = ""
     md = None
@@ -38,6 +45,13 @@ class HomeView(View):
     achieves = []
 
     def get(self, request, *args, **kwargs):
+        """
+        Function to handle GET requests to the Home Page
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
         self.bio = Bio.objects.first()
         self.contact = ContactCard.objects.first()
         self.projects = Project.objects.all()
@@ -93,6 +107,8 @@ class HomeView(View):
 
 
 class AddAchievementFormView(View):
+    """Class based View to handle form requests for Achievements"""
+
     form_class = AchievementForm
     initial = {
         'name': 'value',
@@ -103,11 +119,25 @@ class AddAchievementFormView(View):
 
     # Create the default form.
     def get(self, request, *args, **kwargs):
+        """
+        Function to handle GET requests for the Achievements Form
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
         form = self.form_class(initial=self.initial)
         return render(request, 'achievement_form_template.html', {'form': form})
 
     # Process the Form data
     def post(self, request, *args, **kwargs):
+        """
+        Function to handle POST requests for the Achievements Form
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
         # Create a form instance and populate it with data from the request (binding):
         form = self.form_class(request.POST)
 
@@ -118,6 +148,8 @@ class AddAchievementFormView(View):
 
 
 class AddSkillFormView(View):
+    """Class based View to handle form requests for Skills"""
+
     form_class = SkillForm
     initial = {
     }
@@ -125,15 +157,28 @@ class AddSkillFormView(View):
 
     # Create the default form.
     def get(self, request, *args, **kwargs):
+        """
+        Function to handle GET requests for the Skills Form
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
         form = self.form_class(initial=self.initial)
         return render(request, self.template_name, {'form': form, 'success': 'false'})
 
     # Process the Form data
     def post(self, request, *args, **kwargs):
+        """
+        Function to handle POST requests for the Skills Form
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
         # Create a form instance and populate it with data from the request (binding):
         form = self.form_class(request.POST)
         if form.is_valid():
-
             new_skill = Skill(
                 name=form.cleaned_data['name'],
                 description=form.cleaned_data['description'],
@@ -148,6 +193,8 @@ class AddSkillFormView(View):
 
 
 class AddProjectFormView(View):
+    """Class based View to handle form requests for Projects"""
+
     form_class = ProjectForm
     initial = {
     }
@@ -155,15 +202,28 @@ class AddProjectFormView(View):
 
     # Create the default form.
     def get(self, request, *args, **kwargs):
+        """
+        Function to handle GET requests for the Projects Form
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
         form = self.form_class(initial=self.initial)
         return render(request, self.template_name, {'form': form, 'success': 'false'})
 
     # Process the Form data
     def post(self, request, *args, **kwargs):
+        """
+        Function to handle POST requests for the Projects Form
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
         # Create a form instance and populate it with data from the request (binding):
         form = self.form_class(request.POST)
         if form.is_valid():
-            pass
             new_obj = Project(
                 name=form.cleaned_data['name'],
                 short_desc=form.cleaned_data['short_desc'],
@@ -178,9 +238,21 @@ class AddProjectFormView(View):
 
 
 class CurriculumVitaeView(View):
+    """
+    Class based view for the Curriculum Vitae
+    (course of one’s life) page
+    """
+
     cvs = ""
 
     def get(self, request, *args, **kwargs):
+        """
+        Function to handle GET requests for the Curriculum Vitae Page
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
         self.cvs = CurriculumVitae.objects.all()
         return render(request, 'curriculum_vitae.html', {
             'cvs': self.cvs,
@@ -188,9 +260,16 @@ class CurriculumVitaeView(View):
 
 
 class ProjectsView(View):
+    """Class based View for the Projects page"""
+
     projects = ""
 
     def get(self, request):
+        """
+        Function to handle GET requests for the Projects Page
+        :param request:
+        :return:
+        """
         self.projects = Project.objects.all()
         return render(request, 'projects.html', {
             'projects': self.projects
@@ -198,9 +277,18 @@ class ProjectsView(View):
 
 
 class ProjectView(View):
+    """Class based View for a single Project page"""
+
     project = ""
 
     def get(self, request, *args, **kwargs):
+        """
+        Function to handle GET requests for the single Project Page
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
         self.project = Project.objects.get()
         return render(request, 'project.html', {
             'project': self.project
@@ -208,9 +296,18 @@ class ProjectView(View):
 
 
 class ResumeView(View):
+    """Class based View for the Resume Page"""
+
     resume = ""
 
     def get(self, request, *args, **kwargs):
+        """
+        Function to handle Get requests for the Resume Page
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
         self.resume = Resume.objects.first()
         return render(request, 'resume.html', {
             'resume': self.resume
@@ -218,12 +315,26 @@ class ResumeView(View):
 
 
 def handler404(request, *args, **argv):
+    """
+    Function based view to handle 404's
+    :param request:
+    :param args:
+    :param argv:
+    :return:
+    """
     response = render(request, '404.html', {}, status=404)
     response.status_code = 404
     return response
 
 
 def handler500(request, *args, **argv):
+    """
+    Function based view to handle 500's
+    :param request:
+    :param args:
+    :param argv:
+    :return:
+    """
     response = render(request, template_name='500.html',
                       context={}, status=500)
     response.status_code = 500

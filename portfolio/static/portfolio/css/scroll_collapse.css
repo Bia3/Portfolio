@@ -1,0 +1,62 @@
+#StandardHeader {
+    display: none;
+    opacity: 0;
+}
+
+#LargeHeader.hide {
+    position: static;
+    opacity: 1;
+    overflow: hidden;
+    animation: hideLargeHeader 2s;
+}
+
+#LargeHeader.visually-hidden {
+    opacity: 0;
+    height: 1vh;
+    overflow: hidden;
+}
+
+#LargeHeader .header_container.hide {
+    animation: hideLargeHeaderContainer 2s;
+}
+
+#StandardHeader.visible {
+    display: block;
+}
+
+#StandardHeader.show {
+    opacity: 1;
+    animation: showStandardHeader 500ms ease-in;
+}
+
+@keyframes hideLargeHeaderContainer {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100vh);
+    }
+}
+
+@keyframes hideLargeHeader {
+    0% {
+        opacity: 1;
+        height: 100vh;
+    }
+    98% {
+        opacity: 1;
+    }
+    100% {
+        height: 1vh;
+        opacity: 0;
+    }
+}
+
+@keyframes showStandardHeader {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

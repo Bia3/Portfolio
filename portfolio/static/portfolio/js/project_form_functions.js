@@ -8,21 +8,22 @@ function getTargetOrigin() {
         : document.location.href;
 
     if (url.indexOf("rossdev.io") !== -1) {
-      return document.location.protocol + "//rossdev.io";
+      return `${document.location.protocol}//rossdev.io`;
     }
     if (url.indexOf("rossdev.co") !== -1) {
-      return document.location.protocol + "//rossdev.co";
+      return `${document.location.protocol}//rossdev.co`;
     }
     return url.indexOf("rossdev.tech") !== -1
-      ? document.location.protocol + "//rossdev.tech"
-      : document.location.protocol + "//" + url.split("/")[2];
+      ? `${document.location.protocol}//rossdev.tech`
+      : `${document.location.protocol}//${url.split("/")[2]}`;
   } catch (
     e // falback to production
   ) {
-    return document.location.protocol + "//rossdev.io";
+    return `${document.location.protocol}//rossdev.io`;
   }
 }
 
+// skipcq: JS-0125
 if (form_complete) {
   parent.postMessage({ name: "project" }, getTargetOrigin());
 }

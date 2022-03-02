@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import django.db.models
 
 ENV_VAR = os.environ
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -30,7 +29,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 # Application definition
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
-    'acctmanagment.apps.AcctManagmentConfig',
+    'acct_management.apps.AcctManagementConfig',
     'portfolio.apps.PortfolioConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -137,10 +136,10 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 # Overwrite settings for security in Production and Live Sever Testing Environments.
 if 'ON_HEROKU' in ENV_VAR:
-    from .heroku_settings import *
+    from .heroku_settings import *  # skipcq: PYL-W0614
 elif 'HEROKU_DEV_BIT' in ENV_VAR:
     from .heroku_dev_settings import *
 elif 'REPLIT_DEV_BIT' in ENV_VAR:
-    from .replit_settings import *
+    from .replit_settings import *  # skipcq: PYL-W0614
 else:
-    from .local_settings import *
+    from .local_settings import *  # skipcq: PYL-W0614

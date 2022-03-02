@@ -1,11 +1,11 @@
 from django.conf.urls import url
 from django.contrib.auth import views as auth_views
-from .views import *
+from . import views
 
 
 urlpatterns = [
     url('login/', auth_views.LoginView.as_view(), name='login'),
-    url('logout/', LogOutView.as_view(), name='logout'),
+    url('logout/', views.LogOutView.as_view(), name='logout'),
     url('password_change/', auth_views.PasswordChangeView.as_view(),
         name='password_change'),
     url('password_change/done/', auth_views.PasswordChangeDoneView.as_view(),
