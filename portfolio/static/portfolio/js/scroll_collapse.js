@@ -10,10 +10,16 @@
 // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
 const keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
+/*
+ * Prevent default use of passed key
+ */
 function preventDefault(e) {
   e.preventDefault();
 }
 
+/*
+ * Prevent the use of scroll keys
+ */
 function preventDefaultForScrollKeys(e) {
   if (keys[e.keyCode]) {
     preventDefault(e);
