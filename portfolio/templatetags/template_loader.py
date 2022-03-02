@@ -10,19 +10,21 @@ register = template.Library()
 def lower(value):
     """
     Filter to transform text to lower characters only
-    :param value:
+    :param value: String
     :return: String
     """
     return value.lower()
 
 
 @register.simple_tag
-def large_header():
+def large_header(md, bio):
     """
     Tag to render the large_header template
+    :param md: String
+    :param bio: String
     :return: String
     """
-    return render_to_string('large_header.html')
+    return render_to_string('large_header.html', {'bio': bio, 'md': md})
 
 
 @register.simple_tag
