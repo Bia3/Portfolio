@@ -29,5 +29,6 @@ urlpatterns = [
     url('forms/addachievement', views.AddAchievementFormView.as_view(),
         name='add_achievement_form'),
     url('forms/add_skill', views.AddSkillFormView.as_view(), name='add_skill_form'),
-    url('forms/add_project', views.AddProjectFormView.as_view(), name='add_project_form'),
+    url('forms/add_project', views.AddProjectFormView.as_view(),
+        name='add_project_form'),
 ]
