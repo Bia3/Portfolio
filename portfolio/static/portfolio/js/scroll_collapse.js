@@ -24,6 +24,7 @@ function preventDefaultForScrollKeys(e) {
     preventDefault(e);
     return false;
   }
+  return true;
 }
 
 // modern Chrome requires { passive: false } when adding event
