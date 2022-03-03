@@ -11,11 +11,6 @@
   <body>
     <div id="page-container">
       <div id="content-wrap">
-        {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}"><div id="hidden-login"></div></a>
-        {% else %}
-            <a href="{% url 'login' %}"><div id="hidden-login"></div></a>
-        {% endif %}
         {% block header %}{% endblock %}
         {% block content %}{% endblock %}
         <div id="footer">{% block footer %}{% endblock %}</div>
