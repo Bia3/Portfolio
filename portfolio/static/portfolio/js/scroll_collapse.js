@@ -33,10 +33,7 @@ try {
     "test",
     null,
     Object.defineProperty({}, "passive", {
-      get: function () {
-        supportsPassive = true;
-        return true;
-      },
+      get: function () { supportsPassive = true; return true; },
     })
   );
 } catch (e) {}
