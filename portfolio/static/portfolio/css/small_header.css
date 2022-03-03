@@ -21,18 +21,18 @@
   justify-content: flex-end;
 }
 
-/*.nav-bar a {*/
-/*    color: var(--foreground2);*/
-/*    cursor: pointer;*/
-/*    text-decoration: none;*/
-/*    text-align: left;*/
-/*    text-indent: 0;*/
-/*}*/
+.nav-bar a {
+  color: var(--foreground2);
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  text-indent: 0;
+}
 
-/*.nav-bar a:hover {*/
-/*    color: var(--heighlight2);*/
-/*}*/
+.nav-bar a:hover {
+  color: var(--heighlight2);
+}
 
-/*.nav-bar a:visited {*/
-/*    color: var(--foreground2);*/
-/*}*/
+.nav-bar a:visited {
+  color: var(--foreground2);
+}
