@@ -34,7 +34,7 @@ try {
     "test",
     null,
     Object.defineProperty({}, "passive", {
-      get: function () { supportsPassive = true; return true; },
+      get() { supportsPassive = true; return true; },
     })
   );
 } catch (e) { console.log(e.textContent) }
