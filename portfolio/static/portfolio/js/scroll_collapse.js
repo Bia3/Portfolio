@@ -36,7 +36,7 @@ try {
       get: function () { supportsPassive = true; return true; },
     })
   );
-} catch (e) {}
+} catch (e) { console.log(e.textContent) }
 
 const wheelOpt = supportsPassive ? { passive: false } : false;
 const wheelEvent =
