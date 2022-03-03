@@ -68,6 +68,7 @@ function enableScroll() {
 // on scroll
 document.addEventListener("scroll", () => {
   if (collapse_header){
+    window.scrollTo({top: 0, behavior: 'smooth'});
     setTimeout(() => {
       setTimeout(() => {
         document.querySelector("#StandardHeader").classList.add("visible");
