@@ -34,10 +34,15 @@ try {
     "test",
     null,
     Object.defineProperty({}, "passive", {
-      get() { supportsPassive = true; return true; },
+      get() {
+        supportsPassive = true;
+        return true;
+      },
     })
   );
-} catch (e) { console.log(e.textContent) }
+} catch (e) {
+  console.log(e.textContent);
+}
 
 const wheelOpt = supportsPassive ? { passive: false } : false;
 const wheelEvent =
@@ -65,8 +70,8 @@ function enableScroll() {
 
 // on scroll
 document.addEventListener("scroll", () => {
-  if (collapse_header){
-    window.scrollTo({top: 0, behavior: 'smooth'});
+  if (collapse_header) {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     setTimeout(() => {
       setTimeout(() => {
         document.querySelector("#StandardHeader").classList.add("visible");
