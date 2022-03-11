@@ -1,0 +1,25 @@
+{% load static %}
+
+<style>
+  body {
+    grid-template-rows: 60px 1fr 60px;
+    justify-items: center;
+    align-items: start;
+    grid-gap: 20px;
+  }
+</style>
+<div id="StandardHeader" class="standard_header">
+  <nav class="home standard_nav">
+    <a href="/"><span>Home</span></a>
+  </nav>
+  <nav class="right standard_nav">
+    <a href=""><span>Resume</span></a>
+    <a href=""><span>Blog</span></a>
+    <a href=""><span>Projects</span></a>
+    {% if user.is_authenticated %}
+      <a href="{% url 'logout' %}"><span>Logout</span></a>
+    {% else %}
+      <a href="{% url 'login' %}"><span>Login</span></a>
+    {% endif %}
+  </nav>
+</div>

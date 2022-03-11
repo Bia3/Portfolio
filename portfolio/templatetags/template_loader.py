@@ -33,7 +33,7 @@ def standard_header():
     Tag to render the header template
     :return: String
     """
-    return render_to_string('header.html')
+    return render_to_string('standard_header.html')
 
 
 @register.simple_tag

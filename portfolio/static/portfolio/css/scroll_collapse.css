@@ -21,7 +21,7 @@
 }
 
 #StandardHeader.visible {
-  display: block;
+  display: grid;
 }
 
 #StandardHeader.show {

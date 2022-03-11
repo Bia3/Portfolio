@@ -1,0 +1,57 @@
+.standard_header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+  height: 70px;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.standard_header.header {
+  height: 60px;
+  width: 100%;
+  align-self: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: block;
+}
+
+.standard_header .standard_nav {
+}
+
+.standard_nav a {
+  color: var(--foreground2);
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  text-indent: 0;
+}
+
+.standard_nav a:hover {
+  color: var(--heighlight2);
+}
+
+.standard_nav a:visited {
+  color: var(--foreground2);
+}
+
+.standard_nav.right {
+  justify-self: end;
+  margin-right: 40px;
+}
+
+.standard_nav.right span {
+  margin-left: 20px;
+}
+
+.standard_nav.home {
+  justify-self: start;
+  margin-left: 40px;
+}
+
+.standard_nav .active {
+
+}
