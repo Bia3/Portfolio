@@ -25,7 +25,7 @@ def svg_by_name(svg_name):
             result = finders.find(f'portfolio/svgs/{fname}')
             if result:
                 with open(result, 'r') as file:
-                   data = file.read()
+                    data = file.read()
                 return mark_safe(f'<span>{data}</span>')
         except IOError:
             return mark_safe(f'<span>Unable to find SVG<br />{result}</span>')
