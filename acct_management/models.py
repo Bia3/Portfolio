@@ -13,32 +13,32 @@ class ContactCard(models.Model):
     phone
     """
     id = models.UUIDField(
-        primary_key = True,
-        default = uuid.uuid4,
-        editable = False
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
     )
-    user = models.ForeignKey(User, on_delete = models.CASCADE)
-    website = models.CharField(max_length = 250)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    website = models.CharField(max_length=250)
     # phone = models.CharField(max_length = 20)
 
 
 class Bio(models.Model):
     """A paragraph about the User"""
     id = models.UUIDField(
-        primary_key = True,
-        default = uuid.uuid4,
-        editable = False
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
     )
-    user = models.ForeignKey(User, on_delete = models.CASCADE)
-    profession = models.CharField(max_length = 250)
-    copy = MarkdownxField(max_length = 3000)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    profession = models.CharField(max_length=250)
+    copy = MarkdownxField(max_length=3000)
 
 
 class Address(models.Model):
     """"""
     id = models.UUIDField(
-        primar_key = True,
-        default = uuid.uuid4,
-        editable = False
+        primar_key=True,
+        default=uuid.uuid4,
+        editable=False
     )
-    contact_card = models.ForeignKey(ContactCard, on_delete = models.CASCADE)
+    contact_card = models.ForeignKey(ContactCard, on_delete=models.CASCADE)
