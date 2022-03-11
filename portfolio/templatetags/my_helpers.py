@@ -1,12 +1,8 @@
-import os
 from django import template
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
-from Portfolio.settings import STATIC_ROOT
 from django.contrib.staticfiles import finders
-from django.templatetags.static import static
-
 from ..models import Svg
 
 register = template.Library()
@@ -24,7 +20,6 @@ def svg_by_name(svg_name):
         svg = Svg.objects.get(name=svg_name)
         return mark_safe("{}".format(svg.data))
     except Svg.DoesNotExist:
-        print(f'attempting to open file at: ../static/portfolio/css/{svg_name}')
         try:
             fname = f'{svg_name}.svg'
             result = finders.find(f'portfolio/svgs/{fname}')
