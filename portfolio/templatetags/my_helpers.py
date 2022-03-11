@@ -24,13 +24,14 @@ def svg_by_name(svg_name):
         svg = Svg.objects.get(name=svg_name)
         return mark_safe("{}".format(svg.data))
     except Svg.DoesNotExist:
-        print(f'attempting to open file at: ../static/portfolio/css/{svg_name}')
+        print(
+            f'attempting to open file at: ../static/portfolio/css/{svg_name}')
         try:
             fname = f'{svg_name}.svg'
             result = finders.find(f'portfolio/svgs/{fname}')
             if result:
                 with open(result, 'r') as file:
-                   data = file.read()
+                    data = file.read()
                 return mark_safe(f'<span>{data}</span>')
         except IOError:
             return mark_safe(f'<span>Unable to find SVG<br />{result}</span>')
