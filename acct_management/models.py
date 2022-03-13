@@ -26,7 +26,7 @@ class Bio(models.Model):
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     profession = models.CharField(max_length=250)
-    copy = MarkdownxField(max_length=3000)
+    copy = MarkdownxField(max_length=500)
 
 
 class Address(models.Model):
