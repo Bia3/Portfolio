@@ -36,7 +36,8 @@ class Address(models.Model):
         default=uuid.uuid4,
         editable=False
     )
-    contact_card = models.ForeignKey(ContactCard, on_delete=models.CASCADE, unique=True)
+    contact_card = models.ForeignKey(
+        ContactCard, on_delete=models.CASCADE, unique=True)
     street_one = secured_fields.EncryptedCharField(max_length=250)
     street_two = secured_fields.EncryptedCharField(max_length=250)
     city = secured_fields.EncryptedCharField(max_length=180)
