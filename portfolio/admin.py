@@ -1,39 +1,64 @@
 from django.contrib import admin
 from markdownx.admin import MarkdownxModelAdmin
-from .models import Job, CurriculumVitae, Resume, Project, Skill, Bio,\
-    Responsibility, Section, ContactCard, School, Accomplishment, Certificate, \
-    File, CodeSnippet, ProjectSection, Svg, Achievement
-
-
-@admin.register(Svg)
-class SvgAdmin(admin.ModelAdmin):
-    """Display settings for the Svg model on the Admin page"""
-
-    list_display = ('name', )
-    fieldsets = [
-        (None, {'fields': ['name', 'data']}),
-    ]
+from .models import CurriculumVitae, Resume, Project, Skill, WorkExperience, \
+    Education, Responsibility, Course, CourseWork, Achievement
 
 
 @admin.register(Skill)
 class SkillAdmin(MarkdownxModelAdmin):
     """Display settings for the Skill model on the Admin page"""
 
-    list_display = ('name', )
+    list_display = ('title', 'id')
 
 
-admin.site.register(Responsibility, MarkdownxModelAdmin)
-admin.site.register(Accomplishment, MarkdownxModelAdmin)
-admin.site.register(Job, MarkdownxModelAdmin)
-admin.site.register(School, MarkdownxModelAdmin)
-admin.site.register(Section, MarkdownxModelAdmin)
-admin.site.register(Certificate, MarkdownxModelAdmin)
-admin.site.register(Resume, MarkdownxModelAdmin)
-admin.site.register(File)
-admin.site.register(CodeSnippet)
-admin.site.register(ProjectSection)
+@admin.register(Resume)
+class ResumeAdmin(admin.ModelAdmin):
+    """Display settings for the Resume model on the Admin page"""
+
+    list_display = ('id', )
+
+
+@admin.register(CurriculumVitae)
+class CurriculumVitaeAdmin(admin.ModelAdmin):
+    """Display settings for the CurriculumVitae model on the Admin page"""
+
+    list_display = ('id', )
+
+
+@admin.register(Responsibility)
+class ResponsibilityAdmin(MarkdownxModelAdmin):
+    """Display settings for the Responsibility model on the Admin page"""
+
+    list_display = ('id', )
+
+
+@admin.register(WorkExperience)
+class WorkExperienceAdmin(MarkdownxModelAdmin):
+    """Display settings for the WorkExperience model on the Admin page"""
+
+    list_display = ('id', )
+
+
+@admin.register(Education)
+class EducationAdmin(MarkdownxModelAdmin):
+    """Display settings for the Education model on the Admin page"""
+
+    list_display = ('id', )
+
+
+@admin.register(Course)
+class CourseAdmin(MarkdownxModelAdmin):
+    """Display settings for the Course model on the Admin page"""
+
+    list_display = ('id', )
+
+
+@admin.register(CourseWork)
+class CourseWorkAdmin(MarkdownxModelAdmin):
+    """Display settings for the CourseWork model on the Admin page"""
+
+    list_display = ('id', )
+
+
 admin.site.register(Project, MarkdownxModelAdmin)
-admin.site.register(CurriculumVitae, MarkdownxModelAdmin)
-admin.site.register(Bio, MarkdownxModelAdmin)
-admin.site.register(ContactCard)
 admin.site.register(Achievement)
