@@ -60,5 +60,15 @@ class CourseWorkAdmin(MarkdownxModelAdmin):
     list_display = ('id', )
 
 
-admin.site.register(Project, MarkdownxModelAdmin)
-admin.site.register(Achievement)
+@admin.register(Project)
+class ProjectAdmin(MarkdownxModelAdmin):
+    """Display settings for the Project model on the Admin page"""
+
+    list_display = ('id', )
+
+
+@admin.register(Achievement)
+class AchievmentAdmin(admin.ModelAdmin):
+    """Display settings for the Achievement model on the Admin Page"""
+
+    list_display = ('id', )
