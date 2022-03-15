@@ -100,7 +100,7 @@ class WorkExperience(models.Model):
 
 
 class Education(models.Model):
-    """"""
+    """An educational institute or certificate attended and achieved """
 
     id = models.UUIDField(
         primary_key=True,
@@ -157,7 +157,7 @@ class Achievement(models.Model):
 
 
 class Course(models.Model):
-    """"""
+    """A course taken through an educational institute"""
 
     id = models.UUIDField(
         primary_key=True,
@@ -174,7 +174,7 @@ class Course(models.Model):
 
 
 class CourseWork(models.Model):
-    """"""
+    """An assignment or project created as a part of a Course"""
 
     id = models.UUIDField(
         primary_key=True,
