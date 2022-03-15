@@ -127,7 +127,8 @@ class Responsibility(models.Model):
         default=uuid.uuid4,
         editable=False,
     )
-    work_experience = models.ForeignKey(WorkExperience, on_delete=models.CASCADE)
+    work_experience = models.ForeignKey(
+        WorkExperience, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     short_summary = models.CharField(max_length=250)
     summary = models.TextField(max_length=500)

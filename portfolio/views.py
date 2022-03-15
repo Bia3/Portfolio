@@ -46,7 +46,8 @@ class HomeView(View):
 
     def __init__(self, **kwargs):
         super().__init__()
-        self.main_user = User.objects.filter(groups__name__contains='primary_account').first()
+        self.main_user = User.objects.filter(
+            groups__name__contains='primary_account').first()
 
     def get(self, request, *args, **kwargs):
         """
