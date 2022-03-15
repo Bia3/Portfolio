@@ -3,7 +3,6 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
 from django.contrib.staticfiles import finders
-from ..models import Svg
 
 register = template.Library()
 
@@ -17,18 +16,14 @@ def svg_by_name(svg_name):
     """
     # ToDo: This tag needs review for possible cross site scripting issues
     try:
-        svg = Svg.objects.get(name=svg_name)
-        return mark_safe("{}".format(svg.data))
-    except Svg.DoesNotExist:
-        try:
-            fname = f'{svg_name}.svg'
-            result = finders.find(f'portfolio/svgs/{fname}')
-            if result:
-                with open(result, 'r') as file:
-                   data = file.read()
-                return mark_safe(f'<span>{data}</span>')
-        except IOError:
-            return mark_safe(f'<span>Unable to find SVG<br />{result}</span>')
+        f_name = f'{svg_name}.svg'
+        result = finders.find(f'portfolio/svgs/{f_name}')
+        if result:
+            with open(result, 'r') as file:
+                data = file.read()
+            return mark_safe(f'<span>{data}</span>')
+    except IOError:
+        return 'Unable to find SVG'
 
 
 @register.simple_tag

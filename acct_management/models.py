@@ -7,6 +7,7 @@ import secured_fields
 
 class ContactCard(models.Model):
     """Model for a contact card that has a one to many relationship with User."""
+
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -19,6 +20,7 @@ class ContactCard(models.Model):
 
 class Bio(models.Model):
     """A paragraph about the User"""
+
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -31,6 +33,7 @@ class Bio(models.Model):
 
 class Address(models.Model):
     """A set of protected fields for downloaded versions of the CV and Resume"""
+
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -46,6 +49,7 @@ class Address(models.Model):
 
 class GitHub(models.Model):
     """GitHub profile information"""
+
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -58,6 +62,7 @@ class GitHub(models.Model):
 
 class Keybase(models.Model):
     """Keybase profile information"""
+
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -70,6 +75,7 @@ class Keybase(models.Model):
 
 class Codewars(models.Model):
     """Codewars profile information"""
+
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -82,6 +88,7 @@ class Codewars(models.Model):
 
 class LinkedIn(models.Model):
     """LinkedIn profile information"""
+
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -94,6 +101,7 @@ class LinkedIn(models.Model):
 
 class HackTheBox(models.Model):
     """HackTheBox profile information"""
+
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -106,6 +114,7 @@ class HackTheBox(models.Model):
 
 class CodePen(models.Model):
     """CodePen profile information"""
+
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,

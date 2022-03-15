@@ -2,13 +2,13 @@ import string
 
 from django.shortcuts import render
 from django.views import View
+from django.contrib.auth.models import User
 
 from .forms import AchievementForm, SkillForm, ProjectForm
-from .models import ContactCard,\
-    Resume,\
+from acct_management.models import Bio, ContactCard
+from .models import Resume,\
     CurriculumVitae,\
     Project,\
-    Bio,\
     Skill,\
     Achievement
 from markdownx.utils import markdownify
@@ -44,6 +44,10 @@ class HomeView(View):
     achieves_raw = []
     achieves = []
 
+    def __init__(self, **kwargs):
+        super().__init__()
+        self.main_user = User.objects.filter(groups__name__contains='primary_account').first()
+
     def get(self, request, *args, **kwargs):
         """
         Function to handle GET requests to the Home Page
@@ -52,16 +56,19 @@ class HomeView(View):
         :param kwargs:
         :return:
         """
-        self.bio = Bio.objects.first()
+
+        print(self.main_user)
+        self.bio = Bio.objects.filter(user=self.main_user).first()
         self.contact = ContactCard.objects.first()
         self.projects = Project.objects.all()
         self.skills_raw = Skill.objects.all()
         self.skills = []
-        self.achieves_raw = Achievement.objects.all().order_by('order')
+        self.achieves_raw = Achievement.objects.all()
+        # self.achieves_raw = Achievement.objects.all().order_by('completed')
         self.achieves = []
 
         if self.bio:
-            self.md = markdownify(self.bio.mark_down)
+            self.md = markdownify(self.bio.copy)
 
         if len(self.skills_raw) >= 1:
             for skill in self.skills_raw:

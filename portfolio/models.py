@@ -150,7 +150,7 @@ class Achievement(models.Model):
     short_summary = models.CharField(max_length=250)
     summary = models.TextField(max_length=500)
     copy = MarkdownxField(max_length=3000)
-    completed = models.DateField
+    completed = models.DateField()
 
     def __str__(self):
         return self.title
