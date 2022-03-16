@@ -20,6 +20,9 @@ class ContactCard(models.Model):
     website = models.CharField(max_length=250)
     phone = secured_fields.EncryptedCharField(max_length=20)
 
+    def __str__(self):
+        return f'{self.user.get_full_name()} Contact information'
+
 
 class Bio(models.Model):
     """A paragraph about the User"""
@@ -32,6 +35,9 @@ class Bio(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profession = models.CharField(max_length=250)
     copy = MarkdownxField(max_length=500)
+
+    def __str__(self):
+        return f'{self.profession} | {self.user.first_name}'
 
 
 class Address(models.Model):
@@ -49,6 +55,9 @@ class Address(models.Model):
     state = secured_fields.EncryptedCharField(max_length=180)
     zip = secured_fields.EncryptedCharField(max_length=10)
 
+    def __str__(self):
+        return f'Address for: {self.contact_card.user.get_full_name()}'
+
 
 class GitHub(models.Model):
     """GitHub profile information"""
@@ -61,6 +70,9 @@ class GitHub(models.Model):
     contact_card = models.ForeignKey(ContactCard, on_delete=models.CASCADE)
     username = models.CharField(max_length=180)
     link = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.username
 
 
 class Keybase(models.Model):
@@ -75,6 +87,9 @@ class Keybase(models.Model):
     username = models.CharField(max_length=180)
     link = models.CharField(max_length=250)
 
+    def __str__(self):
+        return self.username
+
 
 class Codewars(models.Model):
     """Codewars profile information"""
@@ -87,6 +102,9 @@ class Codewars(models.Model):
     contact_card = models.ForeignKey(ContactCard, on_delete=models.CASCADE)
     username = models.CharField(max_length=180)
     link = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.username
 
 
 class LinkedIn(models.Model):
@@ -101,6 +119,9 @@ class LinkedIn(models.Model):
     username = models.CharField(max_length=180)
     link = models.CharField(max_length=250)
 
+    def __str__(self):
+        return self.username
+
 
 class HackTheBox(models.Model):
     """HackTheBox profile information"""
@@ -114,6 +135,9 @@ class HackTheBox(models.Model):
     username = models.CharField(max_length=180)
     link = models.CharField(max_length=250)
 
+    def __str__(self):
+        return self.username
+
 
 class CodePen(models.Model):
     """CodePen profile information"""
@@ -126,3 +150,6 @@ class CodePen(models.Model):
     contact_card = models.ForeignKey(ContactCard, on_delete=models.CASCADE)
     username = models.CharField(max_length=180)
     link = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.username
