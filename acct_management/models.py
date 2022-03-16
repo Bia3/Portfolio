@@ -7,7 +7,7 @@ import secured_fields
 
 class ContactCard(models.Model):
     """
-    Model for a contact card that has a 
+    Model for a contact card that has a
     one to one relationship with User.
     """
 
@@ -41,7 +41,10 @@ class Bio(models.Model):
 
 
 class Address(models.Model):
-    """A set of protected fields for downloaded versions of the CV and Resume"""
+    """
+    A set of protected fields for downloaded
+    versions of the CV and Resume
+    """
 
     id = models.UUIDField(
         primary_key=True,
