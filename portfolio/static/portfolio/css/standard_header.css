@@ -3,7 +3,7 @@
   grid-template-columns: 1fr 1fr;
   place-items: center;
   height: 70px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -49,5 +49,4 @@
 }
 
 .standard_nav .active {
-
 }
