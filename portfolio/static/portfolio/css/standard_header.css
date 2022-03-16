@@ -34,10 +34,6 @@
   color: var(--heighlight2);
 }
 
-.standard_nav a:visited {
-  color: var(--foreground2);
-}
-
 .standard_nav.right {
   justify-self: end;
   margin-right: 40px;

@@ -351,20 +351,6 @@
   justify-content: center;
 }
 
-.resumeGrid {
-  margin: 5%;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  height: 90%;
-  width: 90%;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: auto;
-  grid-template-areas: "sidebar body";
-}
-
 .projectGrid {
   margin: 5%;
   top: 0;
