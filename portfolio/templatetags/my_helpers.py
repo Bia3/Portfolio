@@ -23,7 +23,7 @@ def svg_by_name(svg_name):
                 data = file.read()
             return mark_safe(f'<span>{data}</span>')
     except IOError:
-        return 'Unable to find SVG'
+        return mark_safe('<span>Unable to find SVG</span>')
 
 
 @register.simple_tag
