@@ -100,7 +100,7 @@ class WorkExperience(models.Model):
 
 
 class Education(models.Model):
-    """An educational institute or certificate attended and achieved """
+    """An educational institute or certificate attended and achieved"""
 
     id = models.UUIDField(
         primary_key=True,
