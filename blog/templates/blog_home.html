@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% load template_loader %}
+{% block title %}Sean's Blog{% endblock %}
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'portfolio/css/standard_header.css' %}" />
+{% endblock %}
+{% block page_js %}
+{% endblock %}
+{% block header %}
+  {% standard_header %}
+{% endblock %}
+{% block content %}
+{% endblock %}
+{% block footer %}
+  {% standard_footer %}
+{% endblock %}

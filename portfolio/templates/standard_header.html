@@ -15,7 +15,7 @@
   <nav class="right standard_nav">
     <a href="{% url 'resume' %}"><span>Resume</span></a>
     <a href="{% url 'curriculum_vitae' %}"><span>CV</span></a>
-    <a href=""><span>Blog</span></a>
+    <a href="{% url 'blog_home' %}"><span>Blog</span></a>
     <a href="{% url 'projects' %}"><span>Projects</span></a>
     {% if user.is_authenticated %}
       <a href="{% url 'logout' %}"><span>Logout</span></a>

@@ -18,6 +18,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from portfolio import views
 from portfolio import urls as portfolio_urls
+from blog import urls as blog_urls
 
 
 handler404 = 'portfolio.views.handler404'
@@ -34,4 +35,5 @@ urlpatterns = [
     url('forms/add_skill', views.AddSkillFormView.as_view(), name='add_skill_form'),
     url('forms/add_project', views.AddProjectFormView.as_view(),
         name='add_project_form'),
+    url('blog/', include(blog_urls)),
 ]
