@@ -11,27 +11,29 @@
 <link rel="stylesheet" href="{% static 'portfolio/css/large_header.css' %}" />
 <link rel="stylesheet" href="{% static 'portfolio/css/standard_header.css' %}" />
 <link rel="stylesheet" href="{% static 'portfolio/css/scroll_collapse.css' %}" />
-{% endblock %} {% block page_js %}
+<link rel="stylesheet" href="{% static 'portfolio/css/content_area.css' %}" />
+{% endblock %}
+{% block page_js %}
 <script
   type="application/javascript"
-  src="{% static 'portfolio/js/readmore.js' %}"
-></script>
+  src="{% static 'portfolio/js/readmore.js' %}">
+  </script>
 <script
   type="application/javascript"
-  src="{% static 'portfolio/js/tabs.js' %}"
-></script>
+  src="{% static 'portfolio/js/tabs.js' %}">
+  </script>
 <script
   type="application/javascript"
-  src="{% static 'portfolio/js/form_frame_functions.js' %}"
-></script>
+  src="{% static 'portfolio/js/form_frame_functions.js' %}">
+  </script>
 <script
   type="application/javascript"
   src="{% static 'portfolio/js/large_header.js' %}">
   </script>
 <script
     type="application/javascript"
-    src="{% static 'portfolio/js/scroll_collapse.js' %}">    
-</script>
+    src="{% static 'portfolio/js/scroll_collapse.js' %}">
+    </script>
 {% endblock %}
 {% block header %}
 {% large_header md bio %}
@@ -47,7 +49,7 @@
     </div>
     <div class="title">
       <div class="skill title" onclick="onClick(this)">Skills</div>
-      <div class="project title" onclick="onClick(this)">Projects</div>
+      <div class="project title" onclick="onClick(this)">Achievments</div>
     </div>
     <div class="rule"></div>
     {% if skills %}

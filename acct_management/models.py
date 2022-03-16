@@ -6,14 +6,17 @@ import secured_fields
 
 
 class ContactCard(models.Model):
-    """Model for a contact card that has a one to many relationship with User."""
+    """
+    Model for a contact card that has a 
+    one to one relationship with User.
+    """
 
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
         editable=False
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     website = models.CharField(max_length=250)
     phone = secured_fields.EncryptedCharField(max_length=20)
 
@@ -26,7 +29,7 @@ class Bio(models.Model):
         default=uuid.uuid4,
         editable=False
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     profession = models.CharField(max_length=250)
     copy = MarkdownxField(max_length=500)
 
@@ -39,7 +42,7 @@ class Address(models.Model):
         default=uuid.uuid4,
         editable=False
     )
-    contact_card = models.ForeignKey(ContactCard, on_delete=models.CASCADE, unique=True)
+    contact_card = models.OneToOneField(ContactCard, on_delete=models.CASCADE)
     street_one = secured_fields.EncryptedCharField(max_length=250)
     street_two = secured_fields.EncryptedCharField(max_length=250)
     city = secured_fields.EncryptedCharField(max_length=180)
