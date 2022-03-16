@@ -19,6 +19,7 @@ from . import views
 
 urlpatterns = [
     url('resume/', views.ResumeView.as_view(), name="resume"),
-    url('curriculunvitae/', views.CurriculumVitaeView.as_view(), name="curriculum_vitae"),
+    url('curriculunvitae/', views.CurriculumVitaeView.as_view(),
+        name="curriculum_vitae"),
     url('projects/', views.ProjectsView.as_view(), name="projects")
 ]
