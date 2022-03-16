@@ -1,6 +1,10 @@
 {% extends "base.html" %}
+{% load static %}
 {% load template_loader %}
 {% block title %}Resume{% endblock %}
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'portfolio/css/standard_header.css' %}" />
+{% endblock %}
 {% block header %}{% standard_header %}{% endblock %}
 {% block content %}
 <div class="work-history">
@@ -24,4 +28,4 @@
   {% endif %}
 </div>
 {% endblock %}
-{% block footer %}{% standard_footer %}{% endblock %}
+{% block footer %}{% large_footer %}{% endblock %}

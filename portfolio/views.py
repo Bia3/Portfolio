@@ -58,12 +58,9 @@ class HomeView(View):
         :return:
         """
         self.bio = Bio.objects.filter(user=self.main_user).first()
-        self.contact = ContactCard.objects.first()
-        self.projects = Project.objects.all()
         self.skills_raw = Skill.objects.all()
         self.skills = []
-        self.achieves_raw = Achievement.objects.all()
-        # self.achieves_raw = Achievement.objects.all().order_by('completed')
+        self.achieves_raw = Achievement.objects.order_by('-completed')
         self.achieves = []
 
         if self.bio:
@@ -92,7 +89,6 @@ class HomeView(View):
             return render(request, 'home.html', {
                 'bio': self.bio,
                 'md': self.md,
-                'contact': self.contact,
                 'projects': self.projects,
                 'skills': self.skills,
                 'achieves': self.achieves,
@@ -104,7 +100,6 @@ class HomeView(View):
         return render(request, 'home.html', {
             'bio': self.bio,
             'md': self.md,
-            'contact': self.contact,
             'projects': self.projects,
             'skills': self.skills,
             'achieves': self.achieves,

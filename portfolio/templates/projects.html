@@ -3,7 +3,9 @@
 {% load markdownify %}
 {% load template_loader %}
 {% block title %}Projects{% endblock %}
-{% block page_css %}{% endblock %}
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'portfolio/css/standard_header.css' %}" />
+{% endblock %}
 {% block header %}{% standard_header %}{% endblock %}
 {% block content %}
 {% if projects %}
@@ -15,4 +17,4 @@
     {% endfor %}
 {% endif %}
 {% endblock %}
-{% block footer %}{% standard_footer %}{% endblock %}
+{% block footer %}{% large_footer %}{% endblock %}
