@@ -57,8 +57,6 @@ class HomeView(View):
         :param kwargs:
         :return:
         """
-
-        print(self.main_user)
         self.bio = Bio.objects.filter(user=self.main_user).first()
         self.contact = ContactCard.objects.first()
         self.projects = Project.objects.all()
