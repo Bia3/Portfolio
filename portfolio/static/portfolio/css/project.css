@@ -1,17 +1,11 @@
-.higlight {
-  color: #424242;
-  max-height: 18px;
+.project_container {
+    display: grid;
+    place-items: center;
 }
 
-.sidebar-grid {
-  justify-content: center;
-  grid-auto-rows: 18px;
-  display: grid;
-  grid-template-columns: 0.8fr;
-  grid-gap: 42px;
-  padding-top: 7vh;
-}
-
-.higlight:hover {
-  color: #6c6c6c;
+.project_body{
+    width: 955px;
+    min-height: 100vh;
+    max-height: 100%;
+    background-color: white;
 }

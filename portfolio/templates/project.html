@@ -1,7 +1,16 @@
 {% extends "base.html" %}
+{% load static %}
 {% load template_loader %}
 {% block title %}{% endblock %}
-{% block page_css %}{% endblock %}
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'portfolio/css/standard_header.css' %}" />
+  <link rel="stylesheet" href="{% static 'portfolio/css/project.css' %}" />
+{% endblock %}
 {% block header %} {% standard_header %} {% endblock %}
-{% block content %}{% endblock %}
+{% block content %}
+  <div class="project_container">
+    <div class="project_body">
+    </div>
+  </div>
+{% endblock %}
 {% block footer %}{% standard_footer %}{% endblock %}
