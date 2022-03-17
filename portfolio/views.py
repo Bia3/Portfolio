@@ -301,6 +301,11 @@ class ResumeView(View):
 
     resume = ""
 
+    def __init__(self, **kwargs):
+        super().__init__()
+        self.main_user = User.objects.filter(
+            groups__name__contains='primary_account').first()
+
     def get(self, request, *args, **kwargs):
         """
         Function to handle Get requests for the Resume Page
@@ -311,7 +316,11 @@ class ResumeView(View):
         """
         self.resume = Resume.objects.first()
         return render(request, 'resume.html', {
-            'resume': self.resume
+            'resume': self.resume,
+            'main_user_name': self.main_user.get_full_name(),
+            'email': self.main_user.email,
+            'phone': '(555) 555-5555',
+            'website': 'https://www.rossdev.io'
         })
 
 

@@ -8,8 +8,22 @@
 {% endblock %}
 {% block header %}{% standard_header %}{% endblock %}
 {% block content %}
-  <div class="resume_container">
-    <div class="resume_body">
+  <div class="resume container">
+    <div class="resume body">
+      <div class="resume header">
+        <div class="header_text">
+          {{ main_user_name }}
+        </div>
+        <svg class="horizontal_rule" viewBox="0 0 859 2" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-width="2" d="M0 1H859"></path>
+        </svg>
+      </div>
+      <div class="resume sidebar">
+        <span>{{ phone }}</span>
+        <span>{{ email }}</span>
+        <span>{{ website }}</span>
+      </div>
+      <div class="resume main content"></div>
     </div>
   </div>
 {% endblock %}

@@ -1,11 +1,62 @@
-.resume_container {
+:root {
+    --documentAccent1: #357CA2;
+    --documentFont1: #9B9B9B;
+}
+
+.resume.container {
     display: grid;
     place-items: center;
 }
 
-.resume_body{
+.resume.body {
     width: 955px;
     min-height: 100vh;
     max-height: 100%;
     background-color: white;
+    display: grid;
+    grid-template-rows: 105px 1fr;
+    grid-template-columns: 244px 1fr;
+    grid-template-areas: 'header header' 'sidebar main_content';
+}
+
+.resume.header {
+    display: grid;
+    grid-template-rows: 99px 6px;
+    grid-area: header;
+    margin: 0 46px 0;
+}
+
+.header_text {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 42px;
+    color: var(--documentAccent1);
+    align-self: end;
+    margin-left: 14px;
+}
+
+.horizontal_rule {
+    stroke: var(--documentAccent1);
+}
+
+.resume.sidebar {
+    grid-area: sidebar;
+    color: var(--documentFont1);
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: 22px;
+    grid-row-gap: 11px;
+    margin-left: 60px;
+    margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.resume.main.content {
+    grid-area: main_content;
 }
