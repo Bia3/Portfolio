@@ -1,13 +1,13 @@
 .cv_container {
-    display: grid;
-    place-items: center;
+  display: grid;
+  place-items: center;
 }
 
-.cv_body{
-    width: 955px;
-    min-height: 100vh;
-    max-height: 100%;
-    background-color: white;
+.cv_body {
+  width: 955px;
+  min-height: 100vh;
+  max-height: 100%;
+  background-color: white;
 }
 
 @media only screen and (max-width: 576px) {

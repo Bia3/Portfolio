@@ -1,11 +1,11 @@
 .resume_container {
-    display: grid;
-    place-items: center;
+  display: grid;
+  place-items: center;
 }
 
-.resume_body{
-    width: 955px;
-    min-height: 100vh;
-    max-height: 100%;
-    background-color: white;
+.resume_body {
+  width: 955px;
+  min-height: 100vh;
+  max-height: 100%;
+  background-color: white;
 }
