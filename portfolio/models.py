@@ -12,7 +12,7 @@ class Resume(models.Model):
         default=uuid.uuid4,
         editable=False,
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     summary = models.CharField(max_length=250)
 
     def __str__(self):
@@ -67,9 +67,9 @@ class Skill(models.Model):
         default=uuid.uuid4,
         editable=False,
     )
-    resume = models.ForeignKey(Resume, on_delete=models.CASCADE)
-    cv = models.ForeignKey(CurriculumVitae, on_delete=models.CASCADE)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    resume = models.ForeignKey(Resume, on_delete=models.CASCADE, blank=True, null=True)
+    cv = models.ForeignKey(CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(max_length=180)
     copy = MarkdownxField(max_length=3000)
     summary = models.CharField(max_length=250)
@@ -86,14 +86,14 @@ class WorkExperience(models.Model):
         default=uuid.uuid4,
         editable=False,
     )
-    resume = models.ForeignKey(Resume, on_delete=models.CASCADE)
-    cv = models.ForeignKey(CurriculumVitae, on_delete=models.CASCADE)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    resume = models.ForeignKey(Resume, on_delete=models.CASCADE, blank=True, null=True)
+    cv = models.ForeignKey(CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, blank=True, null=True)
     position = models.CharField(max_length=180)
     organization = models.CharField(max_length=180)
     summary = models.TextField(max_length=1000)
-    start = models.DateField
-    end = models.DateField
+    start = models.DateField()
+    end = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return f'{self.position}: {self.organization}'
@@ -112,8 +112,8 @@ class Education(models.Model):
     field_of_study = models.CharField(max_length=180)
     degree = models.CharField(max_length=180)
     institution = models.CharField(max_length=180)
-    start = models.DateField
-    end = models.DateField
+    start = models.DateField()
+    end = models.DateField()
 
     def __str__(self):
         return f'{self.degree}: {self.institution}'
@@ -145,8 +145,8 @@ class Achievement(models.Model):
         default=uuid.uuid4,
         editable=False,
     )
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    education = models.ForeignKey(Education, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, blank=True, null=True)
+    education = models.ForeignKey(Education, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(max_length=180)
     short_summary = models.CharField(max_length=250)
     summary = models.TextField(max_length=500)
@@ -168,7 +168,7 @@ class Course(models.Model):
     education = models.ForeignKey(Education, on_delete=models.CASCADE)
     title = models.CharField(max_length=180)
     summary = models.TextField(max_length=500)
-    end = models.DateField
+    end = models.DateField()
 
     def __str__(self):
         return self.title

@@ -314,7 +314,7 @@ class ResumeView(View):
         :param kwargs:
         :return:
         """
-        self.resume = Resume.objects.first()
+        self.resume = self.main_user.resume
         return render(request, 'resume.html', {
             'resume': self.resume,
             'main_user_name': self.main_user.get_full_name(),

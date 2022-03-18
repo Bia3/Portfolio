@@ -1,10 +1,45 @@
 :root {
     --documentAccent1: #357CA2;
-    --documentFont1: #9B9B9B;
+    --documentFont1: #010101;
+    --documentFont2: #9B9B9B;
+}
+
+.container {
+    display: grid;
+}
+
+.inner.container{
+    margin-left: 14px;
+}
+
+.dot {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: var(--documentFont1);
+}
+
+.title {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    color: var(--documentAccent1);
+}
+
+.block {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    color: var(--documentFont1);
+}
+
+.inner.container .block {
+    margin: 10px 50px 14px 20px;
 }
 
 .resume.container {
-    display: grid;
     place-items: center;
 }
 
@@ -43,7 +78,7 @@
 
 .resume.sidebar {
     grid-area: sidebar;
-    color: var(--documentFont1);
+    color: var(--documentFont2);
     display: grid;
     grid-auto-flow: row;
     grid-auto-rows: 22px;
@@ -59,4 +94,18 @@
 
 .resume.main.content {
     grid-area: main_content;
+}
+
+.skills.block {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.skills.block .skill {
+    display: inline-flex;
+    align-items: center;
+}
+
+.skill .dot {
+    margin-right: 6px;
 }

@@ -24,21 +24,33 @@
         <span>{{ website }}</span>
       </div>
       <div class="resume main content">
-          <div class="summary-container">
-              <div class="summary-title">Summary</div>
-              <div class="summary-block"></div>
+        <div class="summary inner container">
+          <div class="summary title">Summary</div>
+          <div class="summary block">{{ resume.summary }}</div>
+        </div>
+        <div class="skills inner container">
+          <div class="skills title">Technical Skills</div>
+          <div class="skills block">
+            {% for skill in resume.skill_set.all %}
+              <div class="skill">
+                <div class="dot"></div>
+                <div class="name">{{ skill.title }}</div>
+              </div>
+            {% endfor %}
           </div>
-          <div class="skills-container">
-              <div class="skills-title">Technical Skills</div>
-              <div class="skills-block"></div>
-          </div>
-          <div class="achievments-container">
-              <div class="achievments-title">Achievments</div>
-              <div class="achievments-block"></div>
-          </div>
-          <div class="work-experience-container">
-              <div class="work-experience-title">Work Experience</div>
-          </div>
+        </div>
+        <div class="achievments inner container">
+          <div class="achievments title">Achievments</div>
+          <div class="achievments block"></div>
+        </div>
+        <div class="work-experience inner container">
+          <div class="work-experience title">Work Experience</div>
+          <div class="work-experience block"></div>
+        </div>
+        <div class="education inner container">
+          <div class="education title">Education</div>
+          <div class="education block"></div>
+        </div>
       </div>
     </div>
   </div>
