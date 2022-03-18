@@ -67,9 +67,12 @@ class Skill(models.Model):
         default=uuid.uuid4,
         editable=False,
     )
-    resume = models.ForeignKey(Resume, on_delete=models.CASCADE, blank=True, null=True)
-    cv = models.ForeignKey(CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, blank=True, null=True)
+    resume = models.ForeignKey(
+        Resume, on_delete=models.CASCADE, blank=True, null=True)
+    cv = models.ForeignKey(
+        CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
+    project = models.ForeignKey(
+        Project, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(max_length=180)
     copy = MarkdownxField(max_length=3000)
     summary = models.CharField(max_length=250)
@@ -86,9 +89,12 @@ class WorkExperience(models.Model):
         default=uuid.uuid4,
         editable=False,
     )
-    resume = models.ForeignKey(Resume, on_delete=models.CASCADE, blank=True, null=True)
-    cv = models.ForeignKey(CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, blank=True, null=True)
+    resume = models.ForeignKey(
+        Resume, on_delete=models.CASCADE, blank=True, null=True)
+    cv = models.ForeignKey(
+        CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
+    project = models.ForeignKey(
+        Project, on_delete=models.CASCADE, blank=True, null=True)
     position = models.CharField(max_length=180)
     organization = models.CharField(max_length=180)
     summary = models.TextField(max_length=1000)
@@ -145,8 +151,10 @@ class Achievement(models.Model):
         default=uuid.uuid4,
         editable=False,
     )
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, blank=True, null=True)
-    education = models.ForeignKey(Education, on_delete=models.CASCADE, blank=True, null=True)
+    project = models.ForeignKey(
+        Project, on_delete=models.CASCADE, blank=True, null=True)
+    education = models.ForeignKey(
+        Education, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(max_length=180)
     short_summary = models.CharField(max_length=250)
     summary = models.TextField(max_length=500)

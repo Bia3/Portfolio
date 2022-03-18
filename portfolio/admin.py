@@ -92,7 +92,8 @@ class ResponsibilityAdmin(MarkdownxModelAdmin):
 class WorkExperienceAdmin(MarkdownxModelAdmin):
     """Display settings for the WorkExperience model on the Admin page"""
 
-    list_display = ('view_username', 'organization', 'position', 'start', 'end', 'id')
+    list_display = ('view_username', 'organization',
+                    'position', 'start', 'end', 'id')
 
     @staticmethod
     def view_username(obj):
