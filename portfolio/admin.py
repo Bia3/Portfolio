@@ -47,8 +47,28 @@ def username_from_skill(sk):
 def username_from_achievement(ach):
     if ach.project:
         return username_from_project(ach.project)
+    if ach.work_experience:
+        return username_from_work_experience(ach.work_experience)
     if ach.education:
         return username_from_education(ach.education)
+    return 'None'
+
+
+def username_from_course(cor):
+    if cor.education:
+        return username_from_education(cor.education)
+    return 'None'
+
+
+def username_from_course_work(cw):
+    if cw.course:
+        return username_from_course(cw.course)
+    return 'None'
+
+
+def username_from_responsibility(res):
+    if res.work_experience:
+        return username_from_work_experience(res.work_experience)
     return 'None'
 
 
@@ -80,12 +100,28 @@ class CurriculumVitaeAdmin(admin.ModelAdmin):
 
     list_display = ('id', )
 
+    @staticmethod
+    def view_username(obj):
+        return username_from_cv(obj)
+
 
 @admin.register(Responsibility)
 class ResponsibilityAdmin(MarkdownxModelAdmin):
     """Display settings for the Responsibility model on the Admin page"""
 
-    list_display = ('id', )
+    list_display = ('title', 'view_organization', 'view_position', 'view_username', 'id')
+
+    @staticmethod
+    def view_position(obj):
+        return obj.work_experience.position
+
+    @staticmethod
+    def view_organization(obj):
+        return obj.work_experience.organization
+
+    @staticmethod
+    def view_username(obj):
+        return username_from_responsibility(obj)
 
 
 @admin.register(WorkExperience)
@@ -103,7 +139,11 @@ class WorkExperienceAdmin(MarkdownxModelAdmin):
 class EducationAdmin(MarkdownxModelAdmin):
     """Display settings for the Education model on the Admin page"""
 
-    list_display = ('id', )
+    list_display = ('degree', 'institution', 'start', 'end', 'id')
+
+    @staticmethod
+    def view_username(obj):
+        return username_from_work_experience(obj)
 
 
 @admin.register(Course)
@@ -112,12 +152,20 @@ class CourseAdmin(MarkdownxModelAdmin):
 
     list_display = ('id', )
 
+    @staticmethod
+    def view_username(obj):
+        return username_from_course(obj)
+
 
 @admin.register(CourseWork)
 class CourseWorkAdmin(MarkdownxModelAdmin):
     """Display settings for the CourseWork model on the Admin page"""
 
     list_display = ('id', )
+
+    @staticmethod
+    def view_username(obj):
+        return username_from_course_work(obj)
 
 
 @admin.register(Project)
@@ -126,13 +174,17 @@ class ProjectAdmin(MarkdownxModelAdmin):
 
     list_display = ('id', )
 
+    @staticmethod
+    def view_username(obj):
+        return username_from_project(obj)
+
 
 @admin.register(Achievement)
-class AchievmentAdmin(admin.ModelAdmin):
+class AchievementAdmin(admin.ModelAdmin):
     """Display settings for the Achievement model on the Admin Page"""
 
     list_display = ('title', 'view_username', 'completed', 'id')
 
     @staticmethod
     def view_username(obj):
-        username_from_achievement(obj)
+        return username_from_achievement(obj)

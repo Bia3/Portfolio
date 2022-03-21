@@ -10,7 +10,7 @@ class AchievementForm(forms.ModelForm):
         """Meta Class to set up the Achievements Form"""
 
         model = Achievement
-        fields = ['title', 'summary', 'copy']
+        fields = ['title', 'summary', 'short_summary']
 
 
 class SkillForm(forms.Form):

@@ -3,6 +3,7 @@ import string
 from django.shortcuts import render
 from django.views import View
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 from .forms import AchievementForm, SkillForm, ProjectForm
 from acct_management.models import Bio, ContactCard
@@ -38,7 +39,6 @@ class HomeView(View):
     bio = ""
     contact = ""
     md = None
-    projects = ""
     skills_raw = []
     skills = []
     achieves_raw = []
@@ -70,17 +70,16 @@ class HomeView(View):
             for skill in self.skills_raw:
                 self.skills.append({
                     'id': skill.id,
-                    'name': skill.name,
-                    'description': markdownify(skill.description),
-                    'highlights': markdownify(skill.highlights)
+                    'name': skill.title,
+                    'description': skill.summary
                 })
 
         if len(self.skills_raw) >= 1:
             for achieve in self.achieves_raw:
                 self.achieves.append({
                     'id': achieve.id,
-                    'name': achieve.name,
-                    'description': markdownify(achieve.description)
+                    'name': achieve.title,
+                    'description': achieve.summary
                 })
         http_user = self.request.META['HTTP_USER_AGENT']
         http_user_clean = http_user.translate(
@@ -89,7 +88,6 @@ class HomeView(View):
             return render(request, 'home.html', {
                 'bio': self.bio,
                 'md': self.md,
-                'projects': self.projects,
                 'skills': self.skills,
                 'achieves': self.achieves,
                 'style': 'RossDevs/css/m_style.css',
@@ -100,7 +98,6 @@ class HomeView(View):
         return render(request, 'home.html', {
             'bio': self.bio,
             'md': self.md,
-            'projects': self.projects,
             'skills': self.skills,
             'achieves': self.achieves,
             'style': 'RossDevs/css/style.css',
@@ -300,6 +297,7 @@ class ResumeView(View):
     """Class based View for the Resume Page"""
 
     resume = ""
+    achievements = []
 
     def __init__(self, **kwargs):
         super().__init__()
@@ -315,8 +313,15 @@ class ResumeView(View):
         :return:
         """
         self.resume = self.main_user.resume
+        self.achievements = Achievement.objects.filter(
+            Q(project__user=self.main_user) |
+            Q(education__resume__user=self.main_user) |
+            Q(work_experience__resume__user=self.main_user)
+        )
+
         return render(request, 'resume.html', {
             'resume': self.resume,
+            'achievements': self.achievements,
             'main_user_name': self.main_user.get_full_name(),
             'email': self.main_user.email,
             'phone': '(555) 555-5555',
