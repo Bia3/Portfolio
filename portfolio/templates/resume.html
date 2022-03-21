@@ -39,17 +39,57 @@
             {% endfor %}
           </div>
         </div>
-        <div class="achievments inner container">
-          <div class="achievments title">Achievments</div>
-          <div class="achievments block"></div>
+        <div class="achievements inner container">
+          <div class="achievements title">Achievments</div>
+          <div class="achievements block">
+            {% for achievement in achievements %}
+              <div class="achievement">{{ achievement.short_summary }}</div>
+            {% endfor %}
+          </div>
         </div>
         <div class="work-experience inner container">
           <div class="work-experience title">Work Experience</div>
-          <div class="work-experience block"></div>
+          <div class="work-experience block">
+            {% for work_experience in resume.workexperience_set.all %}
+              <div class="work">
+                <div class="work head">
+                  <div class="position">{{ work_experience.position }}</div>
+                  <div class="long dash"></div>
+                  <div class="organization">{{ work_experience.organization }}</div>
+                  <div class="long dash"></div>
+                  <div class="start">{{ work_experience.start.year }}</div>
+                  <div class="dash"></div>
+                  {% if  work_experience.end %}
+                    <div class="end">{{ work_experience.end.year }}</div>
+                  {% else %}
+                    <div class="end">Current</div>
+                  {% endif %}
+                </div>
+                <div class="responsibilities">
+                  {% for responsibility in work_experience.responsibility_set.all %}
+                    <div class="responsibility">
+                      <div class="dot"></div>
+                      <div class="short summary">{{ responsibility.short_summary }}</div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
         </div>
         <div class="education inner container">
           <div class="education title">Education</div>
-          <div class="education block"></div>
+          <div class="education block">
+            {% for education in resume.education_set.all  %}
+              <div class="education-inner">
+                <div class="degree">{{ education.degree }}</div>
+                <div class="long dash"></div>
+                <div class="institute">{{ education.institution }}</div>
+                <div class="long dash"></div>
+                <div class="year">{{ education.end.year }}</div>
+              </div>
+            {% endfor %}
+          </div>
         </div>
       </div>
     </div>
