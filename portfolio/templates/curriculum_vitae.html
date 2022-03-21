@@ -5,12 +5,25 @@
 {% block title %}Curriculum Vitae{% endblock %}
 {% block page_css %}
   <link rel="stylesheet" href="{% static 'portfolio/css/standard_header.css' %}" />
-  <link rel="stylesheet" href="{% static 'portfolio/css/project.css' %}" />
+  <link rel="stylesheet" href="{% static 'portfolio/css/curriculum_vitae.css' %}" />
 {% endblock %}
 {% block header %}{% standard_header %}{% endblock %}
 {% block content %}
   <div class="cv_container">
     <div class="cv_body">
+      <div class="cv_header">
+        <div class="name"></div>
+        <div class="profession"></div>
+        <div class="address"></div>
+      </div>
+      <div class="summary"></div>
+      <div class="vertical_rule"></div>
+      <div class="education"></div>
+      <div class="certificates"></div>
+      <div class="skills"></div>
+      <div class="professional_experience"></div>
+      <div class="field_experience"></div>
+      <div class="professional_development"></div>
     </div>
   </div>
 {% endblock %}
