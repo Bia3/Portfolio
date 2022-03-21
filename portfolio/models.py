@@ -1,5 +1,7 @@
+import datetime
 import uuid
 from django.db import models
+from django.utils import timezone
 from django.contrib.auth.models import User
 from markdownx.models import MarkdownxField
 
@@ -30,6 +32,9 @@ class CurriculumVitae(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     summary = models.CharField(max_length=250)
 
+    class Meta:
+        verbose_name_plural = "CVs"
+
     def __str__(self):
         return f'{self.user.get_full_name()}\'s CV'
 
@@ -42,15 +47,15 @@ class Project(models.Model):
         default=uuid.uuid4,
         editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    cv = models.ForeignKey(CurriculumVitae, on_delete=models.CASCADE)
+    cv = models.ForeignKey(CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(max_length=180)
     copy = MarkdownxField(max_length=3000)
     short_summary = models.CharField(max_length=250)
     summary = models.TextField(max_length=500)
     professional_development = models.BooleanField(default=False)
     field_experience = models.BooleanField(default=False)
-    github_link = models.CharField(max_length=250)
-    completed = models.DateField
+    github_link = models.CharField(max_length=250, blank=True, null=True)
+    completed = models.DateField()
 
     def __str__(self):
         return self.title
@@ -107,13 +112,13 @@ class Education(models.Model):
         default=uuid.uuid4,
         editable=False,
     )
-    resume = models.ForeignKey(Resume, on_delete=models.CASCADE)
-    cv = models.ForeignKey(CurriculumVitae, on_delete=models.CASCADE)
+    resume = models.ForeignKey(Resume, on_delete=models.CASCADE, blank=True, null=True)
+    cv = models.ForeignKey(CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
     field_of_study = models.CharField(max_length=180)
     degree = models.CharField(max_length=180)
     institution = models.CharField(max_length=180)
-    start = models.DateField()
-    end = models.DateField()
+    start = models.DateField(default=timezone.now)
+    end = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return f'{self.degree}: {self.institution}'
@@ -132,6 +137,10 @@ class Responsibility(models.Model):
     title = models.CharField(max_length=100)
     short_summary = models.CharField(max_length=250)
     summary = models.TextField(max_length=500)
+    started = models.DateField(default=timezone.now())
+
+    class Meta:
+        verbose_name_plural = "Responsibilities"
 
     def __str__(self):
         return self.title
@@ -147,10 +156,10 @@ class Achievement(models.Model):
     )
     project = models.ForeignKey(Project, on_delete=models.CASCADE, blank=True, null=True)
     education = models.ForeignKey(Education, on_delete=models.CASCADE, blank=True, null=True)
+    work_experience = models.ForeignKey(WorkExperience, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(max_length=180)
     short_summary = models.CharField(max_length=250)
     summary = models.TextField(max_length=500)
-    copy = MarkdownxField(max_length=3000)
     completed = models.DateField()
 
     def __str__(self):
