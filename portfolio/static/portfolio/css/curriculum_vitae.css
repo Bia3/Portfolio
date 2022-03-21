@@ -1,26 +1,26 @@
 :root {
-    --documentBackground: #FFF;
-    --documentAccent2: #373D48;
-    --documentFont1: #010101;
-    --documentFont2: #9B9B9B;
+  --documentBackground: #fff;
+  --documentAccent2: #373d48;
+  --documentFont1: #010101;
+  --documentFont2: #9b9b9b;
 }
 
 .cv_container {
-    display: grid;
-    place-items: center;
+  display: grid;
+  place-items: center;
 }
 
-.cv_body{
-    width: 955px;
-    min-height: 100vh;
-    max-height: 100%;
-    background-color: var(--documentBackground);
+.cv_body {
+  width: 955px;
+  min-height: 100vh;
+  max-height: 100%;
+  background-color: var(--documentBackground);
 }
 
 .cv_header {
-    background-color: var(--documentAccent2);
-    height: 240px;
-    width: 100%;
+  background-color: var(--documentAccent2);
+  height: 240px;
+  width: 100%;
 }
 
 @media only screen and (max-width: 576px) {
