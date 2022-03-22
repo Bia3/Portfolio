@@ -241,7 +241,13 @@ class CurriculumVitaeView(View):
     (course of one’s life) page
     """
 
-    cvs = ""
+    cv = {}
+    bio = {}
+
+    def __init__(self, **kwargs):
+        super().__init__()
+        self.main_user = User.objects.filter(
+            groups__name__contains='primary_account').first()
 
     def get(self, request, *args, **kwargs):
         """
@@ -251,9 +257,12 @@ class CurriculumVitaeView(View):
         :param kwargs:
         :return:
         """
-        self.cvs = CurriculumVitae.objects.all()
+        self.cv = CurriculumVitae.objects.filter(user=self.main_user).first()
+        self.bio = Bio.objects.filter(user=self.main_user).first()
         return render(request, 'curriculum_vitae.html', {
-            'cvs': self.cvs,
+            'name': self.main_user.get_full_name(),
+            'profession': self.bio.profession,
+            'cv': self.cv,
         })
 
 

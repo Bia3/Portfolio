@@ -12,18 +12,27 @@
   <div class="cv_container">
     <div class="cv_body">
       <div class="cv_header">
-        <div class="name"></div>
-        <div class="profession"></div>
-        <div class="address"></div>
+        <div class="cv_header container">
+            <div class="name">{{ name }}</div>
+            <div class="profession">{{ profession }}</div>
+            <div class="address">
+                <div class="street">fake street</div>
+                <div class="city">Some City,</div> 
+                <div class="state">FA,</div>
+                <div class="zip">00000</div>
+            </div>
+        </div>
       </div>
-      <div class="summary"></div>
-      <div class="vertical_rule"></div>
-      <div class="education"></div>
-      <div class="certificates"></div>
-      <div class="skills"></div>
-      <div class="professional_experience"></div>
-      <div class="field_experience"></div>
-      <div class="professional_development"></div>
+      <div class="summary">{{ cv.summary }}</div>
+      <div class="cv_list">
+        <div class="vertical_rule"></div>
+        <div class="education"></div>
+        <div class="certificates"></div>
+        <div class="skills"></div>
+        <div class="professional_experience"></div>
+        <div class="field_experience"></div>
+        <div class="professional_development"></div>   
+      </div>
     </div>
   </div>
 {% endblock %}
