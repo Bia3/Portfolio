@@ -18,43 +18,43 @@
 }
 
 .cv_header {
-  display: flex;  
+  display: flex;
   background-color: var(--documentAccent2);
   width: 100%;
 }
 
 .cv_header.container {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-left: 28px;
-    height: 100px;
-    display: grid;
-    grid-tempate-rows: 42px 21px 34px;
-    align-items: end;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 28px;
+  height: 100px;
+  display: grid;
+  grid-tempate-rows: 42px 21px 34px;
+  align-items: end;
 }
 
 .cv_header > .name {
-    font-size: 36px;
-    color: var(--documentFont2);
+  font-size: 36px;
+  color: var(--documentFont2);
 }
 
 .address {
-    display: grid;
-    grid-auto-flow: column;
-    grid-column-gap: 6px;
-    grid-auto-columns: max-content;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 6px;
+  grid-auto-columns: max-content;
 }
 
 .summary {
-    min-height: 50px;
+  min-height: 50px;
 }
 
 .vertical_rule {
-    height: 100%;
-    width: 2px;
-    position: absolute;
-    margin-left: 50px;
-    background-color: var(--documentAccent2);
+  height: 100%;
+  width: 2px;
+  position: absolute;
+  margin-left: 50px;
+  background-color: var(--documentAccent2);
 }
 
 @media only screen and (max-width: 576px) {
