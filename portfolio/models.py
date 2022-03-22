@@ -30,7 +30,7 @@ class CurriculumVitae(models.Model):
         editable=False,
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    summary = models.CharField(max_length=250)
+    summary = models.CharField(max_length=1000)
 
     class Meta:
         verbose_name_plural = "CVs"
@@ -114,6 +114,7 @@ class Education(models.Model):
     )
     resume = models.ForeignKey(Resume, on_delete=models.CASCADE, blank=True, null=True)
     cv = models.ForeignKey(CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
+    certificate = models.BooleanField(default=False)
     field_of_study = models.CharField(max_length=180)
     degree = models.CharField(max_length=180)
     institution = models.CharField(max_length=180)

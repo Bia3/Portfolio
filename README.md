@@ -10,6 +10,8 @@ the look and feel of the site most of the content is stored in the backend.
 
 Feel free to fork this repo and tweak it to make your own site/portfolio.
 
+Some of the Icons used in this project are from [ICO Moon Free](https://icomoon.io/#icons-icomoon).
+
 # Licenses and Copyright
 
 Copyright (C) 2019 Sean Ross(Bia3) [sean@rossdev.io](mailto:sean@rossdev.io?Subject=Porfolio%20Copyright%20Questions?)

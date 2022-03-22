@@ -2,6 +2,7 @@
 {% load static %}
 {% load markdownify %}
 {% load template_loader %}
+{% load my_helpers %}
 {% block title %}Curriculum Vitae{% endblock %}
 {% block page_css %}
   <link rel="stylesheet" href="{% static 'portfolio/css/standard_header.css' %}" />
@@ -24,14 +25,61 @@
         </div>
       </div>
       <div class="summary">{{ cv.summary }}</div>
+      <div class="vertical_rule"></div>
       <div class="cv_list">
-        <div class="vertical_rule"></div>
-        <div class="education"></div>
-        <div class="certificates"></div>
-        <div class="skills"></div>
-        <div class="professional_experience"></div>
-        <div class="field_experience"></div>
-        <div class="professional_development"></div>   
+        <div class="education">
+          <div class="title">
+            <div class="bullet">{% svg_by_name "CVSchoolIcon" %}</div>
+            <div class="text">Education</div>
+          </div>
+          {% for ed in education %}
+            <div class="education item">
+              <div class="bullet">{% svg_by_name "CVBulletPoint" %}</div>
+              <div class="year">{{ ed.end.year }}</div>
+              <div class="degree">{{ ed.degree }}</div>
+              <div class="institution">{{ ed.institution }}</div>
+            </div>
+          {% endfor %}
+          <div class="list">
+          </div>
+        </div>
+        <div class="certificates">
+          <div class="title">
+            <div class="bullet">{% svg_by_name "CVCertificates" %}</div>
+            <div class="text">Certifications</div>
+          </div>
+          <div class="list">
+          </div>
+        </div>
+        <div class="skills">
+          <div class="title">
+            <div class="bullet">{% svg_by_name "CVSkillsIcon" %}</div>
+            <div class="text">Skills</div>
+          </div>
+          <div class="list">
+          </div>
+        </div>
+        <div class="professional_experience">
+          <div class="title">
+            <div class="bullet">{% svg_by_name "CVWorkIcon" %}</div>
+            <div class="text">Professional Experience</div>
+          </div>
+          <div class="list"></div>
+        </div>
+        <div class="field_experience">
+          <div class="title">
+            <div class="bullet">{% svg_by_name "CVFeildExperience" %}</div>
+            <div class="text">Field Experience</div>
+          </div>
+          <div class="list"></div>
+        </div>
+        <div class="professional_development">
+          <div class="title">
+            <div class="bullet">{% svg_by_name "CVDevelopment" %}</div>
+            <div class="text">Professional Development</div>
+          </div>
+          <div class="list"></div>
+        </div>
       </div>
     </div>
   </div>

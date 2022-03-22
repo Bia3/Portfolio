@@ -4,6 +4,22 @@ from .models import CurriculumVitae, Resume, Project, Skill, WorkExperience, \
     Education, Responsibility, Course, CourseWork, Achievement
 
 
+def year_from_date(date):
+    return date.year
+
+
+def start_year(obj):
+    return year_from_date(obj.start)
+
+
+def end_year(obj):
+    return year_from_date(obj.end)
+
+
+def completed_year(obj):
+    return year_from_date(obj.completed)
+
+
 def username_from_project(proj):
     return proj.user.username
 
@@ -98,11 +114,17 @@ class ResumeAdmin(admin.ModelAdmin):
 class CurriculumVitaeAdmin(admin.ModelAdmin):
     """Display settings for the CurriculumVitae model on the Admin page"""
 
-    list_display = ('id', )
+    list_display = ('view_summary', 'view_username', 'id')
 
     @staticmethod
+    @admin.display(description='username')
     def view_username(obj):
         return username_from_cv(obj)
+
+    @staticmethod
+    @admin.display(description='summary')
+    def view_summary(obj):
+        return obj.summary[0:20]
 
 
 @admin.register(Responsibility)
@@ -139,11 +161,22 @@ class WorkExperienceAdmin(MarkdownxModelAdmin):
 class EducationAdmin(MarkdownxModelAdmin):
     """Display settings for the Education model on the Admin page"""
 
-    list_display = ('degree', 'institution', 'start', 'end', 'id')
+    list_display = ('degree', 'institution', 'view_username', 'view_start_year', 'view_end_year', 'id')
 
     @staticmethod
+    @admin.display(description='username')
     def view_username(obj):
         return username_from_work_experience(obj)
+
+    @staticmethod
+    @admin.display(description="start")
+    def view_start_year(obj):
+        return start_year(obj)
+
+    @staticmethod
+    @admin.display(description="end")
+    def view_end_year(obj):
+        return end_year(obj)
 
 
 @admin.register(Course)

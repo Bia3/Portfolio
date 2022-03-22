@@ -1,8 +1,8 @@
 :root {
   --documentBackground: #fff;
   --documentAccent2: #373d48;
-  --documentFont1: #010101;
-  --documentFont2: #9b9b9b;
+  --documentFont3: #010101;
+  --documentFont4: #9b9b9b;
 }
 
 .cv_container {
@@ -15,6 +15,8 @@
   min-height: 100vh;
   max-height: 100%;
   background-color: var(--documentBackground);
+  position: relative;
+    font-family: 'Roboto', sans-serif;
 }
 
 .cv_header {
@@ -29,13 +31,13 @@
     margin-left: 28px;
     height: 100px;
     display: grid;
-    grid-tempate-rows: 42px 21px 34px;
+    grid-template-rows: 42px 21px 34px;
     align-items: end;
 }
 
 .cv_header > .name {
     font-size: 36px;
-    color: var(--documentFont2);
+    color: var(--documentFont4);
 }
 
 .address {
@@ -47,14 +49,51 @@
 
 .summary {
     min-height: 50px;
+    color: var(--documentFont3);
+    font-size: 14px;
+    line-height: 16px;
+    margin: 50px 32px 32px 50px;
 }
 
 .vertical_rule {
-    height: 100%;
+    height: calc(100% - 240px);
     width: 2px;
     position: absolute;
-    margin-left: 50px;
+    margin-left: 49px;
+    margin-top: 1%;
     background-color: var(--documentAccent2);
+}
+
+.cv_list {
+    position: relative;
+    z-index: 10;
+}
+
+.title {
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 10px;
+    grid-auto-columns: max-content;
+    place-items: center;
+}
+
+.title > .bullet {
+    margin-left: 16px;
+}
+
+.title > .text {
+    color: var(--documentAccent2);
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.item {
+    color: var(--documentFont3);
+    display: grid;
+}
+
+.education.item {
+
 }
 
 @media only screen and (max-width: 576px) {

@@ -11,7 +11,8 @@ from .models import Resume,\
     CurriculumVitae,\
     Project,\
     Skill,\
-    Achievement
+    Achievement, \
+    Education
 from markdownx.utils import markdownify
 
 mobile_browsers = [
@@ -243,6 +244,8 @@ class CurriculumVitaeView(View):
 
     cv = {}
     bio = {}
+    ed = []
+    certs = []
 
     def __init__(self, **kwargs):
         super().__init__()
@@ -259,17 +262,21 @@ class CurriculumVitaeView(View):
         """
         self.cv = CurriculumVitae.objects.filter(user=self.main_user).first()
         self.bio = Bio.objects.filter(user=self.main_user).first()
+        self.ed = Education.objects.filter(cv=self.cv).filter(certificate=False)
+        self.certs = Education.objects.filter(cv=self.cv).filter(certificate=True)
         return render(request, 'curriculum_vitae.html', {
             'name': self.main_user.get_full_name(),
             'profession': self.bio.profession,
             'cv': self.cv,
+            'education': self.ed,
+            'certificates': self.certs
         })
 
 
 class ProjectsView(View):
     """Class based View for the Projects page"""
 
-    projects = ""
+    projects = []
 
     def get(self, request):
         """
@@ -286,7 +293,7 @@ class ProjectsView(View):
 class ProjectView(View):
     """Class based View for a single Project page"""
 
-    project = ""
+    project = {}
 
     def get(self, request, *args, **kwargs):
         """
@@ -305,7 +312,7 @@ class ProjectView(View):
 class ResumeView(View):
     """Class based View for the Resume Page"""
 
-    resume = ""
+    resume = {}
     achievements = []
 
     def __init__(self, **kwargs):
