@@ -16,121 +16,121 @@
   max-height: 100%;
   background-color: var(--documentBackground);
   position: relative;
-    font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .cv_header {
-  display: flex;  
+  display: flex;
   background-color: var(--documentAccent2);
   width: 100%;
 }
 
 .cv_header.container {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-left: 28px;
-    height: 100px;
-    display: grid;
-    grid-template-rows: 42px 21px 34px;
-    align-items: end;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 28px;
+  height: 100px;
+  display: grid;
+  grid-template-rows: 42px 21px 34px;
+  align-items: end;
 }
 
 .cv_header > .name {
-    font-size: 36px;
-    color: var(--documentFont4);
+  font-size: 36px;
+  color: var(--documentFont4);
 }
 
 .address {
-    display: grid;
-    grid-auto-flow: column;
-    grid-column-gap: 6px;
-    grid-auto-columns: max-content;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 6px;
+  grid-auto-columns: max-content;
 }
 
 .summary {
-    min-height: 50px;
-    color: var(--documentFont3);
-    font-size: 14px;
-    line-height: 16px;
-    margin: 50px 32px 32px 50px;
+  min-height: 50px;
+  color: var(--documentFont3);
+  font-size: 14px;
+  line-height: 16px;
+  margin: 50px 32px 32px 50px;
 }
 
 .vertical_rule {
-    height: calc(100% - 240px);
-    width: 2px;
-    position: absolute;
-    margin-left: 49px;
-    margin-top: 1%;
-    background-color: var(--documentAccent2);
+  height: calc(100% - 240px);
+  width: 2px;
+  position: absolute;
+  margin-left: 49px;
+  margin-top: 1%;
+  background-color: var(--documentAccent2);
 }
 
 .cv_list {
-    position: relative;
-    z-index: 10;
+  position: relative;
+  z-index: 10;
 }
 
 .title {
-    display: grid;
-    grid-auto-flow: column;
-    grid-column-gap: 10px;
-    grid-auto-columns: max-content;
-    place-items: center;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 10px;
+  grid-auto-columns: max-content;
+  place-items: center;
 }
 
 .title > .bullet {
-    margin-left: 16px;
+  margin-left: 16px;
 }
 
 .title > .text {
-    color: var(--documentFont3);
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 28px;
+  color: var(--documentFont3);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
 }
 
 .item {
-    color: var(--documentFont3);
-    display: grid;
-    grid-auto-columns: max-content;
-    align-items: center;
+  color: var(--documentFont3);
+  display: grid;
+  grid-auto-columns: max-content;
+  align-items: center;
 }
 
 .education.item {
-    grid-template-areas: 'bullet year degree' '. . institution';
+  grid-template-areas: "bullet year degree" ". . institution";
 }
 
 .item > .bullet {
-    grid-area: bullet;
-    margin-left: 37px;
+  grid-area: bullet;
+  margin-left: 37px;
 }
 
 .year {
-    grid-area: year;
-    margin-left: 18px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 21px;
+  grid-area: year;
+  margin-left: 18px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
 }
 
 .degree {
-    grid-area: degree;
-    margin-left: 18px;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 21px;
+  grid-area: degree;
+  margin-left: 18px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
 }
 
 .institution {
-    grid-area: institution;
-    margin-left: 18px;
-    margin-top: 2px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 21px;
+  grid-area: institution;
+  margin-left: 18px;
+  margin-top: 2px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
 }
 
 @media only screen and (max-width: 576px) {
