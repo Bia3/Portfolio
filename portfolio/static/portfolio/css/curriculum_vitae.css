@@ -82,7 +82,9 @@
 }
 
 .title > .text {
-    color: var(--documentAccent2);
+    color: var(--documentFont3);
+    font-style: normal;
+    font-weight: 400;
     font-size: 24px;
     line-height: 28px;
 }
@@ -90,10 +92,45 @@
 .item {
     color: var(--documentFont3);
     display: grid;
+    grid-auto-columns: max-content;
+    align-items: center;
 }
 
 .education.item {
+    grid-template-areas: 'bullet year degree' '. . institution';
+}
 
+.item > .bullet {
+    grid-area: bullet;
+    margin-left: 37px;
+}
+
+.year {
+    grid-area: year;
+    margin-left: 18px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.degree {
+    grid-area: degree;
+    margin-left: 18px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.institution {
+    grid-area: institution;
+    margin-left: 18px;
+    margin-top: 2px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
 }
 
 @media only screen and (max-width: 576px) {

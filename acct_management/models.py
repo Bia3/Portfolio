@@ -17,8 +17,8 @@ class ContactCard(models.Model):
         editable=False
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    website = models.CharField(max_length=250)
-    phone = secured_fields.EncryptedCharField(max_length=20)
+    website = models.CharField(max_length=250, blank=True, null=True)
+    phone = secured_fields.EncryptedCharField(max_length=20, blank=True, null=True)
 
     def __str__(self):
         return f'{self.user.get_full_name()} Contact information'
@@ -53,7 +53,7 @@ class Address(models.Model):
     )
     contact_card = models.OneToOneField(ContactCard, on_delete=models.CASCADE)
     street_one = secured_fields.EncryptedCharField(max_length=250)
-    street_two = secured_fields.EncryptedCharField(max_length=250)
+    street_two = secured_fields.EncryptedCharField(max_length=250, blank=True, null=True)
     city = secured_fields.EncryptedCharField(max_length=180)
     state = secured_fields.EncryptedCharField(max_length=180)
     zip = secured_fields.EncryptedCharField(max_length=10)

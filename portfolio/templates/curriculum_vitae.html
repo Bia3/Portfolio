@@ -3,12 +3,13 @@
 {% load markdownify %}
 {% load template_loader %}
 {% load my_helpers %}
+{% load group_tags %}
 {% block title %}Curriculum Vitae{% endblock %}
 {% block page_css %}
   <link rel="stylesheet" href="{% static 'portfolio/css/standard_header.css' %}" />
   <link rel="stylesheet" href="{% static 'portfolio/css/curriculum_vitae.css' %}" />
 {% endblock %}
-{% block header %}{% standard_header %}{% endblock %}
+{% block header %}{% standard_header user %}{% endblock %}
 {% block content %}
   <div class="cv_container">
     <div class="cv_body">
@@ -16,12 +17,20 @@
         <div class="cv_header container">
             <div class="name">{{ name }}</div>
             <div class="profession">{{ profession }}</div>
-            <div class="address">
-                <div class="street">fake street</div>
-                <div class="city">Some City,</div> 
-                <div class="state">FA,</div>
-                <div class="zip">00000</div>
-            </div>
+            {% if user.is_authenticated %}
+              {% if request.user|has_group:"primary_account" %}
+                <div class="address">
+                  {% if address.street_two %}
+                    <div class="street">{{ address.street_one }} {{ address.street_two }}</div>
+                  {% else %}
+                    <div class="street">{{ address.street_one }}</div>
+                  {% endif %}
+                  <div class="city">{{ address.city }},</div>
+                  <div class="state">{{ address.state }},</div>
+                  <div class="zip">{{ address.zip }}</div>
+                </div>
+              {% endif %}
+            {% endif %}
         </div>
       </div>
       <div class="summary">{{ cv.summary }}</div>
@@ -32,15 +41,15 @@
             <div class="bullet">{% svg_by_name "CVSchoolIcon" %}</div>
             <div class="text">Education</div>
           </div>
-          {% for ed in education %}
-            <div class="education item">
-              <div class="bullet">{% svg_by_name "CVBulletPoint" %}</div>
-              <div class="year">{{ ed.end.year }}</div>
-              <div class="degree">{{ ed.degree }}</div>
-              <div class="institution">{{ ed.institution }}</div>
-            </div>
-          {% endfor %}
           <div class="list">
+            {% for ed in education %}
+              <div class="education item">
+                <div class="bullet">{% svg_by_name "CVBulletPoint" %}</div>
+                <div class="year">{{ ed.end.year }}</div>
+                <div class="degree">{{ ed.degree }}</div>
+                <div class="institution">{{ ed.institution }}</div>
+              </div>
+            {% endfor %}
           </div>
         </div>
         <div class="certificates">
@@ -49,6 +58,14 @@
             <div class="text">Certifications</div>
           </div>
           <div class="list">
+            {% for cert in certificates %}
+              <div class="education item">
+                <div class="bullet">{% svg_by_name "CVBulletPoint" %}</div>
+                <div class="year">{{ cert.end.year }}</div>
+                <div class="degree">{{ cert.degree }}</div>
+                <div class="institution">{{ cert.institution }}</div>
+              </div>
+            {% endfor %}
           </div>
         </div>
         <div class="skills">
@@ -57,6 +74,15 @@
             <div class="text">Skills</div>
           </div>
           <div class="list">
+            <div class="skill item">
+              <div class="bullet">{% svg_by_name "CVBulletPoint" %}</div>
+              <div class="skills">
+                {% for skill in skills %}
+                  <div class="dot"></div>
+                  <div class="skill">{{ skill.title }}</div>
+                {% endfor %}
+              </div>
+            </div>
           </div>
         </div>
         <div class="professional_experience">
@@ -64,21 +90,32 @@
             <div class="bullet">{% svg_by_name "CVWorkIcon" %}</div>
             <div class="text">Professional Experience</div>
           </div>
-          <div class="list"></div>
+          <div class="list">
+            {% for experience in professional_experiences %}
+              <div class="bullet">{% svg_by_name "CVBulletPoint" %}</div>
+              <div class="year">{{ experience.completed.year }}</div>
+            {% endfor %}
+          </div>
         </div>
         <div class="field_experience">
           <div class="title">
             <div class="bullet">{% svg_by_name "CVFeildExperience" %}</div>
             <div class="text">Field Experience</div>
           </div>
-          <div class="list"></div>
+          <div class="list">
+            {% for experience in field_experience %}
+            {% endfor %}
+          </div>
         </div>
         <div class="professional_development">
           <div class="title">
             <div class="bullet">{% svg_by_name "CVDevelopment" %}</div>
             <div class="text">Professional Development</div>
           </div>
-          <div class="list"></div>
+          <div class="list">
+            {% for development in professional_development %}
+            {% endfor %}
+          </div>
         </div>
       </div>
     </div>

@@ -244,8 +244,10 @@ class CurriculumVitaeView(View):
 
     cv = {}
     bio = {}
+    address = {}
     ed = []
     certs = []
+    skills = []
 
     def __init__(self, **kwargs):
         super().__init__()
@@ -262,14 +264,19 @@ class CurriculumVitaeView(View):
         """
         self.cv = CurriculumVitae.objects.filter(user=self.main_user).first()
         self.bio = Bio.objects.filter(user=self.main_user).first()
+        self.address = self.main_user.contactcard.address
         self.ed = Education.objects.filter(cv=self.cv).filter(certificate=False)
         self.certs = Education.objects.filter(cv=self.cv).filter(certificate=True)
+        self.skills = Skill.objects.filter(cv=self.cv)
+
         return render(request, 'curriculum_vitae.html', {
             'name': self.main_user.get_full_name(),
             'profession': self.bio.profession,
             'cv': self.cv,
+            'address': self.address,
             'education': self.ed,
-            'certificates': self.certs
+            'certificates': self.certs,
+            'skills': self.skills,
         })
 
 

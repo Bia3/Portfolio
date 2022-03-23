@@ -90,29 +90,31 @@ def username_from_responsibility(res):
 
 @admin.register(Skill)
 class SkillAdmin(MarkdownxModelAdmin):
-    """Display settings for the Skill model on the Admin page"""
+    """Settings for the Skill model on the Admin page"""
 
     list_display = ('title', 'view_username', 'id')
 
     @staticmethod
+    @admin.display(description='username')
     def view_username(obj):
         return username_from_skill(obj)
 
 
 @admin.register(Resume)
 class ResumeAdmin(admin.ModelAdmin):
-    """Display settings for the Resume model on the Admin page"""
+    """Settings for the Resume model on the Admin page"""
 
     list_display = ('view_username', 'id')
 
     @staticmethod
+    @admin.display(description='username')
     def view_username(obj):
         return username_from_resume(obj)
 
 
 @admin.register(CurriculumVitae)
 class CurriculumVitaeAdmin(admin.ModelAdmin):
-    """Display settings for the CurriculumVitae model on the Admin page"""
+    """Settings for the CurriculumVitae model on the Admin page"""
 
     list_display = ('view_summary', 'view_username', 'id')
 
@@ -129,37 +131,41 @@ class CurriculumVitaeAdmin(admin.ModelAdmin):
 
 @admin.register(Responsibility)
 class ResponsibilityAdmin(MarkdownxModelAdmin):
-    """Display settings for the Responsibility model on the Admin page"""
+    """Settings for the Responsibility model on the Admin page"""
 
     list_display = ('title', 'view_organization', 'view_position', 'view_username', 'id')
 
     @staticmethod
+    @admin.display(description='position')
     def view_position(obj):
         return obj.work_experience.position
 
     @staticmethod
+    @admin.display(description='organization')
     def view_organization(obj):
         return obj.work_experience.organization
 
     @staticmethod
+    @admin.display(description='username')
     def view_username(obj):
         return username_from_responsibility(obj)
 
 
 @admin.register(WorkExperience)
 class WorkExperienceAdmin(MarkdownxModelAdmin):
-    """Display settings for the WorkExperience model on the Admin page"""
+    """Settings for the WorkExperience model on the Admin page"""
 
     list_display = ('view_username', 'organization', 'position', 'start', 'end', 'id')
 
     @staticmethod
+    @admin.display(description='username')
     def view_username(obj):
         return username_from_work_experience(obj)
 
 
 @admin.register(Education)
 class EducationAdmin(MarkdownxModelAdmin):
-    """Display settings for the Education model on the Admin page"""
+    """Settings for the Education model on the Admin page"""
 
     list_display = ('degree', 'institution', 'view_username', 'view_start_year', 'view_end_year', 'id')
 
@@ -181,43 +187,47 @@ class EducationAdmin(MarkdownxModelAdmin):
 
 @admin.register(Course)
 class CourseAdmin(MarkdownxModelAdmin):
-    """Display settings for the Course model on the Admin page"""
+    """Settings for the Course model on the Admin page"""
 
     list_display = ('id', )
 
     @staticmethod
+    @admin.display(description='username')
     def view_username(obj):
         return username_from_course(obj)
 
 
 @admin.register(CourseWork)
 class CourseWorkAdmin(MarkdownxModelAdmin):
-    """Display settings for the CourseWork model on the Admin page"""
+    """Settings for the CourseWork model on the Admin page"""
 
     list_display = ('id', )
 
     @staticmethod
+    @admin.display(description='username')
     def view_username(obj):
         return username_from_course_work(obj)
 
 
 @admin.register(Project)
 class ProjectAdmin(MarkdownxModelAdmin):
-    """Display settings for the Project model on the Admin page"""
+    """Settings for the Project model on the Admin page"""
 
     list_display = ('id', )
 
     @staticmethod
+    @admin.display(description='username')
     def view_username(obj):
         return username_from_project(obj)
 
 
 @admin.register(Achievement)
 class AchievementAdmin(admin.ModelAdmin):
-    """Display settings for the Achievement model on the Admin Page"""
+    """Settings for the Achievement model on the Admin Page"""
 
     list_display = ('title', 'view_username', 'completed', 'id')
 
     @staticmethod
+    @admin.display(description='username')
     def view_username(obj):
         return username_from_achievement(obj)
