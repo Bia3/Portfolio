@@ -100,6 +100,15 @@
     grid-template-areas: 'bullet year degree' '. . institution';
 }
 
+.skill.item {
+    grid-template-areas: 'bullet skills';
+    grid-column-gap: 18px;
+}
+
+.skill.item > .bullet {
+    align-self: start;
+}
+
 .item > .bullet {
     grid-area: bullet;
     margin-left: 37px;
@@ -131,6 +140,22 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 21px;
+}
+
+.skills.inner {
+    display: grid;
+    width: 500px;
+    grid-column-gap: 6px;
+    grid-template-columns: 8px 1fr 8px 1fr 8px 1fr;
+    margin-bottom: 10px;
+}
+
+.dot {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: var(--documentFont3);
+    align-self: center;
 }
 
 @media only screen and (max-width: 576px) {
