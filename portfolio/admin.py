@@ -5,34 +5,42 @@ from .models import CurriculumVitae, Resume, Project, Skill, WorkExperience, \
 
 
 def year_from_date(date):
+    """:return: the year for a date object"""
     return date.year
 
 
 def start_year(obj):
+    """:return: the year for start"""
     return year_from_date(obj.start)
 
 
 def end_year(obj):
+    """:return: the year for end"""
     return year_from_date(obj.end)
 
 
 def completed_year(obj):
+    """:return: the year for completed"""
     return year_from_date(obj.completed)
 
 
 def username_from_project(proj):
+    """:return: the username for a project"""
     return proj.user.username
 
 
 def username_from_resume(res):
+    """:return: the username for a resume"""
     return res.user.username
 
 
 def username_from_cv(cv):
+    """:return: the username for a cv"""
     return cv.user.username
 
 
 def username_from_work_experience(we):
+    """:return: the username for a work experience"""
     if we.resume:
         return username_from_resume(we.resume)
     if we.project:
@@ -43,6 +51,7 @@ def username_from_work_experience(we):
 
 
 def username_from_education(ed):
+    """:return: the username for a user from the education field"""
     if ed.resume:
         return username_from_resume(ed.resume)
     if ed.cv:
@@ -51,6 +60,7 @@ def username_from_education(ed):
 
 
 def username_from_skill(sk):
+    """:return: the username for a user from the skill field"""
     if sk.project:
         return username_from_project(sk.project)
     if sk.resume:
@@ -61,6 +71,7 @@ def username_from_skill(sk):
 
 
 def username_from_achievement(ach):
+    """:return: the username for a user from the achievement field"""
     if ach.project:
         return username_from_project(ach.project)
     if ach.work_experience:
@@ -71,18 +82,21 @@ def username_from_achievement(ach):
 
 
 def username_from_course(cor):
+    """:return: the username for a user from the course field"""
     if cor.education:
         return username_from_education(cor.education)
     return 'None'
 
 
 def username_from_course_work(cw):
+    """:return: the username for a user from the course work field"""
     if cw.course:
         return username_from_course(cw.course)
     return 'None'
 
 
 def username_from_responsibility(res):
+    """:return: the username for a user from the responsibility field"""
     if res.work_experience:
         return username_from_work_experience(res.work_experience)
     return 'None'
@@ -97,6 +111,7 @@ class SkillAdmin(MarkdownxModelAdmin):
     @staticmethod
     @admin.display(description='username')
     def view_username(obj):
+        """:return: the username for this object"""
         return username_from_skill(obj)
 
 
@@ -109,6 +124,7 @@ class ResumeAdmin(admin.ModelAdmin):
     @staticmethod
     @admin.display(description='username')
     def view_username(obj):
+        """:return: the username for this object"""
         return username_from_resume(obj)
 
 
@@ -121,12 +137,14 @@ class CurriculumVitaeAdmin(admin.ModelAdmin):
     @staticmethod
     @admin.display(description='username')
     def view_username(obj):
+        """:return: the username for this object"""
         return username_from_cv(obj)
 
     @staticmethod
     @admin.display(description='summary')
     def view_summary(obj):
-        return obj.summary[0:20]
+        """:return: the first 20 characters from the summary field"""
+        return obj.summary[0:21]
 
 
 @admin.register(Responsibility)
@@ -138,16 +156,19 @@ class ResponsibilityAdmin(MarkdownxModelAdmin):
     @staticmethod
     @admin.display(description='position')
     def view_position(obj):
+        """:return: the position from the work experience object"""
         return obj.work_experience.position
 
     @staticmethod
     @admin.display(description='organization')
     def view_organization(obj):
+        """:return: the organization from the work experience object"""
         return obj.work_experience.organization
 
     @staticmethod
     @admin.display(description='username')
     def view_username(obj):
+        """:return: the username for this object"""
         return username_from_responsibility(obj)
 
 
@@ -160,6 +181,7 @@ class WorkExperienceAdmin(MarkdownxModelAdmin):
     @staticmethod
     @admin.display(description='username')
     def view_username(obj):
+        """:return: the username for this object"""
         return username_from_work_experience(obj)
 
 
@@ -172,16 +194,19 @@ class EducationAdmin(MarkdownxModelAdmin):
     @staticmethod
     @admin.display(description='username')
     def view_username(obj):
+        """:return: the username for this object"""
         return username_from_work_experience(obj)
 
     @staticmethod
     @admin.display(description="start")
     def view_start_year(obj):
+        """:return: return the year for the start field"""
         return start_year(obj)
 
     @staticmethod
     @admin.display(description="end")
     def view_end_year(obj):
+        """:return: return the year for the end field"""
         return end_year(obj)
 
 
@@ -194,6 +219,7 @@ class CourseAdmin(MarkdownxModelAdmin):
     @staticmethod
     @admin.display(description='username')
     def view_username(obj):
+        """:return: the username for this object"""
         return username_from_course(obj)
 
 
@@ -206,6 +232,7 @@ class CourseWorkAdmin(MarkdownxModelAdmin):
     @staticmethod
     @admin.display(description='username')
     def view_username(obj):
+        """:return: the username for this object"""
         return username_from_course_work(obj)
 
 
@@ -218,12 +245,14 @@ class ProjectAdmin(MarkdownxModelAdmin):
     @staticmethod
     @admin.display(description='username')
     def view_username(obj):
+        """:return: the username for this object"""
         return username_from_project(obj)
 
     @staticmethod
     @admin.display(description='completed')
     def view_completed_year(obj):
-        return obj.completed.year
+        """:return: the year from the completed field"""
+        return completed_year(obj)
 
 
 @admin.register(Achievement)
@@ -235,11 +264,13 @@ class AchievementAdmin(admin.ModelAdmin):
     @staticmethod
     @admin.display(description='username')
     def view_username(obj):
+        """:return: the username for this object"""
         return username_from_achievement(obj)
 
     @staticmethod
     @admin.display(description='category')
     def view_category(obj):
+        """:return: the category for this object"""
         if obj.work_experience:
             return 'Work Experience'
         if obj.course_work:
