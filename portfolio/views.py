@@ -6,14 +6,12 @@ from django.contrib.auth.models import User
 from django.db.models import Q
 
 from .forms import AchievementForm, SkillForm, ProjectForm
-from acct_management.models import Bio, ContactCard
-from .models import Resume,\
-    CurriculumVitae,\
+from acct_management.models import Bio
+from .models import CurriculumVitae,\
     Project,\
     Skill,\
     Achievement, \
-    Education, \
-    WorkExperience
+    Education
 from markdownx.utils import markdownify
 
 mobile_browsers = [
