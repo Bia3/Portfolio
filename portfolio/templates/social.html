@@ -1,0 +1,7 @@
+{% load my_helpers %}
+
+<div class="social">
+    {% for soc in socials %}
+        {% footer_icon soc.txt soc.link soc.svg_name %}
+    {% endfor %}
+</div>
