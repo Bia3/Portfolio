@@ -60,24 +60,30 @@ def socials():
         groups__name__contains='primary_account').first()
 
     cc = ContactCard.objects.filter(user=main_user).first()
-    
+
     socs = []
-    
-    socs += [{'txt': f'{soc.username}', 'link': soc.link, 'svg_name': 'GitHub'} for soc in cc.github_set.all()]
 
-    socs += [{'txt': f'{soc.username}', 'link': soc.link, 'svg_name': 'Keybase'} for soc in cc.keybase_set.all()]
+    socs += [{'txt': f'{soc.username}', 'link': soc.link,
+              'svg_name': 'GitHub'} for soc in cc.github_set.all()]
 
-    socs += [{'txt': f'{soc.username}', 'link': soc.link, 'svg_name': 'CodeWars'} for soc in cc.codewars_set.all()]
+    socs += [{'txt': f'{soc.username}', 'link': soc.link,
+              'svg_name': 'Keybase'} for soc in cc.keybase_set.all()]
 
-    socs += [{'txt': f'{soc.username}', 'link': soc.link, 'svg_name': 'CodePen'} for soc in cc.codepen_set.all()]
+    socs += [{'txt': f'{soc.username}', 'link': soc.link,
+              'svg_name': 'CodeWars'} for soc in cc.codewars_set.all()]
 
-    socs += [{'txt': f'{soc.username}', 'link': soc.link, 'svg_name': 'LinkedIn'} for soc in cc.linkedin_set.all()]
+    socs += [{'txt': f'{soc.username}', 'link': soc.link,
+              'svg_name': 'CodePen'} for soc in cc.codepen_set.all()]
 
-    socs += [{'txt': f'{soc.username}', 'link': soc.link, 'svg_name': 'HTB'} for soc in cc.hackthebox_set.all()]
-    
+    socs += [{'txt': f'{soc.username}', 'link': soc.link,
+              'svg_name': 'LinkedIn'} for soc in cc.linkedin_set.all()]
+
+    socs += [{'txt': f'{soc.username}', 'link': soc.link, 'svg_name': 'HTB'}
+             for soc in cc.hackthebox_set.all()]
+
     email = main_user.email
     socs.append({'txt': f'{email}', 'link': f'{email}', 'svg_name': 'Email'})
-    
+
     context = {
         'socials': socs
     }

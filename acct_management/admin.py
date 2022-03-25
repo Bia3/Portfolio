@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import ContactCard, Bio, Address, GitHub, Keybase,\
-                    Codewars, LinkedIn, HackTheBox, CodePen
+    Codewars, LinkedIn, HackTheBox, CodePen
 
 
 @admin.register(ContactCard)
