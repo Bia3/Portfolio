@@ -15,6 +15,7 @@
 .dot {
     height: 8px;
     width: 8px;
+    margin-top: 6px;
     border-radius: 50%;
     background-color: var(--documentFont1);
 }
@@ -122,12 +123,11 @@
 .responsibility {
     display: grid;
     grid-column-gap: 6px;
-    grid-auto-flow: column;
-    grid-auto-columns: max-content;
+    grid-template-columns: 8px 1fr;
 }
 
 .responsibility .dot {
-    align-self: center;
+    align-self: top;
 }
 
 .dash {
