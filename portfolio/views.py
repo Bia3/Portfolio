@@ -12,7 +12,8 @@ from .models import Resume,\
     Project,\
     Skill,\
     Achievement, \
-    Education
+    Education, \
+    WorkExperience
 from markdownx.utils import markdownify
 
 mobile_browsers = [
@@ -248,6 +249,9 @@ class CurriculumVitaeView(View):
     ed = []
     certs = []
     skills = []
+    professional_experiences = []
+    field_experiences = []
+    professional_development = []
 
     def __init__(self, **kwargs):
         super().__init__()
@@ -268,6 +272,13 @@ class CurriculumVitaeView(View):
         self.ed = Education.objects.filter(cv=self.cv).filter(certificate=False)
         self.certs = Education.objects.filter(cv=self.cv).filter(certificate=True)
         self.skills = Skill.objects.filter(cv=self.cv)
+        self.professional_experiences = Achievement.objects.filter(work_experience__cv=self.cv)
+        self.field_experiences = Achievement.objects.filter(project__field_experience=True)\
+            .filter(project__user=self.main_user)
+        self.professional_development = Achievement.objects.filter(
+            Q(course_work__course__education__in=self.ed) |
+            (Q(project__professional_development=True) & Q(project__user=self.main_user))
+        )
 
         return render(request, 'curriculum_vitae.html', {
             'name': self.main_user.get_full_name(),
@@ -277,6 +288,9 @@ class CurriculumVitaeView(View):
             'education': self.ed,
             'certificates': self.certs,
             'skills': self.skills,
+            'professional_experiences': self.professional_experiences,
+            'field_experiences': self.field_experiences,
+            'professional_development': self.professional_development
         })
 
 

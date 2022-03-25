@@ -213,21 +213,43 @@ class CourseWorkAdmin(MarkdownxModelAdmin):
 class ProjectAdmin(MarkdownxModelAdmin):
     """Settings for the Project model on the Admin page"""
 
-    list_display = ('id', )
+    list_display = ('title', 'view_username', 'view_completed_year', 'id', )
 
     @staticmethod
     @admin.display(description='username')
     def view_username(obj):
         return username_from_project(obj)
 
+    @staticmethod
+    @admin.display(description='completed')
+    def view_completed_year(obj):
+        return obj.completed.year
+
 
 @admin.register(Achievement)
 class AchievementAdmin(admin.ModelAdmin):
     """Settings for the Achievement model on the Admin Page"""
 
-    list_display = ('title', 'view_username', 'completed', 'id')
+    list_display = ('title', 'view_username', 'view_category', 'completed', 'id')
 
     @staticmethod
     @admin.display(description='username')
     def view_username(obj):
         return username_from_achievement(obj)
+
+    @staticmethod
+    @admin.display(description='category')
+    def view_category(obj):
+        if obj.work_experience:
+            return 'Work Experience'
+        if obj.course_work:
+            return 'Course Work'
+        if obj.education:
+            if obj.education.certificate:
+                return 'Certificate'
+        if obj.project:
+            if obj.project.field_experience:
+                return 'Project - Field Experience'
+            if obj.project.professional_development:
+                return 'Project - Professional Development'
+        return 'None'

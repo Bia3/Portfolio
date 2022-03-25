@@ -89,6 +89,30 @@
     line-height: 28px;
 }
 
+.education {
+    margin-bottom: 24px;
+}
+
+.certificates {
+    margin-bottom: 24px;
+}
+
+.skills {
+    margin-bottom: 24px;
+}
+
+.professional_experience {
+    margin-bottom: 24px;
+}
+
+.field_experience {
+    margin-bottom: 24px;
+}
+
+.professional_development {
+    margin-bottom: 54px;
+}
+
 .item {
     color: var(--documentFont3);
     display: grid;
@@ -98,11 +122,19 @@
 
 .education.item {
     grid-template-areas: 'bullet year degree' '. . institution';
+    margin-bottom: 0;
+    margin-top: 18px;
 }
 
 .skill.item {
     grid-template-areas: 'bullet skills';
     grid-column-gap: 18px;
+    margin-top: 18px;
+}
+
+.achievement.item {
+    grid-template-areas: 'bullet year title' '. . summary';
+    margin-top: 18px;
 }
 
 .skill.item > .bullet {
@@ -142,9 +174,29 @@
     line-height: 21px;
 }
 
+.achievement.item > .summary {
+    grid-area: summary;
+    width: 784px;
+    min-height: unset;
+    color: var(--documentFont3);
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0 0 0 18px;
+}
+
+.achievement.item > .title {
+    grid-area: title;
+    width: 784px;
+    min-height: unset;
+    color: var(--documentFont3);
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0 0 0 18px;
+}
+
 .skills.inner {
     display: grid;
-    width: 500px;
+    width: 640px;
     grid-column-gap: 6px;
     grid-template-columns: 8px 1fr 8px 1fr 8px 1fr;
     margin-bottom: 10px;

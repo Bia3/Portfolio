@@ -93,7 +93,6 @@ class WorkExperience(models.Model):
     )
     resume = models.ForeignKey(Resume, on_delete=models.CASCADE, blank=True, null=True)
     cv = models.ForeignKey(CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, blank=True, null=True)
     position = models.CharField(max_length=180)
     organization = models.CharField(max_length=180)
     summary = models.TextField(max_length=1000)
@@ -138,7 +137,7 @@ class Responsibility(models.Model):
     title = models.CharField(max_length=100)
     short_summary = models.CharField(max_length=250)
     summary = models.TextField(max_length=500)
-    started = models.DateField(default=timezone.now())
+    started = models.DateField(default=timezone.now)
 
     class Meta:
         verbose_name_plural = "Responsibilities"
@@ -157,6 +156,7 @@ class Achievement(models.Model):
     )
     project = models.ForeignKey(Project, on_delete=models.CASCADE, blank=True, null=True)
     education = models.ForeignKey(Education, on_delete=models.CASCADE, blank=True, null=True)
+    course_work = models.ForeignKey('CourseWork', on_delete=models.CASCADE, blank=True, null=True)
     work_experience = models.ForeignKey(WorkExperience, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(max_length=180)
     short_summary = models.CharField(max_length=250)
