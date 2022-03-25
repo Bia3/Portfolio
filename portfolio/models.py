@@ -46,7 +46,8 @@ class Project(models.Model):
         default=uuid.uuid4,
         editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    cv = models.ForeignKey(CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
+    cv = models.ForeignKey(
+        CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(max_length=180)
     copy = MarkdownxField(max_length=3000)
     short_summary = models.CharField(max_length=250)
@@ -71,9 +72,12 @@ class Skill(models.Model):
         default=uuid.uuid4,
         editable=False,
     )
-    resume = models.ForeignKey(Resume, on_delete=models.CASCADE, blank=True, null=True)
-    cv = models.ForeignKey(CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, blank=True, null=True)
+    resume = models.ForeignKey(
+        Resume, on_delete=models.CASCADE, blank=True, null=True)
+    cv = models.ForeignKey(
+        CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
+    project = models.ForeignKey(
+        Project, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(max_length=180)
     copy = MarkdownxField(max_length=3000)
     summary = models.CharField(max_length=250)
@@ -90,8 +94,10 @@ class WorkExperience(models.Model):
         default=uuid.uuid4,
         editable=False,
     )
-    resume = models.ForeignKey(Resume, on_delete=models.CASCADE, blank=True, null=True)
-    cv = models.ForeignKey(CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
+    resume = models.ForeignKey(
+        Resume, on_delete=models.CASCADE, blank=True, null=True)
+    cv = models.ForeignKey(
+        CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
     position = models.CharField(max_length=180)
     organization = models.CharField(max_length=180)
     summary = models.TextField(max_length=1000)
@@ -110,8 +116,10 @@ class Education(models.Model):
         default=uuid.uuid4,
         editable=False,
     )
-    resume = models.ForeignKey(Resume, on_delete=models.CASCADE, blank=True, null=True)
-    cv = models.ForeignKey(CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
+    resume = models.ForeignKey(
+        Resume, on_delete=models.CASCADE, blank=True, null=True)
+    cv = models.ForeignKey(
+        CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
     certificate = models.BooleanField(default=False)
     field_of_study = models.CharField(max_length=180)
     degree = models.CharField(max_length=180)
@@ -153,10 +161,14 @@ class Achievement(models.Model):
         default=uuid.uuid4,
         editable=False,
     )
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, blank=True, null=True)
-    education = models.ForeignKey(Education, on_delete=models.CASCADE, blank=True, null=True)
-    course_work = models.ForeignKey('CourseWork', on_delete=models.CASCADE, blank=True, null=True)
-    work_experience = models.ForeignKey(WorkExperience, on_delete=models.CASCADE, blank=True, null=True)
+    project = models.ForeignKey(
+        Project, on_delete=models.CASCADE, blank=True, null=True)
+    education = models.ForeignKey(
+        Education, on_delete=models.CASCADE, blank=True, null=True)
+    course_work = models.ForeignKey(
+        'CourseWork', on_delete=models.CASCADE, blank=True, null=True)
+    work_experience = models.ForeignKey(
+        WorkExperience, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(max_length=180)
     short_summary = models.CharField(max_length=250)
     summary = models.TextField(max_length=500)
