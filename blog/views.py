@@ -4,6 +4,7 @@ from django.views import View
 
 class BlogHomeView(View):
     """View class for the blog's homepage"""
+
     def get(self, request, *args, **kwargs):
         """
         Function to handle GET requests for the Blog Homepage
