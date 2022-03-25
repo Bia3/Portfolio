@@ -29,6 +29,8 @@ settings.ALLOWED_HOSTS = [
 
 # Use the production secret key
 settings.SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+settings.SECURED_FIELDS_KEY = os.environ['SECURED_FIELDS_KEY']
+settings.SECURED_FIELDS_HASH_SALT = os.environ['SECURED_FIELDS_HASH_SALT']
 
 settings.DATABASE_URL = os.environ['DATABASE_URL']
 

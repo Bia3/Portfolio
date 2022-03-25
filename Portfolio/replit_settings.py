@@ -17,6 +17,9 @@ import os
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+SECURED_FIELDS_KEY = os.environ['SECURED_FIELDS_KEY']
+SECURED_FIELDS_HASH_SALT = os.environ['SECURED_FIELDS_HASH_SALT']
+
 
 settings.ALLOWED_HOSTS = ['*']
 

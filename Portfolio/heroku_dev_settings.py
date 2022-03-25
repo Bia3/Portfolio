@@ -21,6 +21,8 @@ settings.ALLOWED_HOSTS = ['portdev.herokuapp.com']
 
 # Use the production secret key
 settings.SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+settings.SECURED_FIELDS_KEY = os.environ['SECURED_FIELDS_KEY']
+settings.SECURED_FIELDS_HASH_SALT = os.environ['SECURED_FIELDS_HASH_SALT']
 
 # Security settings https://docs.djangoproject.com/en/3.2/topics/security/
 # SSL/HTTPS
