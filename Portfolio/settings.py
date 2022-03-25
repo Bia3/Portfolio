@@ -28,6 +28,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
 INSTALLED_APPS = [
+    'seo.apps.SEOConfig',
     'blog.apps.BlogConfig',
     'acct_management.apps.AcctManagementConfig',
     'portfolio.apps.PortfolioConfig',
