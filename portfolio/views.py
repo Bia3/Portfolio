@@ -267,15 +267,19 @@ class CurriculumVitaeView(View):
         self.cv = CurriculumVitae.objects.filter(user=self.main_user).first()
         self.bio = Bio.objects.filter(user=self.main_user).first()
         self.address = self.main_user.contactcard.address
-        self.ed = Education.objects.filter(cv=self.cv).filter(certificate=False)
-        self.certs = Education.objects.filter(cv=self.cv).filter(certificate=True)
+        self.ed = Education.objects.filter(
+            cv=self.cv).filter(certificate=False)
+        self.certs = Education.objects.filter(
+            cv=self.cv).filter(certificate=True)
         self.skills = Skill.objects.filter(cv=self.cv)
-        self.professional_experiences = Achievement.objects.filter(work_experience__cv=self.cv)
+        self.professional_experiences = Achievement.objects.filter(
+            work_experience__cv=self.cv)
         self.field_experiences = Achievement.objects.filter(project__field_experience=True)\
             .filter(project__user=self.main_user)
         self.professional_development = Achievement.objects.filter(
             Q(course_work__course__education__in=self.ed) |
-            (Q(project__professional_development=True) & Q(project__user=self.main_user))
+            (Q(project__professional_development=True)
+             & Q(project__user=self.main_user))
         )
 
         return render(request, 'curriculum_vitae.html', {
