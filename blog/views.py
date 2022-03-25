@@ -9,7 +9,6 @@ class BlogHomeView(View):
     def get(self, request, *args, **kwargs):
         """
         Function to handle GET requests for the Blog Homepage
-        
         :param request:
         :param args:
         :param kwargs:
