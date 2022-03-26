@@ -6,7 +6,7 @@
 {% block page_css %}
   <link rel="stylesheet" href="{% static 'portfolio/css/standard_header.css' %}" />
 {% endblock %}
-{% block header %}{% standard_header %}{% endblock %}
+{% block header %}{% standard_header user %}{% endblock %}
 {% block content %}
 {% if projects %}
     {% for proj in projects %}

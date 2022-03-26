@@ -8,7 +8,7 @@
 {% block page_js %}
 {% endblock %}
 {% block header %}
-  {% standard_header %}
+  {% standard_header user %}
 {% endblock %}
 {% block content %}
   <div style="display:grid; place-items: center; width:100%; grid-auto-flow: row">
@@ -72,7 +72,7 @@
       <span>###################&nbsp;&nbsp; `##&nbsp;&nbsp;#### #+&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp; z@##@#########</span><br/>
     </div>
     <div>
-      {% block status %}<span>Page not Found!</span>{% endblock %}
+      {% block status %}{% endblock %}
     </div>
   </div>
 {% endblock %}
