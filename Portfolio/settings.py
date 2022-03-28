@@ -28,7 +28,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
 INSTALLED_APPS = [
-    'seo.apps.SEOConfig',
+    'main.apps.MainConfig',
     'blog.apps.BlogConfig',
     'acct_management.apps.AcctManagementConfig',
     'portfolio.apps.PortfolioConfig',
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'markdownx',
     'secured_fields',
 ]
@@ -141,6 +143,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
+SITE_ID = 1
 
 # Overwrite settings for security in Production and Live Sever Testing Environments.
 if 'ON_HEROKU' in ENV_VAR:

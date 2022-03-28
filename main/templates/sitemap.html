@@ -4,22 +4,23 @@
 {% load template_loader %}
 {% load markdownify %}
 
-{% block title %}Code of Conduct{% endblock %}
+{% block title %}Sitemap{% endblock %}
 
 {% block page_css %}
   <link rel="stylesheet" href="{% static 'portfolio/css/standard_header.css' %}" />
-  <link rel="stylesheet" href="{% static 'seo/css/policy.css' %}" />
 {% endblock %}
 {% block page_js %}{% endblock %}
 {% block header %}
   {% standard_header user %}
 {% endblock %}
 {% block content %}
-  <div class="policy container">
-    <div class="policy body">
-      {{ md | safe | markdownify }}
-    </div>
-  </div>
+  <ul>
+    {% for site in sites %}
+      <li>
+        <a href="{% url site %}">{{ site }}</a>
+      </li>
+    {% endfor %}
+  </ul>
 {% endblock %}
 {% block footer %}
   {% large_footer %}
