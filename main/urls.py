@@ -17,7 +17,7 @@ Including another URLconf
 from django.urls import path, include
 from django.contrib.sitemaps.views import sitemap
 
-from .views import CodeOfConductView, PrivacyPolicyView, SecurityPolicyView, SiteMapView, robots_txt
+from .views import CodeOfConductView, PrivacyPolicyView, SecurityPolicyView, AboutView, SiteMapView, robots_txt
 from .sitemaps import SeoSitemap
 from portfolio.sitemaps import PortfolioSitemap
 
@@ -32,6 +32,7 @@ urlpatterns = [
     path('codeofconduct/', CodeOfConductView.as_view(), name='code_of_conduct'),
     path('privacypolicy/', PrivacyPolicyView.as_view(), name='privacy_policy'),
     path('securitypolicy/', SecurityPolicyView.as_view(), name='security_policy'),
+    path('about/', AboutView.as_view(), name='about'),
     path('sitemap/', SiteMapView.as_view(), name='sitemap'),
     path('robots.txt', robots_txt),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},

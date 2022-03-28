@@ -7,7 +7,7 @@ class SeoSitemap(Sitemap):
     priority = 1.0
 
     def items(self):
-        return ['seo:code_of_conduct', 'seo:privacy_policy', 'seo:security_policy']
+        return ['code_of_conduct', 'privacy_policy', 'security_policy']
 
     def location(self, item):
         return reverse(item)
