@@ -19,9 +19,8 @@
 .footer {
   display: grid;
   justify-items: center;
-  align-items: center;
-  grid-template-areas: "social" "contact";
+  grid-template-areas: "social" "links";
   justify-self: center;
   font-size: 11px;
+  grid-auto-rows: 1fr;
 }
-/* End Footer Keep on Bottom */

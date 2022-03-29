@@ -16,12 +16,34 @@
 }
 /* END Footer Keep on Bottom */
 
-.footer {
+.footer > .standard.links {
+  grid-area: links;
   display: grid;
-  justify-items: center;
-  align-items: center;
-  grid-template-areas: "social" "contact";
-  justify-self: center;
-  font-size: 11px;
+  place-items: center;
+  grid-row-gap: 6px;
 }
-/* End Footer Keep on Bottom */
+
+.standard.links > .line {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  grid-column-gap: 6px;
+  place-items: center;
+}
+
+.standard.links > div > .dot {
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.links > div > div > a {
+  text-decoration: unset;
+  color: white;
+}
+
+.links > div > div > a:hover {
+  text-decoration: underline;
+  color: white;
+}
