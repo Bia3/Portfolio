@@ -19,7 +19,7 @@
 .footer {
   display: grid;
   place-items: center;
-  grid-template-areas:"links";
+  grid-template-areas: "links";
   justify-self: center;
   font-size: 11px;
   grid-template-rows: 1fr;
