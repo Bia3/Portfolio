@@ -135,28 +135,6 @@
   grid-area: Bio;
 }
 
-.home.footer {
-  position: relative;
-  height: 300px;
-  background-color: var(--background2);
-  color: var(--foreground2);
-}
-
-.footer .social {
-  grid-area: social;
-  display: grid;
-  grid-auto-flow: column;
-  justify-self: center;
-  width: 80%;
-  padding-bottom: 20px;
-}
-
-.footer .contact {
-  grid-area: contact;
-  text-align: center;
-  align-self: center;
-}
-
 .home .crest {
   grid-area: crest;
 }
@@ -211,6 +189,7 @@
   justify-content: center;
   color: white;
   font-family: sans-serif;
+  text-align: center;
 }
 
 .card:hover > a > .icon {

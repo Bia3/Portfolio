@@ -1,26 +1,9 @@
-/* BEGIN Footer Keep on Bottom */
-#page-container {
-  position: relative;
-  min-height: 100vh;
-}
-
-#content-wrap {
-  padding-bottom: 300px; /* Footer height */
-}
-
-#footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 300px; /* Footer height */
-}
-/* END Footer Keep on Bottom */
-
 .footer > .standard.links {
   grid-area: links;
   display: grid;
   place-items: center;
   grid-row-gap: 6px;
+  grid-auto-rows: max-content;
 }
 
 .standard.links > .line {
