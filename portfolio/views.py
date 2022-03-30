@@ -284,8 +284,8 @@ class CurriculumVitaeView(View):
         )
 
         return render(request, 'curriculum_vitae.html', {
-            'name': self.main_user.get_full_name(),
-            'profession': self.bio.profession,
+            'name': self.main_user.get_full_name() if self.main_user else '',
+            'profession': self.bio.profession if self.bio else '',
             'cv': self.cv,
             'address': self.address,
             'education': self.ed,
