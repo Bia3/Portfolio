@@ -267,8 +267,10 @@ class CurriculumVitaeView(View):
         """
         self.cv = CurriculumVitae.objects.filter(user=self.main_user).first()
         self.bio = Bio.objects.filter(user=self.main_user).first()
-        self.contact_card = ContactCard.objects.filter(user=self.main_user).first()
-        self.address = self.contact_card.address if (hasattr(self.contact_card, 'address') if self.contact_card else None) else None
+        self.contact_card = ContactCard.objects.filter(
+            user=self.main_user).first()
+        self.address = self.contact_card.address if (
+            hasattr(self.contact_card, 'address') if self.contact_card else None) else None
         self.ed = Education.objects.filter(
             cv=self.cv).filter(certificate=False).order_by('-end')
         self.certs = Education.objects.filter(
@@ -361,7 +363,8 @@ class ResumeView(View):
             Q(education__resume__user=self.main_user) |
             Q(work_experience__resume__user=self.main_user)
         ).order_by('-completed')
-        self.work_history = WorkExperience.objects.filter(resume=self.resume).order_by('-end')
+        self.work_history = WorkExperience.objects.filter(
+            resume=self.resume).order_by('-end')
         # Map all items from work_history to a new work_experiences object with only the years for dates and
         # limiting the number of responsibilities to only the most recent 5
         work_experiences = [{
@@ -370,7 +373,8 @@ class ResumeView(View):
             'start': work.start.year,
             'end': work.end.year,
             'responsibilities': work.responsibility_set.order_by('-started')[0:5]} for work in self.work_history]
-        self.education = Education.objects.filter(resume=self.resume).order_by('-end')
+        self.education = Education.objects.filter(
+            resume=self.resume).order_by('-end')
 
         return render(request, 'resume.html', {
             'resume': self.resume,
