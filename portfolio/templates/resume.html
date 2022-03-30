@@ -80,13 +80,13 @@
         <div class="education inner container">
           <div class="education title">Education</div>
           <div class="education block">
-            {% for education in resume.education_set.all  %}
+            {% for ed in education  %}
               <div class="education-inner">
-                <div class="degree">{{ education.degree }}</div>
+                <div class="degree">{{ ed.degree }}</div>
                 <div class="long dash"></div>
-                <div class="institute">{{ education.institution }}</div>
+                <div class="institute">{{ ed.institution }}</div>
                 <div class="long dash"></div>
-                <div class="year">{{ education.end.year }}</div>
+                <div class="year">{{ ed.end.year }}</div>
               </div>
             {% endfor %}
           </div>

@@ -270,19 +270,19 @@ class CurriculumVitaeView(View):
         self.contact_card = ContactCard.objects.filter(user=self.main_user).first()
         self.address = self.contact_card.address if (hasattr(self.contact_card, 'address') if self.contact_card else None) else None
         self.ed = Education.objects.filter(
-            cv=self.cv).filter(certificate=False)
+            cv=self.cv).filter(certificate=False).order_by('-end')
         self.certs = Education.objects.filter(
-            cv=self.cv).filter(certificate=True)
+            cv=self.cv).filter(certificate=True).order_by('-end')
         self.skills = Skill.objects.filter(cv=self.cv)
         self.professional_experiences = Achievement.objects.filter(
-            work_experience__cv=self.cv)
+            work_experience__cv=self.cv).order_by('-completed')
         self.field_experiences = Achievement.objects.filter(project__field_experience=True)\
-            .filter(project__user=self.main_user)
+            .filter(project__user=self.main_user).order_by('-completed')
         self.professional_development = Achievement.objects.filter(
             Q(course_work__course__education__in=self.ed) |
             (Q(project__professional_development=True)
              & Q(project__user=self.main_user))
-        )
+        ).order_by('-completed')
 
         return render(request, 'curriculum_vitae.html', {
             'name': self.main_user.get_full_name() if self.main_user else '',
@@ -339,6 +339,7 @@ class ResumeView(View):
 
     resume = {}
     achievements = []
+    education = []
 
     def __init__(self, **kwargs):
         super().__init__()
@@ -358,13 +359,15 @@ class ResumeView(View):
             Q(project__user=self.main_user) |
             Q(education__resume__user=self.main_user) |
             Q(work_experience__resume__user=self.main_user)
-        )
+        ).order_by('-completed')
+        self.education = Education.objects.filter(resume=self.resume).order_by('-end')
 
         return render(request, 'resume.html', {
             'resume': self.resume,
             'achievements': self.achievements,
             'main_user_name': self.main_user.get_full_name() if self.main_user else '',
             'email': self.main_user.email if self.main_user else '',
+            'education': self.education,
             'phone': '(555) 555-5555',
             'website': 'https://www.rossdev.io'
         })
