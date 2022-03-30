@@ -267,7 +267,8 @@ class CurriculumVitaeView(View):
         """
         self.cv = CurriculumVitae.objects.filter(user=self.main_user).first()
         self.bio = Bio.objects.filter(user=self.main_user).first()
-        self.contact_card = ContactCard.objects.filter(user=self.main_user).first()
+        self.contact_card = ContactCard.objects.filter(
+            user=self.main_user).first()
         self.address = self.contact_card.address if self.contact_card else None
         self.ed = Education.objects.filter(
             cv=self.cv).filter(certificate=False)
