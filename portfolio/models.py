@@ -14,7 +14,7 @@ class Resume(models.Model):
         editable=False,
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    summary = models.CharField(max_length=250)
+    summary = models.CharField(max_length=1000)
 
     def __str__(self):
         return f'{self.user.get_full_name()}\'s Resume'
@@ -100,7 +100,7 @@ class WorkExperience(models.Model):
         CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
     position = models.CharField(max_length=180)
     organization = models.CharField(max_length=180)
-    summary = models.TextField(max_length=1000)
+    summary = models.TextField(max_length=1000, blank=True, null=True)
     start = models.DateField()
     end = models.DateField(blank=True, null=True)
 
@@ -143,7 +143,7 @@ class Responsibility(models.Model):
         WorkExperience, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     short_summary = models.CharField(max_length=250)
-    summary = models.TextField(max_length=500)
+    summary = models.TextField(max_length=500, blank=True, null=True)
     started = models.DateField(default=timezone.now)
 
     class Meta:
