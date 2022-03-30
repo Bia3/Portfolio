@@ -352,7 +352,7 @@ class ResumeView(View):
         :param kwargs:
         :return:
         """
-        self.resume = self.main_user.resume
+        self.resume = self.main_user.resume if self.main_user else None
         self.achievements = Achievement.objects.filter(
             Q(project__user=self.main_user) |
             Q(education__resume__user=self.main_user) |
@@ -362,8 +362,8 @@ class ResumeView(View):
         return render(request, 'resume.html', {
             'resume': self.resume,
             'achievements': self.achievements,
-            'main_user_name': self.main_user.get_full_name(),
-            'email': self.main_user.email,
+            'main_user_name': self.main_user.get_full_name() if self.main_user else '',
+            'email': self.main_user.email if self.main_user else '',
             'phone': '(555) 555-5555',
             'website': 'https://www.rossdev.io'
         })
