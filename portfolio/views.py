@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.db.models import Q
 
 from .forms import AchievementForm, SkillForm, ProjectForm
-from acct_management.models import Bio
+from acct_management.models import Bio, ContactCard
 from .models import CurriculumVitae,\
     Project,\
     Skill,\
@@ -266,7 +266,8 @@ class CurriculumVitaeView(View):
         """
         self.cv = CurriculumVitae.objects.filter(user=self.main_user).first()
         self.bio = Bio.objects.filter(user=self.main_user).first()
-        self.address = self.main_user.contactcard.address
+        self.address = ContactCard.objects.filter(user=self.main_user).first().address if\
+            ContactCard.objects.filter(user=self.main_user).first() else None
         self.ed = Education.objects.filter(
             cv=self.cv).filter(certificate=False)
         self.certs = Education.objects.filter(
