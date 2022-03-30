@@ -7,11 +7,11 @@ from django.db.models import Q
 
 from .forms import AchievementForm, SkillForm, ProjectForm
 from acct_management.models import Bio, ContactCard
-from .models import CurriculumVitae,\
-    Project,\
-    Skill,\
+from .models import CurriculumVitae, \
+    Project, \
+    Skill, \
     Achievement, \
-    Education
+    Education, WorkExperience
 from markdownx.utils import markdownify
 
 mobile_browsers = [
@@ -340,6 +340,7 @@ class ResumeView(View):
     resume = {}
     achievements = []
     education = []
+    work_history = []
 
     def __init__(self, **kwargs):
         super().__init__()
@@ -360,6 +361,15 @@ class ResumeView(View):
             Q(education__resume__user=self.main_user) |
             Q(work_experience__resume__user=self.main_user)
         ).order_by('-completed')
+        self.work_history = WorkExperience.objects.filter(resume=self.resume).order_by('-end')
+        # Map all items from work_history to a new work_experiences object with only the years for dates and
+        # limiting the number of responsibilities to only the most recent 5
+        work_experiences = [{
+            'position': work.position,
+            'organization': work.organization,
+            'start': work.start.year,
+            'end': work.end.year,
+            'responsibilities': work.responsibility_set.order_by('-started')[0:5]} for work in self.work_history]
         self.education = Education.objects.filter(resume=self.resume).order_by('-end')
 
         return render(request, 'resume.html', {
@@ -367,6 +377,7 @@ class ResumeView(View):
             'achievements': self.achievements,
             'main_user_name': self.main_user.get_full_name() if self.main_user else '',
             'email': self.main_user.email if self.main_user else '',
+            'work_experiences': work_experiences,
             'education': self.education,
             'phone': '(555) 555-5555',
             'website': 'https://www.rossdev.io'

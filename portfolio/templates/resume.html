@@ -50,23 +50,23 @@
         <div class="work-experience inner container">
           <div class="work-experience title">Work Experience</div>
           <div class="work-experience block">
-            {% for work_experience in resume.workexperience_set.all %}
+            {% for work_experience in work_experiences %}
               <div class="work">
                 <div class="work head">
                   <div class="position">{{ work_experience.position }}</div>
                   <div class="long dash"></div>
                   <div class="organization">{{ work_experience.organization }}</div>
                   <div class="long dash"></div>
-                  <div class="start">{{ work_experience.start.year }}</div>
+                  <div class="start">{{ work_experience.start }}</div>
                   <div class="dash"></div>
                   {% if  work_experience.end %}
-                    <div class="end">{{ work_experience.end.year }}</div>
+                    <div class="end">{{ work_experience.end }}</div>
                   {% else %}
                     <div class="end">Current</div>
                   {% endif %}
                 </div>
                 <div class="responsibilities">
-                  {% for responsibility in work_experience.responsibility_set.all %}
+                  {% for responsibility in work_experience.responsibilities %}
                     <div class="responsibility">
                       <div class="dot"></div>
                       <div class="short summary">{{ responsibility.short_summary }}</div>
