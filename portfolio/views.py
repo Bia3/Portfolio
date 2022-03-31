@@ -368,7 +368,7 @@ class ResumeView(View):
             'position': work.position,
             'organization': work.organization,
             'start': work.start.year,
-            'end': work.end.year,
+            'end': work.end.year if work.end else None,
             'responsibilities': work.responsibility_set.order_by('-started')[0:5]} for work in self.work_history]
         self.education = Education.objects.filter(resume=self.resume).order_by('-end')
 
