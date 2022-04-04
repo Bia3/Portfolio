@@ -275,13 +275,15 @@ class CurriculumVitaeView(View):
             cv=self.cv).filter(certificate=True).order_by('-end')
         self.skills = Skill.objects.filter(cv=self.cv)
         self.professional_experiences = Achievement.objects.filter(
-            work_experience__cv=self.cv).order_by('-completed')
-        self.field_experiences = Achievement.objects.filter(project__field_experience=True)\
-            .filter(project__user=self.main_user).order_by('-completed')
+            Q(work_experience__cv=self.cv) &
+            (Q(project__field_experience=False) & Q(project__user=self.main_user))
+        ).order_by('-completed')
+        self.field_experiences = Achievement.objects.filter(
+            (Q(project__field_experience=True) & Q(project__user=self.main_user))
+        ).order_by('-completed')
         self.professional_development = Achievement.objects.filter(
             Q(course_work__course__education__in=self.ed) |
-            (Q(project__professional_development=True)
-             & Q(project__user=self.main_user))
+            (Q(project__professional_development=True) & Q(project__user=self.main_user))
         ).order_by('-completed')
 
         return render(request, 'curriculum_vitae.html', {
