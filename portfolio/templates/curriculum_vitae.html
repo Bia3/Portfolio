@@ -19,16 +19,18 @@
             <div class="profession">{{ profession }}</div>
             {% if user.is_authenticated %}
               {% if request.user|has_group:"primary_account" %}
-                <div class="address">
-                  {% if address.street_two %}
-                    <div class="street">{{ address.street_one }} {{ address.street_two }}</div>
-                  {% else %}
-                    <div class="street">{{ address.street_one }}</div>
-                  {% endif %}
-                  <div class="city">{{ address.city }},</div>
-                  <div class="state">{{ address.state }},</div>
-                  <div class="zip">{{ address.zip }}</div>
-                </div>
+                {% if address %}
+                  <div class="address">
+                    {% if address.street_two %}
+                      <div class="street">{{ address.street_one }} {{ address.street_two }}</div>
+                    {% else %}
+                      <div class="street">{{ address.street_one }}</div>
+                    {% endif %}
+                    <div class="city">{{ address.city }},</div>
+                    <div class="state">{{ address.state }},</div>
+                    <div class="zip">{{ address.zip }}</div>
+                  </div>
+                {% endif %}
               {% endif %}
             {% endif %}
         </div>
