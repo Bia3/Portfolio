@@ -1,0 +1,32 @@
+.footer > .standard.links {
+  grid-area: links;
+  display: grid;
+  place-items: center;
+  grid-row-gap: 6px;
+  grid-auto-rows: max-content;
+}
+
+.standard.links > .line {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  grid-column-gap: 6px;
+  place-items: center;
+}
+
+.standard.links > div > .dot {
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.links > div > div > a {
+  text-decoration: unset;
+  color: white;
+}
+
+.links > div > div > a:hover {
+  text-decoration: underline;
+  color: white;
+}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load template_loader %}
+{% load markdownify %}
+
+{% block title %}Sitemap{% endblock %}
+
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'portfolio/css/standard_header.css' %}" />
+{% endblock %}
+{% block page_js %}{% endblock %}
+{% block header %}
+  {% standard_header user %}
+{% endblock %}
+{% block content %}
+  <ul>
+    {% for site in sites %}
+      <li>
+        <a href="{% url site %}">{{ site }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+{% block footer %}
+  {% large_footer %}
+{% endblock %}

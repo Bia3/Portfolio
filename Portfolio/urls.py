@@ -1,4 +1,5 @@
-"""Portfolio URL Configuration
+"""
+Primary URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -13,22 +14,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.urls import path, include, re_path
 from django.contrib import admin
-from portfolio import views
-
 
 handler404 = 'portfolio.views.handler404'
 handler500 = 'portfolio.views.handler500'
 
 urlpatterns = [
-    url('s3cr3t/', admin.site.urls),
-    url('accounts/', include('acct_management.urls')),
-    url(r'^markdownx/', include('markdownx.urls')),
-    url(r'^$', views.HomeView.as_view(), name='home'),
-    url('forms/addachievement', views.AddAchievementFormView.as_view(),
-        name='add_achievement_form'),
-    url('forms/add_skill', views.AddSkillFormView.as_view(), name='add_skill_form'),
-    url('forms/add_project', views.AddProjectFormView.as_view(),
-        name='add_project_form'),
+    path('s3cr3t/', admin.site.urls),
+    path('accounts/', include('acct_management.urls')),
+    re_path(r'^markdownx/', include('markdownx.urls')),
+    path('', include('main.urls')),
 ]

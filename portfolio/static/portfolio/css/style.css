@@ -54,33 +54,6 @@
 }
 /* END Hidden Link */
 
-/* BEGIN Footer Keep on Bottom */
-#page-container {
-  position: relative;
-  min-height: 100vh;
-}
-
-#content-wrap {
-  padding-bottom: 300px; /* Footer height */
-}
-
-#footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 300px; /* Footer height */
-}
-/* END Footer Keep on Bottom */
-
-.footer {
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  grid-template-areas: "social" "contact";
-  justify-self: center;
-  font-size: 11px;
-}
-
 /* BEGIN hamburger */
 .hamburger-ico {
   fill: white;
@@ -94,7 +67,6 @@
   height: 32px;
   width: 32px;
 }
-
 /* END hamburger */
 
 /* START nav */
@@ -157,143 +129,10 @@
 }
 /* END nav */
 
-/* BEGIN content area */
-.content-grid {
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  width: 100vw;
-  grid-auto-flow: column;
-  grid-template-areas: "Bio Bio" ". Title" "HR HR" "Content Content";
-  grid-template-rows: auto 38px 20px auto;
-  grid-template-columns: 54px 1fr;
-}
-
-.project-list {
-  width: 80vw;
-}
-
-.content-container {
-  overflow: hidden;
-}
-
-.title {
-  display: flex;
-  font-size: 18px;
-  grid-area: Title;
-  height: 30px;
-  width: 200px;
-  align-self: center;
-  justify-self: left;
-  justify-content: center;
-  transition: font-size ease-in 300ms, font-weight ease-in 300ms;
-}
-
-.skill.title:hover,
-.project.title:hover {
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.rule {
-  grid-area: HR;
-  border-bottom: 1px solid white;
-  height: 10px;
-  width: 100%;
-}
-
-.content {
-  margin-left: 20px;
-  margin-right: 20px;
-  grid-area: Content;
-  animation: fadeIn 300ms;
-}
-
-.skill.content {
-  opacity: 1;
-}
-
-.project.content {
-  opacity: 0;
-}
-
-.content-grid a {
-  color: white;
-}
-
-.content-grid a:visited {
-  color: #f8f8f2;
-}
-
-.content-grid > th,
-td {
-  padding: 15px;
-}
-
-.read_more_btn {
-  background-color: transparent;
-  color: white;
-  border: white solid 1px;
-  border-radius: 10px;
-  margin-top: 6px;
-}
-
-.read_more_btn:hover {
-  background-color: white;
-  color: #333;
-  cursor: pointer;
-}
-
 .bio {
   margin: 40px 0;
   width: 80vw;
   grid-area: Bio;
-}
-
-.skills {
-  margin: 40px 0;
-  width: 80vw;
-}
-
-.description p {
-  display: inline;
-  margin-right: -3px;
-}
-
-.description span {
-  display: inline;
-}
-
-.achievements {
-  margin: 40px 0;
-  width: 80vw;
-}
-
-.name.achievement span {
-  margin-left: -6px;
-}
-
-.home.footer {
-  position: relative;
-  height: 300px;
-  background-color: var(--background2);
-  color: var(--foreground2);
-}
-
-.footer .social {
-  grid-area: social;
-  display: grid;
-  grid-auto-flow: column;
-  justify-self: center;
-  width: 80%;
-  padding-bottom: 20px;
-}
-
-.footer .contact {
-  grid-area: contact;
-  text-align: center;
-  align-self: center;
 }
 
 .home .crest {
@@ -350,6 +189,7 @@ td {
   justify-content: center;
   color: white;
   font-family: sans-serif;
+  text-align: center;
 }
 
 .card:hover > a > .icon {
@@ -460,20 +300,6 @@ td {
   display: flex;
   text-align: center;
   justify-content: center;
-}
-
-.resumeGrid {
-  margin: 5%;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  height: 90%;
-  width: 90%;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: auto;
-  grid-template-areas: "sidebar body";
 }
 
 .projectGrid {

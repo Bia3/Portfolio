@@ -1,0 +1,23 @@
+:root {
+    --policyFontHighlight: #9B9B9B;
+    --policyFontLink: #8996af;
+}
+
+.policy.container {
+    margin: 50px 0;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.policy.body {
+    width: 80vw;
+}
+
+.policy.body a {
+    color: var(--policyFontLink);
+}
+
+.policy.body a:hover {
+    color: var(--policyFontHighlight);
+}

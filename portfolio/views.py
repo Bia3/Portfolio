@@ -2,15 +2,16 @@ import string
 
 from django.shortcuts import render
 from django.views import View
+from django.contrib.auth.models import User
+from django.db.models import Q
 
 from .forms import AchievementForm, SkillForm, ProjectForm
-from .models import ContactCard,\
-    Resume,\
-    CurriculumVitae,\
-    Project,\
-    Bio,\
-    Skill,\
-    Achievement
+from acct_management.models import Bio, ContactCard
+from .models import CurriculumVitae, \
+    Project, \
+    Skill, \
+    Achievement, \
+    Education, WorkExperience
 from markdownx.utils import markdownify
 
 mobile_browsers = [
@@ -38,11 +39,15 @@ class HomeView(View):
     bio = ""
     contact = ""
     md = None
-    projects = ""
     skills_raw = []
     skills = []
     achieves_raw = []
     achieves = []
+
+    def __init__(self, **kwargs):
+        super().__init__()
+        self.main_user = User.objects.filter(
+            groups__name__contains='primary_account').first()
 
     def get(self, request, *args, **kwargs):
         """
@@ -52,32 +57,29 @@ class HomeView(View):
         :param kwargs:
         :return:
         """
-        self.bio = Bio.objects.first()
-        self.contact = ContactCard.objects.first()
-        self.projects = Project.objects.all()
+        self.bio = Bio.objects.filter(user=self.main_user).first()
         self.skills_raw = Skill.objects.all()
         self.skills = []
-        self.achieves_raw = Achievement.objects.all().order_by('order')
+        self.achieves_raw = Achievement.objects.order_by('-completed')
         self.achieves = []
 
         if self.bio:
-            self.md = markdownify(self.bio.mark_down)
+            self.md = markdownify(self.bio.copy)
 
         if len(self.skills_raw) >= 1:
             for skill in self.skills_raw:
                 self.skills.append({
                     'id': skill.id,
-                    'name': skill.name,
-                    'description': markdownify(skill.description),
-                    'highlights': markdownify(skill.highlights)
+                    'name': skill.title,
+                    'description': skill.summary
                 })
 
         if len(self.skills_raw) >= 1:
             for achieve in self.achieves_raw:
                 self.achieves.append({
                     'id': achieve.id,
-                    'name': achieve.name,
-                    'description': markdownify(achieve.description)
+                    'name': achieve.title,
+                    'description': achieve.summary
                 })
         http_user = self.request.META['HTTP_USER_AGENT']
         http_user_clean = http_user.translate(
@@ -86,8 +88,6 @@ class HomeView(View):
             return render(request, 'home.html', {
                 'bio': self.bio,
                 'md': self.md,
-                'contact': self.contact,
-                'projects': self.projects,
                 'skills': self.skills,
                 'achieves': self.achieves,
                 'style': 'RossDevs/css/m_style.css',
@@ -98,8 +98,6 @@ class HomeView(View):
         return render(request, 'home.html', {
             'bio': self.bio,
             'md': self.md,
-            'contact': self.contact,
-            'projects': self.projects,
             'skills': self.skills,
             'achieves': self.achieves,
             'style': 'RossDevs/css/style.css',
@@ -243,7 +241,21 @@ class CurriculumVitaeView(View):
     (course of one’s life) page
     """
 
-    cvs = ""
+    cv = {}
+    bio = {}
+    contact_card = {}
+    address = {}
+    ed = []
+    certs = []
+    skills = []
+    professional_experiences = []
+    field_experiences = []
+    professional_development = []
+
+    def __init__(self, **kwargs):
+        super().__init__()
+        self.main_user = User.objects.filter(
+            groups__name__contains='primary_account').first()
 
     def get(self, request, *args, **kwargs):
         """
@@ -253,16 +265,48 @@ class CurriculumVitaeView(View):
         :param kwargs:
         :return:
         """
-        self.cvs = CurriculumVitae.objects.all()
+        self.cv = CurriculumVitae.objects.filter(user=self.main_user).first()
+        self.bio = Bio.objects.filter(user=self.main_user).first()
+        self.contact_card = ContactCard.objects.filter(
+            user=self.main_user).first()
+        self.address = self.contact_card.address if (
+            hasattr(self.contact_card, 'address') if self.contact_card else None) else None
+        self.ed = Education.objects.filter(
+            cv=self.cv).filter(certificate=False).order_by('-end')
+        self.certs = Education.objects.filter(
+            cv=self.cv).filter(certificate=True).order_by('-end')
+        self.skills = Skill.objects.filter(cv=self.cv)
+        self.professional_experiences = Achievement.objects.filter(
+            Q(work_experience__cv=self.cv) &
+            (Q(project__field_experience=False) & Q(project__user=self.main_user))
+        ).order_by('-completed')
+        self.field_experiences = Achievement.objects.filter(
+            (Q(project__field_experience=True) & Q(project__user=self.main_user))
+        ).order_by('-completed')
+        self.professional_development = Achievement.objects.filter(
+            Q(course_work__course__education__in=self.ed) |
+            (Q(project__professional_development=True)
+             & Q(project__user=self.main_user))
+        ).order_by('-completed')
+
         return render(request, 'curriculum_vitae.html', {
-            'cvs': self.cvs,
+            'name': self.main_user.get_full_name() if self.main_user else '',
+            'profession': self.bio.profession if self.bio else '',
+            'cv': self.cv,
+            'address': self.address,
+            'education': self.ed,
+            'certificates': self.certs,
+            'skills': self.skills,
+            'professional_experiences': self.professional_experiences,
+            'field_experiences': self.field_experiences,
+            'professional_development': self.professional_development
         })
 
 
 class ProjectsView(View):
     """Class based View for the Projects page"""
 
-    projects = ""
+    projects = []
 
     def get(self, request):
         """
@@ -279,7 +323,7 @@ class ProjectsView(View):
 class ProjectView(View):
     """Class based View for a single Project page"""
 
-    project = ""
+    project = {}
 
     def get(self, request, *args, **kwargs):
         """
@@ -298,7 +342,15 @@ class ProjectView(View):
 class ResumeView(View):
     """Class based View for the Resume Page"""
 
-    resume = ""
+    resume = {}
+    achievements = []
+    education = []
+    work_history = []
+
+    def __init__(self, **kwargs):
+        super().__init__()
+        self.main_user = User.objects.filter(
+            groups__name__contains='primary_account').first()
 
     def get(self, request, *args, **kwargs):
         """
@@ -308,9 +360,34 @@ class ResumeView(View):
         :param kwargs:
         :return:
         """
-        self.resume = Resume.objects.first()
+        self.resume = self.main_user.resume if self.main_user else None
+        self.achievements = Achievement.objects.filter(
+            Q(project__user=self.main_user) |
+            Q(education__resume__user=self.main_user) |
+            Q(work_experience__resume__user=self.main_user)
+        ).order_by('-completed')
+        self.work_history = WorkExperience.objects.filter(
+            resume=self.resume).order_by('-end')
+        # Map all items from work_history to a new work_experiences object with only the years for dates and
+        # limiting the number of responsibilities to only the most recent 5
+        work_experiences = [{
+            'position': work.position,
+            'organization': work.organization,
+            'start': work.start.year,
+            'end': work.end.year if work.end else None,
+            'responsibilities': work.responsibility_set.order_by('-started')[0:5]} for work in self.work_history]
+        self.education = Education.objects.filter(
+            resume=self.resume).order_by('-end')
+
         return render(request, 'resume.html', {
-            'resume': self.resume
+            'resume': self.resume,
+            'achievements': self.achievements,
+            'main_user_name': self.main_user.get_full_name() if self.main_user else '',
+            'email': self.main_user.email if self.main_user else '',
+            'work_experiences': work_experiences,
+            'education': self.education,
+            'phone': '(555) 555-5555',
+            'website': 'https://www.rossdev.io'
         })
 
 

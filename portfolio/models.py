@@ -1,6 +1,64 @@
 import uuid
 from django.db import models
+from django.utils import timezone
+from django.contrib.auth.models import User
 from markdownx.models import MarkdownxField
+
+
+class Resume(models.Model):
+    """Resume template builder"""
+
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False,
+    )
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    summary = models.CharField(max_length=1000)
+
+    def __str__(self):
+        return f'{self.user.get_full_name()}\'s Resume'
+
+
+class CurriculumVitae(models.Model):
+    """Curriculum Vitae(CV) template builder"""
+
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False,
+    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    summary = models.CharField(max_length=1000)
+
+    class Meta:
+        verbose_name_plural = "CVs"
+
+    def __str__(self):
+        return f'{self.user.get_full_name()}\'s CV'
+
+
+class Project(models.Model):
+    """A project that proves you knowledge"""
+
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    cv = models.ForeignKey(
+        CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
+    title = models.CharField(max_length=180)
+    copy = MarkdownxField(max_length=3000)
+    short_summary = models.CharField(max_length=250)
+    summary = models.TextField(max_length=500)
+    professional_development = models.BooleanField(default=False)
+    field_experience = models.BooleanField(default=False)
+    github_link = models.CharField(max_length=250, blank=True, null=True)
+    completed = models.DateField()
+
+    def __str__(self):
+        return self.title
 
 
 class Skill(models.Model):
@@ -9,282 +67,147 @@ class Skill(models.Model):
     advancement in school or work
     """
 
-    name = models.CharField(max_length=100)
-    language = models.BooleanField
-    tool = models.BooleanField
-    concept = models.BooleanField
-    description = MarkdownxField(blank=True)
-    highlights = MarkdownxField(blank=True)
-
-    def __str__(self):
-        return self.name
-
-
-class Responsibility(models.Model):
-    """Responsibilities performed at a Job"""
-
-    name = models.CharField(max_length=100)
-    description = MarkdownxField(blank=True)
-    related_skill = models.ManyToManyField(
-        Skill,
-        blank=True,
-        verbose_name='related skill'
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False,
     )
-
-    def __str__(self):
-        return self.name
-
-
-class Accomplishment(models.Model):
-    """
-    Accomplishments and accolades at
-    school or work
-    """
-
-    name = models.CharField(max_length=100)
-    highlights = MarkdownxField(blank=True)
-    related_skill = models.ManyToManyField(
-        Skill,
-        blank=True,
-        verbose_name='related skill'
-    )
-    end = models.DateField(blank=True, null=True)
-
-    def __str__(self):
-        return self.name
-
-
-class Job(models.Model):
-    """A position held at a company"""
-
-    company = models.CharField(max_length=100)
-    title = models.CharField(max_length=100)
-    highlights = MarkdownxField(blank=True)
-    responsibility = models.ManyToManyField(
-        Responsibility,
-        blank=True,
-        verbose_name='responsibilities'
-    )
-    accomplishment = models.ManyToManyField(
-        Accomplishment,
-        blank=True,
-        verbose_name='accomplishments'
-    )
-    start = models.DateField(blank=False)
-    end = models.DateField(blank=True, null=True)
-
-    def __str__(self):
-        return '{}: {}'.format(self.company, self.title)
-
-
-class School(models.Model):
-    """
-    School attended with Highlights of
-    what was learned/gained
-    """
-
-    name = models.CharField(max_length=100)
-    graduated = models.BooleanField
-    highlights = MarkdownxField(blank=True)
-    start = models.DateField(blank=False)
-    end = models.DateField(blank=True, null=True)
-
-    def __str__(self):
-        return self.name
-
-
-class Section(models.Model):
-    """Section of the Resume or Curriculum Vitae"""
-
-    title = models.CharField(max_length=100)
-    shortend_md = MarkdownxField(blank=True)
-    mark_down = MarkdownxField(blank=True)
-    highlights = MarkdownxField(blank=True)
-    related_skill = models.ManyToManyField(
-        Skill,
-        blank=True,
-        verbose_name='related skill'
-    )
-    start = models.DateField(blank=False)
-    end = models.DateField(blank=True, null=True)
-
-
-class Certificate(models.Model):
-    """A certificate gained and when"""
-
-    title = models.CharField(max_length=100)
-    highlights = MarkdownxField(blank=True)
-    completion = models.DateField(blank=True, null=True)
-    image = models.ImageField(blank=True)
-    related_skill = models.ManyToManyField(
-        Skill,
-        blank=True,
-        verbose_name='related skill'
-    )
+    resume = models.ForeignKey(
+        Resume, on_delete=models.CASCADE, blank=True, null=True)
+    cv = models.ForeignKey(
+        CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
+    project = models.ForeignKey(
+        Project, on_delete=models.CASCADE, blank=True, null=True)
+    title = models.CharField(max_length=180)
+    copy = MarkdownxField(max_length=3000)
+    summary = models.CharField(max_length=250)
 
     def __str__(self):
         return self.title
 
 
-class Resume(models.Model):
-    """
-    Resume builder template CurriculumVitae
-    for highlights and additives
-    """
+class WorkExperience(models.Model):
+    """Jobs volunteer work and other professional experiences"""
 
-    job = models.ManyToManyField(
-        Job,
-        blank=True,
-        verbose_name='Job History'
-    )
-    education = models.ManyToManyField(
-        School,
-        blank=True,
-        verbose_name='Education History'
-    )
-    certificates = models.ManyToManyField(
-        Certificate,
-        blank=True,
-        verbose_name='Certificates'
-    )
-    section = models.ManyToManyField(
-        Section,
-        blank=True,
-        verbose_name='Extra Sections'
-    )
-    pdf = models.FileField(blank=True)
-    expired = models.BooleanField(blank=False)
-    creation = models.DateTimeField(auto_now_add=True, blank=True, null=True)
-
-
-class File(models.Model):
-    """Supporting Files"""
-
-    name = models.CharField(max_length=100)
-    data = models.FileField
-
-
-class CodeSnippet(models.Model):
-    """Supporting Code Snippet"""
-
-    name = models.CharField(max_length=30, blank=False)
-    mark_down = MarkdownxField(blank=False)
-
-
-class ProjectSection(models.Model):
-    """Additive section for projects"""
-
-    title = models.CharField(max_length=30, blank=False)
-    mark_down = MarkdownxField(blank=False)
-
-
-class Project(models.Model):
-    """A project that proves you knowledge"""
-
-    uid = models.UUIDField(
+    id = models.UUIDField(
+        primary_key=True,
         default=uuid.uuid4,
-        editable=False)
-    name = models.CharField(max_length=100)
-    short_desc = MarkdownxField(blank=True)
-    git_link = models.CharField(
-        max_length=256,
-        blank=True)
-    files = models.ManyToManyField(
-        File,
-        blank=True,
-        verbose_name='Project Files'
+        editable=False,
     )
-    code_snippets = models.ManyToManyField(
-        CodeSnippet,
-        blank=True,
-        verbose_name='Project Code Snippets'
-    )
-    mark_down_sections = models.ManyToManyField(
-        ProjectSection,
-        blank=True,
-        verbose_name='Project Description Sections'
-    )
-
-
-class CurriculumVitae(models.Model):
-    """The course of your life learning and jobs"""
-
-    name = models.CharField(max_length=100)
-    mark_down = MarkdownxField(blank=True)
-    job = models.ManyToManyField(
-        Job,
-        blank=True,
-        verbose_name='Job History'
-    )
-    education = models.ManyToManyField(
-        School,
-        blank=True,
-        verbose_name='Education History'
-    )
-    section = models.ManyToManyField(
-        Section,
-        blank=True,
-        verbose_name='Extra Sections'
-    )
-    accomplishment = models.ManyToManyField(
-        Accomplishment,
-        blank=True,
-        verbose_name='Accomplishments'
-    )
-    projects = models.ManyToManyField(
-        Project,
-        blank=True,
-        verbose_name='Projects'
-    )
-    certificates = models.ManyToManyField(
-        Certificate,
-        blank=True,
-        verbose_name='Certificates'
-    )
-    skills = models.ManyToManyField(
-        Skill,
-        blank=True,
-        verbose_name='Skills'
-    )
-    date = models.DateField(blank=False)
-
-
-class Bio(models.Model):
-    """Brief Descriptor of you and your goals"""
-
-    title = models.CharField(max_length=100)
-    mark_down = MarkdownxField(blank=True)
-    creation = models.DateTimeField(auto_now_add=True, blank=True, null=True)
-    expired = models.BooleanField(blank=False)
+    resume = models.ForeignKey(
+        Resume, on_delete=models.CASCADE, blank=True, null=True)
+    cv = models.ForeignKey(
+        CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
+    position = models.CharField(max_length=180)
+    organization = models.CharField(max_length=180)
+    summary = models.TextField(max_length=1000, blank=True, null=True)
+    start = models.DateField()
+    end = models.DateField(blank=True, null=True)
 
     def __str__(self):
-        return '{}'.format(self.title)
+        return f'{self.position}: {self.organization}'
 
 
-class ContactCard(models.Model):
-    """Contact Info"""
+class Education(models.Model):
+    """An educational institute or certificate attended and achieved"""
 
-    first_name = models.CharField(max_length=30, blank=True)
-    last_name = models.CharField(max_length=30, blank=True)
-    phone = models.CharField(max_length=30, blank=True)
-    po_box = models.CharField(max_length=150, blank=True)
-    email = models.CharField(max_length=30, blank=True)
-    expired = models.BooleanField(blank=False)
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False,
+    )
+    resume = models.ForeignKey(
+        Resume, on_delete=models.CASCADE, blank=True, null=True)
+    cv = models.ForeignKey(
+        CurriculumVitae, on_delete=models.CASCADE, blank=True, null=True)
+    certificate = models.BooleanField(default=False)
+    field_of_study = models.CharField(max_length=180)
+    degree = models.CharField(max_length=180)
+    institution = models.CharField(max_length=180)
+    start = models.DateField(default=timezone.now)
+    end = models.DateField(blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.degree}: {self.institution}'
+
+
+class Responsibility(models.Model):
+    """Responsibilities performed at a Job"""
+
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False,
+    )
+    work_experience = models.ForeignKey(
+        WorkExperience, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    short_summary = models.CharField(max_length=250)
+    summary = models.TextField(max_length=500, blank=True, null=True)
+    started = models.DateField(default=timezone.now)
+
+    class Meta:
+        verbose_name_plural = "Responsibilities"
+
+    def __str__(self):
+        return self.title
 
 
 class Achievement(models.Model):
     """An achievement or accolade"""
 
-    name = models.CharField(max_length=100)
-    description = MarkdownxField(blank=True)
-    order = models.IntegerField(unique=True)
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False,
+    )
+    project = models.ForeignKey(
+        Project, on_delete=models.CASCADE, blank=True, null=True)
+    education = models.ForeignKey(
+        Education, on_delete=models.CASCADE, blank=True, null=True)
+    course_work = models.ForeignKey(
+        'CourseWork', on_delete=models.CASCADE, blank=True, null=True)
+    work_experience = models.ForeignKey(
+        WorkExperience, on_delete=models.CASCADE, blank=True, null=True)
+    title = models.CharField(max_length=180)
+    short_summary = models.CharField(max_length=250)
+    summary = models.TextField(max_length=500)
+    completed = models.DateField()
+
+    def __str__(self):
+        return self.title
 
 
-class Svg(models.Model):
-    """
-    SVG items for logos and other things
-    (can be animated with nested JS or CSS)
-    """
+class Course(models.Model):
+    """A course taken through an educational institute"""
 
-    name = models.CharField(max_length=30, blank=False)
-    data = models.TextField(blank=False)
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False,
+    )
+    education = models.ForeignKey(Education, on_delete=models.CASCADE)
+    title = models.CharField(max_length=180)
+    summary = models.TextField(max_length=500)
+    end = models.DateField()
+
+    def __str__(self):
+        return self.title
+
+
+class CourseWork(models.Model):
+    """An assignment or project created as a part of a Course"""
+
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False,
+    )
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    title = models.CharField(max_length=180)
+    short_summary = models.CharField(max_length=250)
+    summary = models.TextField(max_length=500)
+    copy = MarkdownxField(max_length=3000)
+
+    def __str__(self):
+        return self.title

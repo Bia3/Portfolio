@@ -1,9 +1,19 @@
 {% load my_helpers %}
 
 <div class="home footer">
-  <div class="social">
-    {% footer_icon 'Linked In @sean-r-a571154a' 'https://www.linkedin.com/in/sean-r-a571154a/' 'linkedIn' %}
-    {% footer_icon 'keybase @sean_aphid' 'https://keybase.io/sean_aphid' 'keybase' %}
-    {% footer_icon 'sean.r.ross@gmail.com' 'mailto:sean.r.ross@gmail.com' 'email' %}
+  {% socials %}
+  <div class="standard links">
+      <div class="line">
+      <div class="sitemap"><a href="{% url 'sitemap' %}">Sitemap</a></div>
+      <div class="dot"></div>
+      <div class="privacy_policy"><a href="{% url 'privacy_policy' %}">Privacy Policy</a></div>
+      <div class="dot"></div>
+      <div class="security_policy"><a href="{% url 'security_policy' %}">Security Policy</a></div>
+    </div>
+    <div class="line">
+      <div class="about"><a href="{% url 'about' %}">About</a></div>
+      <div class="dot"></div>
+      <div class="code_of_conduct"><a href="{% url 'code_of_conduct' %}">Code of Conduct</a></div>
+    </div>
   </div>
 </div>

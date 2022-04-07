@@ -28,12 +28,12 @@ def large_header(md, bio):
 
 
 @register.simple_tag
-def standard_header():
+def standard_header(user=None):
     """
     Tag to render the header template
     :return: String
     """
-    return render_to_string('header.html')
+    return render_to_string('standard_header.html', {'user': user})
 
 
 @register.simple_tag

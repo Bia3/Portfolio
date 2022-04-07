@@ -1,0 +1,109 @@
+.content-grid {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  width: 100vw;
+  grid-auto-flow: column;
+  grid-template-areas: "Bio Bio" ". Title" "HR HR" "Content Content";
+  grid-template-rows: auto 38px 20px auto;
+  grid-template-columns: 54px 1fr;
+}
+
+.project-list {
+  width: 80vw;
+}
+
+.content-container {
+  overflow: hidden;
+}
+
+.title {
+  display: flex;
+  font-size: 18px;
+  grid-area: Title;
+  height: 30px;
+  width: 200px;
+  align-self: center;
+  justify-self: left;
+  justify-content: center;
+  transition: font-size ease-in 300ms, font-weight ease-in 300ms;
+}
+
+.skill.title:hover,
+.project.title:hover {
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.rule {
+  grid-area: HR;
+  border-bottom: 1px solid white;
+  height: 10px;
+  width: 100%;
+}
+
+.content {
+  margin-left: 20px;
+  margin-right: 20px;
+  grid-area: Content;
+  animation: fadeIn 300ms;
+}
+
+.skill.content {
+  opacity: 1;
+}
+
+.project.content {
+  opacity: 0;
+}
+
+.content-grid a {
+  color: white;
+}
+
+.content-grid a:visited {
+  color: #f8f8f2;
+}
+
+.content-grid > th,
+td {
+  padding: 15px;
+}
+
+.read_more_btn {
+  background-color: transparent;
+  color: white;
+  border: white solid 1px;
+  border-radius: 10px;
+  margin-top: 6px;
+}
+
+.read_more_btn:hover {
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+}
+
+.skills {
+  margin: 40px 0;
+  width: 80vw;
+}
+
+.achievements {
+  margin: 40px 0;
+  width: 80vw;
+}
+
+.description p {
+  display: inline;
+  margin-right: -3px;
+}
+
+.description span {
+  display: inline;
+}
+
+.name.achievement span {
+  margin-left: -6px;
+}
