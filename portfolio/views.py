@@ -379,7 +379,7 @@ class ResumeView(View):
             'responsibilities': work.responsibility_set.order_by('-started')[0:5]} for work in self.work_history]
         self.education = Education.objects.filter(
             resume=self.resume).order_by('-end')
-        self.contact_card = ContactCard.objects.filter(user=self.main_user)
+        self.contact_card = ContactCard.objects.filter(user=self.main_user).first()
 
         return render(request, 'resume.html', {
             'resume': self.resume,
