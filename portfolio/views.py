@@ -346,6 +346,7 @@ class ResumeView(View):
     achievements = []
     education = []
     work_history = []
+    contact_card = []
 
     def __init__(self, **kwargs):
         super().__init__()
@@ -378,6 +379,7 @@ class ResumeView(View):
             'responsibilities': work.responsibility_set.order_by('-started')[0:5]} for work in self.work_history]
         self.education = Education.objects.filter(
             resume=self.resume).order_by('-end')
+        self.contact_card = ContactCard.objects.filter(user=self.main_user)
 
         return render(request, 'resume.html', {
             'resume': self.resume,
@@ -386,7 +388,7 @@ class ResumeView(View):
             'email': self.main_user.email if self.main_user else '',
             'work_experiences': work_experiences,
             'education': self.education,
-            'phone': '(555) 555-5555',
+            'phone': self.contact_card.phone,
             'website': 'https://www.rossdev.io'
         })
 

@@ -20,7 +20,8 @@ from . import views
 urlpatterns = [
     re_path(r'^$', views.HomeView.as_view(), name='home'),
     path('resume/', views.ResumeView.as_view(), name='resume'),
-    path('curriculumvitae/', views.CurriculumVitaeView.as_view(), name='curriculum_vitae'),
+    path('curriculumvitae/', views.CurriculumVitaeView.as_view(),
+         name='curriculum_vitae'),
     path('projects/', views.ProjectsView.as_view(), name='projects'),
     path('forms/addachievement', views.AddAchievementFormView.as_view(),
          name='add_achievement_form'),

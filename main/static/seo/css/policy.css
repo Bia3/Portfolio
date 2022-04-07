@@ -1,23 +1,23 @@
 :root {
-    --policyFontHighlight: #9B9B9B;
-    --policyFontLink: #8996af;
+  --policyFontHighlight: #9b9b9b;
+  --policyFontLink: #8996af;
 }
 
 .policy.container {
-    margin: 50px 0;
-    width: 100%;
-    display: grid;
-    place-items: center;
+  margin: 50px 0;
+  width: 100%;
+  display: grid;
+  place-items: center;
 }
 
 .policy.body {
-    width: 80vw;
+  width: 80vw;
 }
 
 .policy.body a {
-    color: var(--policyFontLink);
+  color: var(--policyFontLink);
 }
 
 .policy.body a:hover {
-    color: var(--policyFontHighlight);
+  color: var(--policyFontHighlight);
 }

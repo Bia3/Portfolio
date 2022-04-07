@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load group_tags %}
 {% load static %}
 {% load template_loader %}
 {% block title %}Resume{% endblock %}
@@ -19,7 +20,11 @@
         </svg>
       </div>
       <div class="resume sidebar">
-        <span>{{ phone }}</span>
+        {% if user.is_authenticated %}
+          {% if request.user|has_group:"primary_account" %}
+            <span>{{ phone }}</span>
+          {% endif %}
+        {% endif %}
         <span>{{ email }}</span>
         <span>{{ website }}</span>
       </div>
