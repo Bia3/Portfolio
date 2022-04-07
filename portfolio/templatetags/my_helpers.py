@@ -83,7 +83,8 @@ def socials():
 
     if main_user:
         email = main_user.email
-        socs.append({'txt': f'{email}', 'link': f'{email}', 'svg_name': 'Email'})
+        socs.append(
+            {'txt': f'{email}', 'link': f'{email}', 'svg_name': 'Email'})
 
     context = {
         'socials': socs
