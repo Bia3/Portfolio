@@ -10,7 +10,7 @@ name = "Portfolio"
 version = "0.1.0"
 [tool.poetry.dependencies]
 Brotli = "^1.0.9"
-Django = "^3.2.12"
+Django = "^3.2.13"
 Markdown = "^3.3.6"
 dj-database-url = "^0.5.0"
 django-markdownx = "^4.0.0b1"
