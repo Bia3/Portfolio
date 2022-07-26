@@ -1,5 +1,4 @@
 from django import template
-from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
 from django.contrib.staticfiles import finders
