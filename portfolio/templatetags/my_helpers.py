@@ -90,6 +90,6 @@ def socials():
         'socials': socs
     }
     response = render_to_string(template_name=templ, context=context)
-    if len(socs):
+    if socs:
         return mark_safe(response)
     return ''
